@@ -1,0 +1,62 @@
+<?xml version='1.0' standalone='yes'?>
+<posts>
+    <post>
+        <title>Version 0.3</title>
+        <pubdate>20th February 2015</pubdate>
+        <content>This is the Version *0.3* of pBlog. It comes with the following changes:
+- Complete Markdown Support
+- Design fixes
+- a mainlink is no longer required
+        </content>
+    </post>
+    <post>
+	   <title>Version 0.2</title>
+	   <pubdate>20th February 2015</pubdate>
+	   <content>
+The following things are new in this version:
+- Design
+- Better structur
+- cleaned up
+
+More will come when it is ready!
+This is the version *0.2*.
+        </content>
+        <mainurl>index.php</mainurl>
+		<mainlink>Reload</mainlink>
+	<otherlinks>
+		<otherlb>
+			<otherurl>http://marcel-kapfer.de</otherurl>
+			<otherlink>marcel-kapfer.de</otherlink>
+        </otherlb>
+        <otherlb>
+			<otherurl>https://github.com/mmk2410/pblog</otherurl>
+			<otherlink>GitHub</otherlink>
+		</otherlb>
+    </otherlinks>
+    </post>
+    <post>
+	   <title>Blog (Experimental)</title>
+	   <pubdate>13th February 2015</pubdate>
+	   <content>
+This is a test version in a early state of the new **blog engine**. By now it supports following things:
+- Markdown
+- Mainlink and various other links
+
+More will come when it is ready!
+This is the version *0.1*.
+        </content>
+        <mainurl>index.php</mainurl>
+		<mainlink>Reload</mainlink>
+	<otherlinks>
+		<otherlb>
+			<otherurl>http://marcel-kapfer.de</otherurl>
+			<otherlink>marcel-kapfer.de</otherlink>
+        </otherlb>
+        <otherlb>
+			<otherurl>https://github.com</otherurl>
+			<otherlink>GitHub</otherlink>
+		</otherlb>
+    </otherlinks>
+    </post>
+
+</posts>

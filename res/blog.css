@@ -1,0 +1,187 @@
+/* pBlog 0.2 */
+
+body{
+    margin-right: 15%;
+    margin-left: 15%;
+    margin-bottom: 0px;
+    margin-top: 100px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.01px;
+    background-color: #ffffff;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+img{
+    max-width: 100%;
+    max-height: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    float: center;
+    z-index: 40;
+    background: #de3e0b;
+    width: 100%;
+    box-shadow: 0px 0px 4px 4px rgba(189, 189, 189, 0.5);
+    -moz-box-shadow: 0px 0px 4px 4px rgba(189, 189, 189, 0.5);
+    -webkit-box-shadow: 0px 0px 4px 4px rgba(189, 189, 189, 0.5);
+    height: 60px;
+    padding-right: 0px;
+    padding-top: 0px;
+    white-space: nowrap;
+}
+.text{    
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.01px;
+    background-color: #ffffff;
+    z-index: 10;
+    color: rgba(0, 0, 0, 0.87);
+}
+.text a{
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.01px;
+    color: #de3e0b;
+    text-decoration: none;
+}
+section{
+    margin-bottom: 50px;
+}
+
+/*
+Material design flat button
+
+Usage: <a class=".text_button_flat">YOUR TEXT</a>
+
+9th November 2014
+*/
+.button_white {
+    text-decoration: none;
+    color: #000000;
+    line-height: 40px;
+    min-width: 70px;
+    text-align: center;
+    height: 40px;
+    padding: 8px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #a2a2a2;
+    border-radius: 3px;
+    margin: 4px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    letter-spacing: 0.4px;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+}
+
+/*
+Material design flat button
+
+Usage: <a class=".text_button_flat_colored">YOUR TEXT</a>
+
+9th November 2014
+*/
+.button_color {
+    text-decoration: none;
+    line-height: 40px;
+    min-width: 70px;
+    text-align: center;
+    height: 40px;
+    padding: 8px;
+    color: #FFFFFF;
+    background-color: #de3e0b;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #de3e0b;
+    border-radius: 3px;
+    margin: 4px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    letter-spacing: 0.4px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.title{
+    padding-left:15%;
+    height: 60px;
+    line-height: 60px;
+    display:inline-block;
+    text-decoration: none;
+    color: #FFFFFF;
+    vertical-align: middle;
+    font-size: 24px;
+    overflow-x: hidden;
+    max-width: 35%;
+}
+
+.home{
+    float: right;
+    padding-right: 15%;
+    height: 60px;
+    line-height: 60px;
+    vertical-align: middle;
+    color: #fff;
+    overflow-x: hidden;
+    font-size: 20px;
+    display: inline-block;
+    text-decoration: none;
+    max-width: 35%;
+}
+
+.texttitle{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgb(33, 33, 33);
+    line-height: 24px;
+    letter-spacing: 0.05px;
+}
+.cc{
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.01px;
+}
+
+.cc a{
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.01px;
+    color: rgba(0, 0, 0, 0.87);
+    text-decoration: none;
+}
+
+.cc a:hover{
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 700px){
+    body {
+        margin-right: 40px;
+        margin-left: 20px;
+    }
+    .title{
+        padding-left: 10px;
+        max-width: 45%;
+    }
+    .home{
+        padding-right: 10px;
+        max-width: 45%;
+    }
+}
