@@ -23,13 +23,25 @@
     <div class="header">
         <!--Replace 'index.php' with the link to this file
         and 'Blog' with your Blogtitle-->
-        <nobr><a href="index.php" class="title">Blog</a></nobr>
+        <nobr><a href="index.php" class="title">pBlog</a></nobr>
         <!--Set here the link to your Homepage or delete the following line-->
         <a href="../" class="home">Home</a>
     </div>
+    <section>
+        <span class="text">
+            <?php
+                require_once 'res/Parsedown.php';
+                if(file_exists('md/intro.md')){
+                    $file = file_get_contents('md/intro.md');
+                    echo Parsedown::instance()
+                        ->setBreaksEnabled(true)
+                        ->text($file);
+                }
+            ?>
+        </span>
+    </section>
     <!--DON'T CHANGE ANYTHING HERE!-->
     <?php
-        require_once 'res/Parsedown.php';
         $xml = simplexml_load_file('xml/posts.xml');
     ?>
         <?php
