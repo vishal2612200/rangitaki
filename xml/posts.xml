@@ -1,6 +1,20 @@
 <?xml version='1.0' standalone='yes'?>
 <posts>
     <post>
+        <title>Version 1.0</title>
+        <pubdate>22nd February 2015</pubdate>
+        <content>
+Today I'm proud to announce the **Version 1.0** of the pBlog - a simple PHP, XML and Markdown based blogging engine
+which is completly independent from any databases. Even if this is the version 1.0 it is still in a early state of
+development.
+
+Version 1.0 has the following features:
+ - Blog writing in XML
+ - Content in Markdown
+ - Static intro in Markdown
+        </content>
+    </post>
+    <post>
         <title>Version 0.3</title>
         <pubdate>20th February 2015</pubdate>
         <content>This is the Version *0.3* of pBlog. It comes with the following changes:

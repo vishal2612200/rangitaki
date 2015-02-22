@@ -67,7 +67,7 @@
             </p>
             <p align="right">
         <?php
-            foreach ($post->otherlinks->otherlb as $olb){  
+            foreach ($post->otherlinks->otherlb as $olb){
         ?>
             <a class="button_white" target="_blank" href="
             <?php
@@ -83,7 +83,7 @@
             foreach($post->mainlink as $mainlink){
         ?>
                 <a class="button_color" target="_blank" href="
-                   <?php 
+                   <?php
                             echo $post->mainurl;
                     ?>
                    ">
@@ -100,7 +100,7 @@
         <div class="box_container">
             <!--Set here your personal copyright info-->
             <p class="cc">
-                pBlog <?php echo date("Y"); ?>
+                pBlog <?php echo date("Y"); ?> <a href="https://github.com/mmk2410/pBlog" target="blank">github.com/mmk2410/pBlog</a>
             </p>
         </div>
     </body>
