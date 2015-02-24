@@ -6,10 +6,12 @@ At the moment it doesn't contain much features, but more will follow.
 ## Goal
 The goal is to create a simple blog engine. The blog posts should be written using (a) xml file(s) and the page should be prepared with a javascript program.
 
-## Planned Features for Version 1.0
- - Post writing in XML **DONE**
- - Markdown support **DONE**
- - Code support **DONE**
+## Features
+ - Post writing in XML and Markdown
+ - Markdown support
+ - Code support
+ - German umlaut's support
+ - Intro page (Markdown)
  
 As you may guess: Version 1.0 will be released soon :D
  
