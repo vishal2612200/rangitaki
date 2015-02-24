@@ -27,19 +27,25 @@
         <!--Set here the link to your Homepage or delete the following line-->
         <a href="../" class="home">Home</a>
     </div>
+    <!-- This is the Intro section. You can set your intro text in md/intro.md. In case you don't want an intro delete this whole section until the next comment-->
     <section>
         <span class="text">
             <?php
                 require_once 'res/Parsedown.php';
+                require_once 'res/umlautconverter.php';
                 if(file_exists('md/intro.md')){
                     $file = file_get_contents('md/intro.md');
-                    echo Parsedown::instance()
+                    $intro = Parsedown::instance()
                         ->setBreaksEnabled(true)
                         ->text($file);
+                    $UmlautConverter = new UmlautConverter;
+                    $intro = $UmlautConverter->convert($intro);
+                    echo $intro;
                 }
             ?>
         </span>
     </section>
+    <!-- In case you don't want a Intro section delete the above section-->
     <!--DON'T CHANGE ANYTHING HERE!-->
     <?php
         $xml = simplexml_load_file('xml/posts.xml');
@@ -50,19 +56,28 @@
         <section>
             <p class="texttitle">
         <?php
-            echo $post->title;
+            $title = $post->title;
+            $UmlautConverter = new UmlautConverter;
+            $title = $UmlautConverter->convert($title);
+            echo $title;
         ?>
             </p>
             <small>
         <?php
-            echo $post->pubdate;
+            $pubdate = $post->pubdate;
+            $UmlautConverter = new UmlautConverter;
+            $pubdate = $UmlautConverter->convert($pubdate);
+            echo $pubdate;
         ?>
             </small>
             <p class="text">
         <?php
-            echo Parsedown::instance()
+            $content = Parsedown::instance()
                 ->setBreaksEnabled(true)
                 ->text($post->content);
+            $UmlautConverter = new UmlautConverter;
+            $content = $UmlautConverter->convert($content);
+            echo $content;
         ?>
             </p>
             <p align="right">
@@ -71,11 +86,17 @@
         ?>
             <a class="button_white" target="_blank" href="
             <?php
-                echo $olb->otherurl;
+                $otherurl = $olb->otherurl;
+                $UmlautConverter = new UmlautConverter;
+                $otherurl = $UmlautConverter->convert($otherurl);
+                echo $otherurl;
             ?>
             ">
         <?php
-            echo $olb->otherlink;
+            $otherlink = $olb->otherlink;
+            $UmlautConverter = new UmlautConverter;
+            $otherlink = $UmlautConverter->convert($otherlink);
+            echo $otherlink;
         ?>
             </a>
         <?php
@@ -84,11 +105,17 @@
         ?>
                 <a class="button_color" target="_blank" href="
                    <?php
-                            echo $post->mainurl;
+                    $mainurl = $post->mainurl;
+                    $UmlautConverter = new UmlautConverter;
+                    $mainurl = $UmlautConverter->convert($mainurl);
+                    echo $mainurl;
                     ?>
                    ">
         <?php
-                 echo $post->mainlink;
+                $mainlink = $post->mainlink;
+                $UmlautConverter = new UmlautConverter;
+                $mainlink = $UmlautConverter->convert($mainlink);
+                echo $mainlink;
         ?>
                 </a>
         <?php } ?>

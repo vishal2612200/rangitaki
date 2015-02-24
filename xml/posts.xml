@@ -1,6 +1,13 @@
 <?xml version='1.0' standalone='yes'?>
 <posts>
     <post>
+        <title>Version 1.1</title>
+        <pubdate>24th February 2015</pubdate>
+        <content>
+After I published the Version 1.0 last sunday I realized some problems with german umlauts. Now I added a function that converts every umlaut (ü, Ü, ä, Ä, ö, Ö and ß) into the html code.
+        </content>
+    </post>
+    <post>
         <title>Version 1.0</title>
         <pubdate>22nd February 2015</pubdate>
         <content>
