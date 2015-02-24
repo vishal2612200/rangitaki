@@ -13,12 +13,16 @@ The goal is to create a simple blog engine. The blog posts should be written usi
  - German umlaut's support
  - Intro page (Markdown)
  
-As you may guess: Version 1.0 will be released soon :D
- 
 ## Planned Features
  - special url actions (blog.html?xyz , blog.html#xyz)
  - publishing on a set time
  - Tags
+
+## Example
+You can find a example blog under [marcel-kapfer.de/pBlog](http://marcel-kapfer.de/pBlog)
+
+## Used Libraries
+ - [Parsedown](http://parsedown.org)
  
 ## More information
  - [Trello Board](https://trello.com/b/7qb5I6EQ/blog-engine)
