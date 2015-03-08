@@ -1,6 +1,17 @@
 <?xml version='1.0' standalone='yes'?>
 <posts>
     <post>
+        <title>Version 1.2</title>
+        <pubdate>8th February 2015</pubdate>
+        <content>
+In this Version code is better designed so you can read and recognise it better.
+
+This is a code example:
+
+``scp -r * marcel-kapfer.de:``
+        </content>
+    </post>
+    <post>
         <title>Version 1.1</title>
         <pubdate>24th February 2015</pubdate>
         <content>
