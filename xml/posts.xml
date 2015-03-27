@@ -1,8 +1,25 @@
 <?xml version='1.0' standalone='yes'?>
 <posts>
     <post>
+        <title>Version 2.0</title>
+        <pubdate>27th March 2015</pubdate>
+        <content>
+This version introduces some very imporant features:
+ - **Own page for every article**
+ - Social **sharing buttons** (at the moment: google+, twitter, facebook but more will follow)
+ - **Disqus** integration
+ - Local **config file** -> no more editing the index file
+
+pBlog 2.0 is only partially compatible with prior versions. You don't have to change anything in the posts or intro file (in case you have one), but to switch to version 2.0 you have to replace your index.php with the new one. With this step all your settings like the title will be lost and you have to set them in the new config.php file. For more questions write me a mail to marcelmichaelkapfer@yahoo.co.nz.
+
+In the near future I will spend more time in writing a documentation about the blog engine and adding more comments (especially in the css file).
+        </content>
+        <mainurl>http://github.com/mmk2410/pBlog</mainurl>
+        <mainlink>GitHub</mainlink>
+    </post>
+    <post>
         <title>Version 1.2</title>
-        <pubdate>8th February 2015</pubdate>
+        <pubdate>8th March 2015</pubdate>
         <content>
 In this Version code is better designed so you can read and recognise it better.
 

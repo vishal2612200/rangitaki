@@ -26,23 +26,25 @@
  */
 
 /**
- * This is a small tool for converting german umlauts into HTML codes.
- * This fixes the error that one some servers weird sings are displayed.
+ * This is a small tool for converting the title of a post into someting usable
+ * as an url. This is used for the article urls.
  * 
  * @author Marcel Kapfer <marcelmichaelkapfer@yahoo.co.nz>
  */
 
-class UmlautConverter
-{
-    function convert($text)
+class HrefGenerator {
+    
+    function createHref($text)
     {
-        $output = str_replace("ä","&auml;",$text);
-        $output = str_replace("Ä","&Auml;",$output);
-        $output = str_replace("ö","&ouml;",$output);
-        $output = str_replace("Ö","&Ouml;",$output);
-        $output = str_replace("ü","&uuml;",$output);
-        $output = str_replace("Ü","&Uuml;",$output);
-        $output = str_replace("ß","&szlig;",$output);
+        $output = str_replace(" ", "-", $text);
+        $output = str_replace("ä","ae",$output);
+        $output = str_replace("Ä","Ae",$output);
+        $output = str_replace("ö","oe",$output);
+        $output = str_replace("Ö","Oe",$output);
+        $output = str_replace("ü","ue",$output);
+        $output = str_replace("Ü","Ue",$output);
+        $output = str_replace("ß","ss",$output);
         return $output;
     }
+    
 }
