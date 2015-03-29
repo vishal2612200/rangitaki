@@ -44,6 +44,10 @@ class HrefGenerator {
         $output = str_replace("ü","ue",$output);
         $output = str_replace("Ü","Ue",$output);
         $output = str_replace("ß","ss",$output);
+        $output = str_replace('"', "", $output);
+        $output = str_replace("'", "", $output);
+        $output = str_replace("?", "", $output);
+        $output = str_replace("#", "", $output);
         return $output;
     }
     

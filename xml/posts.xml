@@ -1,6 +1,11 @@
 <?xml version='1.0' standalone='yes'?>
 <posts>
     <post>
+        <title>Version 2.1</title>
+        <pubdate>29th March 2015</pubdate>
+        <content>This version includes fixes for the article links. You only have to replace the hrefgenerator.php file in the res folder.</content>
+    </post>
+    <post>
         <title>Version 2.0</title>
         <pubdate>27th March 2015</pubdate>
         <content>
