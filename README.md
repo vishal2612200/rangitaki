@@ -12,17 +12,25 @@ Rangitaki is a simple to use and easy to configure PHP blogging engine in php wi
 
 ##Future Features:
 
+ - **Complete rework for a better user experience** [Read more](http://marcel-kapfer.de/rangitaki/blog/index.php?article=About-the-Future-of-pBlog)
  - publishing on a set time
  - tags
 
-## Example
-You can find a example blog under [marcel-kapfer.de/pBlog](http://marcel-kapfer.de/rangitaki/blog/)
+## Example(s)
+
+ - Official Rangitaki blog [marcel-kapfer.de/rangitaki/blog](http://marcel-kapfer.de/rangitaki/blog/)
+
+Would you like to see your Rangitaki blog here? Write me a message at [marcelmichaelkapfer@yahoo.co.nz](mailto:marcelmichaelkapfer@yahoo.co.nz)
 
 ## Used Libraries
+
  - [Parsedown](http://parsedown.org)
+
+## Social
+
+ - [Twitter @rangitaki](https://twitter.com/rangitaki)
+ - [Google+](https://plus.google.com/b/101437210222436501912/101437210222436501912/posts)
  
-## More information
+## Trello
+
  - [Trello Board](https://trello.com/b/7qb5I6EQ/rangitaki)
- - [Google+ Profile from Marcel Michael Kapfer](plus.google.com/+MarcelMichaelKapfer)
- - [Twitter Profile from Marcel Michael Kapfer](twitter.com/MarcelKapfer)
- - [Twitter Profile](https://twitter.com/rangitaki)
