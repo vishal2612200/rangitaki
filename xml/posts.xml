@@ -1,6 +1,20 @@
 <?xml version='1.0' standalone='yes'?>
 <posts>
     <post>
+        <title>From pBlog to Rangitaki</title>
+        <pubdate>12 May 2015</pubdate>
+        <content>
+Some huge changes happend to this blogging engine in the last few days:
+
+ - The name was changed from pBlog to Rangitaki
+ Since the early beginning I searched for a good name for the blogging engine and Rangitaki (from the maori language and means logbook) fits just perfect
+ - The default color changed to #ff4415
+ - I wrote a webpage for Rangitaki [marcel-kapfer.de/rangitaki](http://marcel-kapfer.de/rangitaki)
+ - I created a Twitter profile [@rangitaki](https://twitter.com/rangitaki)
+ - and a Google+ profile [+Rangitaki](https://plus.google.com/b/101437210222436501912/101437210222436501912/posts)
+        </content>
+    </post>
+    <post>
         <title>About the Future of pBlog</title>
         <pubdate>29th March 2015</pubdate>
         <content>
