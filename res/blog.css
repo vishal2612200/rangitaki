@@ -46,7 +46,6 @@ img{
     margin-right: auto;
 }
 
-
 .header{
     position: absolute;
     top: 0;
@@ -73,6 +72,15 @@ img{
     z-index: 10;
     color: rgba(0, 0, 0, 0.87);
 }
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
 .text a{
     font-family: 'Roboto', sans-serif;
     font-size: 14px;

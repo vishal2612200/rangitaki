@@ -2,7 +2,7 @@ This is the Blog of the Blog Engine **Rangitaki**
 
 Rangitaki is based on PHP, XML and Markdown. It is easy to install and to configure.
 
-The latest Version of the 0.2 series is **0.2.1**
+The latest Version of the 0.2 series is **0.2.2**
 
 The latest Version of the development stream isn' ready yet.
 

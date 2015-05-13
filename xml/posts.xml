@@ -1,6 +1,20 @@
 <?xml version='1.0' standalone='yes'?>
 <posts>
     <post>
+        <title>Version 0.2.2</title>
+        <pubdate>13 May 2015</pubdate>
+        <content>
+Today I release a small new version to the new 0.2 series, which includes following changes:
+
+ - Links are now underlined, when you hover over them
+ - Simplified it to add the disqus comments
+ - Added and configuration option for setting a favicon
+ - Added the option to use Google Analytics
+            
+When you updating you installation make sure that your nor overriding your existing configuration. Check on GitHub what are the differences between the two versions.
+        </content>
+    </post>
+    <post>
         <title>From pBlog to Rangitaki</title>
         <pubdate>12 May 2015</pubdate>
         <content>

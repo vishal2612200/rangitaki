@@ -38,7 +38,7 @@ THE SOFTWARE.
     <!--CSS no change needed-->
     <link rel="stylesheet" type="text/css" href="res/blog.css" />
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,400italic,100,100italic,900' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" href="res/favicon.png">
+    <link rel="shortcut icon" href="<?php echo $blogfavicon; ?>">
 </head>
 
 <body>
@@ -151,11 +151,11 @@ THE SOFTWARE.
         <?php } ?>
             </p>
             <?php include 'res/SocialBar.php'; ?>
-            <?php if($blogdisqus == 'yes' && $blogdisqusname != ''){ ?>
+            <?php if($blogdisqus){ ?>
             <div id="disqus_thread"></div>
             <script type="text/javascript">
                 /* * * CONFIGURATION VARIABLES * * */
-                var disqus_shortname = '<?php echo $blogdisqusname; ?>';
+                var disqus_shortname = '<?php echo $blogdisqus; ?>';
     
                 /* * * DON'T EDIT BELOW THIS LINE * * */
                 (function() {
@@ -258,5 +258,21 @@ THE SOFTWARE.
                 <?php echo $blogfooter ?>
             </p>
         </div>
+        <?php
+            if($bloganalytics){
+        ?>
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                ga('create', '<?php echo $bloganalytics; ?>', 'auto');
+                ga('send', 'pageview');
+
+            </script>
+        <?php
+            }
+        ?>
     </body>
 </html>
