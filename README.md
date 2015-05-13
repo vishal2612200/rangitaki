@@ -1,30 +1,36 @@
-# pBlog
-This is a small php blog engine with **markdown support**
+# Rangitaki
 
-At the moment it doesn't contain much features, but more will follow.
+Rangitaki is a simple to use and easy to configure PHP blogging engine in php without any database dependencies. 
 
-## Goal
-The goal is to create a simple blog engine. The blog posts should be written using (a) xml file(s) and the page should be prepared with a javascript program.
+##Features:
 
-## Features
  - Post writing in XML and Markdown
- - Markdown support
- - Code support
- - German umlaut's support
- - Intro page (Markdown)
- 
-## Planned Features
- - special url actions (blog.html?xyz , blog.html#xyz)
- - publishing on a set time
- - Tags
+ - subpages for each article
+ - social sharing buttons 
+ - Disqus integration 
+ - simple end user configuration 
 
-## Example
-You can find a example blog under [marcel-kapfer.de/pBlog](http://marcel-kapfer.de/pBlog)
+##Future Features:
+
+ - **Complete rework for a better user experience** [Read more](http://marcel-kapfer.de/rangitaki/blog/index.php?article=About-the-Future-of-pBlog)
+ - publishing on a set time
+ - tags
+
+## Example(s)
+
+ - Official Rangitaki blog [marcel-kapfer.de/rangitaki/blog](http://marcel-kapfer.de/rangitaki/blog/)
+
+Would you like to see your Rangitaki blog here? Write me a message at [marcelmichaelkapfer@yahoo.co.nz](mailto:marcelmichaelkapfer@yahoo.co.nz)
 
 ## Used Libraries
+
  - [Parsedown](http://parsedown.org)
+
+## Social
+
+ - [Twitter @rangitaki](https://twitter.com/rangitaki)
+ - [Google+](https://plus.google.com/b/101437210222436501912/101437210222436501912/posts)
  
-## More information
- - [Trello Board](https://trello.com/b/7qb5I6EQ/blog-engine)
- - [Google+ Profile from Marcel Michael Kapfer](plus.google.com/+MarcelMichaelKapfer)
- - [Twitter Profile from Marcel Michael Kapfer](twitter.com/MarcelKapfer)
+## Trello
+
+ - [Trello Board](https://trello.com/b/7qb5I6EQ/rangitaki)
