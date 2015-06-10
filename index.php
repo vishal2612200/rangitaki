@@ -52,7 +52,6 @@ THE SOFTWARE.
         <span class="text">
             <?php
                 require_once 'res/php/Parsedown.php';
-                require_once 'res/php/hrefgenerator.php';
                 require_once 'res/php/ArticleGenerator.php';
                 if(file_exists('md/intro.md') && $_GET['article'] == "" && $blogintro == "yes"){
                     $file = file_get_contents('md/intro.md');
@@ -77,12 +76,16 @@ THE SOFTWARE.
         } else {
             ArticleGenerator::newArticle("./articles/", $_GET['article'] . ".md");
             include './res/php/SocialBar.php';
+            include './res/php/Disqus.php';
         }
     ?>
         <div class="box_container">
             <p class="cc">
-                <?php echo $blogfooter ?>
+                <?php echo $blogfooter; ?>
             </p>
         </div>
+    <?php
+        include './res/php/GoogleAnalytics.php';
+    ?>
     </body>
 </html>
