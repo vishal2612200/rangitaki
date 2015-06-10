@@ -1,6 +1,12 @@
 # Rangitaki
 
-Rangitaki is a simple to use and easy to configure PHP blogging engine in php without any database dependencies. 
+Rangitaki is a simple to use and easy to configure PHP blogging engine in php without any database dependencies.
+
+##Important
+
+Right now there are two versions in development. The series 0.2 and everything higher. Version 0.2 is ready for production while everything higher are development releases and not ready for productive use. I recommend you to use the latest Version of the 0.2 series which you can find in the branch "Series-0.2". The latest version is version 0.2.2 which is available in the releases section.
+
+Read also [this article](http://marcel-kapfer.de/rangitaki/blog/index.php?article=About-the-Future-of-pBlog).
 
 ##Features:
 
