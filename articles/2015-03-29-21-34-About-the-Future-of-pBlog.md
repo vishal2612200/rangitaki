@@ -1,0 +1,4 @@
+%TITLE: About the Future of pBlog
+%DATE: 29 March 2015
+
+I figured out that there will be many changes in the engine which will require many changes in the files (especially the posts file) and in the filestructure. I can't say right now which things will change and what you have to change. Out of this reason. I change the Version numbers and add an zero in front of them. So instead of 2.1 the latest version is now 0.2.1. The 0.2.x series is now on GitHub as an own branch and will recive bugfix updates. The series 0.3, 0.4, 0.5 and so own will be development releases which won't be compatible to the 0.2 series. I recommend current users to stay on 0.2.x - at least until the 1.0 release. I'm verry sorry for this and in case that there are requests I may write a small script that will help you switch to version 1.0.

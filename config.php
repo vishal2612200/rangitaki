@@ -3,11 +3,11 @@
 // Every line has an description about what you can change here. Don't delete any strings. You can set your value after the '=' sign and between the apostrophes.
 // Make sure that every line ends with an semicolon (';').
 // Blog Title - Set here an individual title of your blog by replacing pBlog with it.
-$blogtitle = 'pBlog';
+$blogtitle = 'Rangitaki Blog';
 // Blog Author - Set here your name 
 $blogauthor = 'Marcel Kapfer';
 // Blog description
-$blogdescription = 'pBlog - A php blog engine without any database dependency';
+$blogdescription = 'Rangitaki - A php blog engine without any database dependency';
 // Home - set yes if you want to link to your homepage and no if not
 $bloghome = 'yes';
 // Home URL - Set here the url to your main page. Either relative (e.g. '../') or absolute ('http://github.com')
@@ -21,5 +21,5 @@ $blogdisqus = 'no';
 // Disqus shortname - Provide here your Disqus shortname. Without one, this won't work
 $blogdisqusname = '';
 // Footer - set here the text for your footer (e.g. a copyright info).  You can replace the whole text after the '=' with your own one.
-$blogfooter = 'pBlog ' .  date("Y") . ' <a href="https://github.com/mmk2410/pBlog" target="blank">github.com/mmk2410/pBlog</a>';
+$blogfooter = 'Rangitaki ' .  date("Y") . ' <a href="http://marcel-kapfer.de/rangitaki" target="blank">marcel-kapfer.de/rangitaki</a>';
 ?>

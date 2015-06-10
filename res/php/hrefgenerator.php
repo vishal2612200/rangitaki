@@ -29,7 +29,7 @@
  * This is a small tool for converting the title of a post into someting usable
  * as an url. This is used for the article urls.
  * 
- * @author Marcel Kapfer <marcelmichaelkapfer@yahoo.co.nz>
+ * @author mmk2410 <marcelmichaelkapfer@yahoo.co.nz>
  */
 
 class HrefGenerator {

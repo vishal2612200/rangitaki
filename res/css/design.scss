@@ -1,36 +1,40 @@
-/* pBlog 2.0 */
-
 /*
- * The MIT License
- * 
- * Copyright 2015 mmk2410.
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FINESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- * 
- */
+The MIT License
+
+Copyright 2015 mmk.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+/* 
+    Created on : Jun 10, 2015, 9:57:04 AM
+    Author     : mmk2410
+*/
+
+$primary-color: #ff4415;
+$font-family: 'Roboto', sans-serif;
 
 body{
     margin-right: 15%;
     margin-left: 15%;
     margin-bottom: 0px;
     margin-top: 100px;
-    font-family: 'Roboto', sans-serif;
+    font-family: $font-family;
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.01px;
@@ -54,7 +58,7 @@ img{
     right: 0;
     float: center;
     z-index: 40;
-    background: #de3e0b;
+    background: $primary-color;
     width: 100%;
     box-shadow: 0px 0px 4px 4px rgba(189, 189, 189, 0.5);
     -moz-box-shadow: 0px 0px 4px 4px rgba(189, 189, 189, 0.5);
@@ -65,7 +69,7 @@ img{
     white-space: nowrap;
 }
 .text{    
-    font-family: 'Roboto', sans-serif;
+    font-family: $font-family;
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.01px;
@@ -74,71 +78,15 @@ img{
     color: rgba(0, 0, 0, 0.87);
 }
 .text a{
-    font-family: 'Roboto', sans-serif;
+    font-family: $font-family;
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.01px;
-    color: #de3e0b;
+    color: $primary-color;
     text-decoration: none;
 }
 section{
     margin-bottom: 50px;
-}
-
-/*
-Material design flat button
-
-Usage: <a class=".text_button_flat">YOUR TEXT</a>
-
-9th November 2014
-*/
-.button_white {
-    text-decoration: none;
-    color: #000000;
-    line-height: 40px;
-    min-width: 70px;
-    text-align: center;
-    height: 40px;
-    padding: 8px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #a2a2a2;
-    border-radius: 3px;
-    margin: 4px;
-    margin-bottom: 5px;
-    margin-left: 5px;
-    letter-spacing: 0.4px;
-    font-weight: 700;
-    font-size: 14px;
-    text-align: center;
-}
-
-/*
-Material design flat button
-
-Usage: <a class=".text_button_flat_colored">YOUR TEXT</a>
-
-9th November 2014
-*/
-.button_color {
-    text-decoration: none;
-    line-height: 40px;
-    min-width: 70px;
-    text-align: center;
-    height: 40px;
-    padding: 8px;
-    color: #FFFFFF;
-    background-color: #de3e0b;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #de3e0b;
-    border-radius: 3px;
-    margin: 4px;
-    margin-bottom: 5px;
-    margin-left: 5px;
-    letter-spacing: 0.4px;
-    font-weight: 700;
-    font-size: 14px;
 }
 
 .title{
@@ -174,7 +122,7 @@ code{
 }
 
 .texttitle{
-    font-family: 'Roboto', sans-serif;
+    font-family: $font-family;
     font-weight: 500;
     font-size: 20px;
     color: rgb(33, 33, 33);
@@ -184,11 +132,11 @@ code{
 }
 
 .texttitle:hover{
-    color: #de3e0b;
+    color: $primary-color;
 }
 
 .texttitlemono{
-    font-family: 'Roboto', sans-serif;
+    font-family: $font-family;
     font-weight: 500;
     font-size: 20px;
     color: rgb(33, 33, 33);
@@ -198,7 +146,7 @@ code{
 }
 
 .cc{
-    font-family: 'Roboto', sans-serif;
+    font-family: $font-family;
     font-size: 12px;
     line-height: 14px;
     letter-spacing: 0.01px;
@@ -244,3 +192,4 @@ code{
         max-width: 45%;
     }
 }
+
