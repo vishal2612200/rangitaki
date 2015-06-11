@@ -31,7 +31,7 @@
  */
 class ArticleGenerator {
     
-    function newArticle($directory, $articlefile)
+    function newArticle($directory, $articlefile, $blog)
     {
         
         $article = file_get_contents($directory . $articlefile);
@@ -40,7 +40,11 @@ class ArticleGenerator {
         
         if(substr($article, 0, 6) == "%TITLE"){
             $title = substr($article, 8, strpos($article, "\n") - 8);
-            $link = "./?article=" . substr($articlefile, 0, -3);
+            if($blog == ""){
+                $link = "./?article=" . substr($articlefile, 0, -3);
+            } else {
+                $link = "./?blog=$blog&article=" . substr($articlefile, 0, -3);
+            }
             echo "<h2><a href='$link'>$title</a></h2>";
             $article = substr($article, strpos($article, "\n") + 1);
         }
@@ -51,11 +55,18 @@ class ArticleGenerator {
             $article = substr($article, strpos($article, "\n") + 1);
         }
         
+        if(substr($article, 0, 7) == "%AUTHOR"){
+            $author = substr($article, 9, strpos($article, "\n") - 9);
+            $article = substr($article, strpos($article, "\n") + 1);
+        }
+        
         //TODO Code detection
         
         echo Parsedown::instance()
                 ->setBreaksEnabled(true)
                 ->text($article);
+        
+        echo "<small>$author</small>";
         
         echo "</section>" . "\n";
         

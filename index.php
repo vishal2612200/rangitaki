@@ -51,13 +51,42 @@ THE SOFTWARE.
         <a href="<?php echo $bloghomeurl; ?>" class="home"><?php echo $bloghomename; ?></a>
         <?php } ?>
     </div>
+    <?php
+        if($_GET['article'] == ""){
+            echo "<section>";
+            echo "<h4>Blogs of $blogtitle:</h4>";
+            require_once './res/php/BlogListGenerator.php';
+            $blogs = scandir("./blogs/");
+            foreach ($blogs as $blog){
+                if(strlen($blog) >= 3 && substr($blog, -3) == ".md"){
+                    if($_GET['blog'] == ""){
+                        if($blog != "main.md"){
+                            BlogListGenerator::listBlog("./blogs/", $blog, $blogtitle);
+                        }
+                    } else {
+                        if($_GET['blog'] . ".md" != $blog){
+                            BlogListGenerator::listBlog("./blogs/", $blog, $blogtitle);
+                        }
+                    }
+                }
+            }
+            echo "</section>";
+        }
+        if($_GET['blog'] == ""){
+            $blog = "main";
+        } else {
+            $blog = $_GET['blog'];
+        }
+    ?>
     <section>
         <span class="text">
             <?php
                 require_once 'res/php/Parsedown.php';
                 require_once 'res/php/ArticleGenerator.php';
-                if(file_exists('md/intro.md') && $_GET['article'] == "" && $blogintro == "yes"){
-                    $file = file_get_contents('md/intro.md');
+                if(file_exists("blogs/$blog.md") && $_GET['article'] == "" && $blogintro == "yes"){
+                    $file = file_get_contents("blogs/$blog.md");
+                    $file = $file . "\n";
+                    $file = substr($file, strpos($file, "\n"));
                     $intro = Parsedown::instance()
                         ->setBreaksEnabled(true)
                         ->text($file);
@@ -67,15 +96,16 @@ THE SOFTWARE.
         </span>
     </section>
     <?php
+        $articlesdir = "./articles/$blog/";
         if($_GET['article'] == ""){
-            $articles = scandir("./articles/", 1);
+            $articles = scandir($articlesdir, 1);
             foreach ($articles as $article) {
                 if(strlen($article) >= 3 && substr($article, -3) == ".md"){
-                    ArticleGenerator::newArticle("./articles/", $article);
+                    ArticleGenerator::newArticle($articlesdir, $article, $_GET['blog']);
                 }
             }
         } else {
-            ArticleGenerator::newArticle("./articles/", $_GET['article'] . ".md");
+            ArticleGenerator::newArticle($articlesdir, $_GET['article'] . ".md", $_GET['blog']);
             include './res/php/SocialBar.php';
             include './res/php/Disqus.php';
         }
