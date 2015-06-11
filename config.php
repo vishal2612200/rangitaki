@@ -12,7 +12,7 @@ $blogdescription = 'Rangitaki - A PHP blog engine without any database dependenc
 $blogfavicon = '../res/favicon.png';
 // Home - set yes if you want to link to your homepage and no if not
 $bloghome = 'yes';
-// Home URL - Set here the url to your main page. Either relative (e.g. '../') or absolute ('http://github.com')
+// Home URL - Set here the url to your main page. Either relative (e.g. '../') or absolute (e.g. 'http://github.com')
 $bloghomeurl = '../';
 // Home name - Set here an individual name for your main page
 $bloghomename = 'Home';
@@ -21,7 +21,7 @@ $blogintro = 'yes';
 // Disqus - Provide here your Disqus shortname. Leave empty if you don't want to use it.
 $blogdisqus = 'rangitaki';
 // Google Analytics - Provide here your Google Analytics Tracking-ID. Leave empty if you don't want to use it.
-$bloganalytics = 'UA-41767647-3';
+$bloganalytics = '';
 // Footer - set here the text for your footer (e.g. a copyright info).  You can replace the whole text after the '=' with your own one.
 $blogfooter = 'Rangitaki ' .  date("Y") . ' <a href="https://github.com/mmk2410/Rangitaki" target="blank">github.com/mmk2410/Rangitaki</a>';
 ?>

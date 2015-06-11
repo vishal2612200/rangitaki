@@ -39,6 +39,9 @@ THE SOFTWARE.
     <link rel="stylesheet" type="text/css" href="res/css/blog.css" />
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,400italic,100,100italic,900' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="res/favicon.png">
+    <link rel="stylesheet" href="./res/css/github-gist.css">
+    <script src="./res/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </head>
 
 <body>
@@ -58,8 +61,6 @@ THE SOFTWARE.
                     $intro = Parsedown::instance()
                         ->setBreaksEnabled(true)
                         ->text($file);
-                    $UmlautConverter = new UmlautConverter;
-                    $intro = $UmlautConverter->convert($intro);
                     echo $intro;
                 }
             ?>
