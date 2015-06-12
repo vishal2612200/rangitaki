@@ -60,16 +60,52 @@ class ArticleGenerator {
             $article = substr($article, strpos($article, "\n") + 1);
         }
         
+        if(substr($article, 0, 5) == "%TAGS"){
+            $tags = substr($article, 7, strpos($article, "\n") - 7);
+            $tags = explode(", ", $tags);
+            $article = substr($article, strpos($article, "\n") + 1);
+        }
+        
         //TODO Code detection
         
         echo Parsedown::instance()
                 ->setBreaksEnabled(true)
                 ->text($article);
         
-        echo "<small>$author</small>";
+        echo "<small>$author<br>";
+        
+        foreach ($tags as $tag) {
+            if($_GET['blog'] == ""){
+                echo "<a href='./?tag=$tag'>$tag</a> ";
+            } else {
+                echo "<a href='./?blog=$blog&tag=$tag'>$tag</a> ";
+            }
+        }
+        
+        echo "</small>";
         
         echo "</section>" . "\n";
         
+    }
+    
+    function getTags($directory, $articlefile){
+        $article = file_get_contents($directory . $articlefile);
+        if(substr($article, 0, 6) == "%TITLE"){
+            $article = substr($article, strpos($article, "\n") + 1);
+        }
+        
+        if(substr($article, 0, 5) == "%DATE"){
+            $article = substr($article, strpos($article, "\n") + 1);
+        }
+        
+        if(substr($article, 0, 7) == "%AUTHOR"){
+            $article = substr($article, strpos($article, "\n") + 1);
+        }
+        if(substr($article, 0, 5) == "%TAGS"){
+            $tags = substr($article, 7, strpos($article, "\n") - 7);
+            $tags = explode(", ", $tags);
+        }
+        return $tags;
     }
     
 }

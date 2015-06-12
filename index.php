@@ -83,7 +83,7 @@ THE SOFTWARE.
             <?php
                 require_once 'res/php/Parsedown.php';
                 require_once 'res/php/ArticleGenerator.php';
-                if(file_exists("blogs/$blog.md") && $_GET['article'] == "" && $blogintro == "yes"){
+                if(file_exists("blogs/$blog.md") && $_GET['article'] == "" && $blogintro == "yes" && $_GET['tag'] == ""){
                     $file = file_get_contents("blogs/$blog.md");
                     $file = $file . "\n";
                     $file = substr($file, strpos($file, "\n"));
@@ -97,7 +97,17 @@ THE SOFTWARE.
     </section>
     <?php
         $articlesdir = "./articles/$blog/";
-        if($_GET['article'] == ""){
+        if($_GET['tag'] != ""){
+            $articles = scandir($articlesdir, 1);
+            foreach ($articles as $article) {
+                $tags = ArticleGenerator::getTags($articlesdir, $article);
+                if(in_array($_GET['tag'], $tags)){
+                    if(strlen($article) >= 3 && substr($article, -3) == ".md"){
+                        ArticleGenerator::newArticle($articlesdir, $article, $_GET['blog']);
+                    }
+                }
+            }
+        } else if($_GET['article'] == ""){
             $articles = scandir($articlesdir, 1);
             foreach ($articles as $article) {
                 if(strlen($article) >= 3 && substr($article, -3) == ".md"){
