@@ -33,19 +33,17 @@ class BlogListGenerator {
     
     function listBlog($directory, $blogname, $blogmaintitle)
     {
-        echo "<p>";
         $blog = file_get_contents($directory . $blogname);
         $blog = $blog . "\n";
         if(substr($blog, 0, 6) == "%TITLE"){
             $blog = substr($blog, 8, strpos($blog, "\n") - 8);
             if($blog  == "main"){
-                echo "<a href='./'>$blogmaintitle</a>";
+                echo "<a class='nav-item' href='./'>$blogmaintitle</a>";
             } else {
                 $link = "./?blog=" . substr($blogname, 0, -3);
-                echo "<a href='$link'>$blog</a>";
+                echo "<a class='nav-item' href='$link'>$blog</a>";
             }
         }
-        echo "</p>";
         
     }
     

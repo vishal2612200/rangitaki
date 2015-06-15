@@ -36,7 +36,7 @@ class ArticleGenerator {
         
         $article = file_get_contents($directory . $articlefile);
         
-        echo "<section>";
+        echo "<section class='card'>";
         
         if(substr($article, 0, 6) == "%TITLE"){
             $title = substr($article, 8, strpos($article, "\n") - 8);
@@ -45,13 +45,13 @@ class ArticleGenerator {
             } else {
                 $link = "./?blog=$blog&article=" . substr($articlefile, 0, -3);
             }
-            echo "<h2><a href='$link'>$title</a></h2>";
+            echo "<a href='$link' class='headline'>$title</a>";
             $article = substr($article, strpos($article, "\n") + 1);
         }
         
         if(substr($article, 0, 5) == "%DATE"){
             $date = substr($article, 7, strpos($article, "\n") - 7);
-            echo "<small>$date</small>";
+            echo "<span class='date'>$date</span>";
             $article = substr($article, strpos($article, "\n") + 1);
         }
         
@@ -68,21 +68,25 @@ class ArticleGenerator {
         
         //TODO Code detection
         
+        echo "<div class='articletext'>";
+        
         echo Parsedown::instance()
                 ->setBreaksEnabled(true)
                 ->text($article);
         
-        echo "<small>$author<br>";
+        echo "</div>";
+        
+        if($author != ""){
+            echo "<span class='author'>$author</span>";
+        }
         
         foreach ($tags as $tag) {
             if($_GET['blog'] == ""){
-                echo "<a href='./?tag=$tag'>$tag</a> ";
+                echo "<a class='tag' href='./?tag=$tag'>$tag</a> ";
             } else {
-                echo "<a href='./?blog=$blog&tag=$tag'>$tag</a> ";
+                echo "<a class='tag' href='./?blog=$blog&tag=$tag'>$tag</a> ";
             }
         }
-        
-        echo "</small>";
         
         echo "</section>" . "\n";
         

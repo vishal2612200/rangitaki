@@ -7,7 +7,7 @@ $blogtitle = 'Rangitaki Blog';
 // Blog Author - Set here your name 
 $blogauthor = 'Marcel Kapfer';
 // Blog description
-$blogdescription = 'Rangitaki - A PHP blog engine without any database dependency';
+$blogdescription = 'Rangitaki - A PHP blogging engine without any database dependency';
 // Blog favicon - enter here the path to your favicon
 $blogfavicon = '../res/favicon.png';
 // Home - set yes if you want to link to your homepage and no if not
@@ -25,5 +25,7 @@ $bloganalytics = '';
 // Footer - set here the text for your footer (e.g. a copyright info).  You can replace the whole text after the '=' with your own one.
 $blogfooter = 'Rangitaki ' .  date("Y") . ' <a href="https://github.com/mmk2410/Rangitaki" target="blank">github.com/mmk2410/Rangitaki</a>';
 // This enables the optional online post upload. Please read the documentation before you enable it.
-$post_upload = 'no'
+$post_upload = 'no';
+// Here you can disable and enable the navigation menu. Usefull if you have no subblogs and no home directory
+$nav_drawer = 'yes';
 ?>

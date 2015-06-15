@@ -1,0 +1,225 @@
+/*
+The MIT License
+
+Copyright 2015 mmk2410.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+/* 
+    Created on : Jun 14, 2015, 6:13:38 PM
+    Author     : mmk2410
+*/
+
+/*      BODY        */
+
+body{
+    font-family: "Roboto", sans-serif;
+    background: #f6f6f6;
+    color: #383838;
+    margin-top: 94px;
+}
+
+.main{
+    height: 100%;
+    width: calc(100% - 300px);
+    margin-left: 300px;
+}
+
+/*      HEADER      */
+.header{
+    background-color: #ff4415;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 300px;
+    width: 100%;
+    height: 64px;
+    box-shadow: 2px 0px 2px 2px rgba(62, 62, 62, 0.45);
+}
+
+.title{
+    color: #fff;
+    font-size: 23px;
+    text-decoration: none;
+    line-height: 64px;
+    vertical-align: middle;
+    left: 75px;
+    position: absolute;
+}
+
+.nav-img{
+    left: 19px;
+    top: 19px;
+    height: 26px;
+    position: absolute;
+    display: none;
+}
+
+/*      NAV DRAWER      */
+
+.nav{
+    width: 300px;
+    position: fixed;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: #fff;
+    padding-top: 64px;
+    border-right: 1px solid #e0e0e0;
+    transition: background-color 125ms ease-in-out 0ms;
+}
+
+.nav-item, .nav-item-static{
+    color: #383838;
+    text-decoration: none;
+    text-indent: 0;
+    display: inline-block;
+    height: 48px;
+    text-decoration: none;
+    vertical-align: middle;
+    width: 284px;
+    line-height: 48px;
+    padding-left: 16px;
+    transition: background-color 125ms ease-in-out 0ms;
+}
+
+.nav-item{
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.nav-item:active{
+    background-color: #e2e2e2;
+}
+
+.divider{
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/*      MAIN            */
+
+.card{
+    margin-right: auto;
+    margin-left: auto;
+    width: 65%;
+    background: #fff;
+    border-radius: 2px;
+    padding: 24px;
+    box-shadow: 0px 1px 1.5px 1.5px rgba(62, 62, 62, 0.3);
+    margin-bottom: 40px;
+}
+
+.card a{
+    color: #ff4415;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    border-bottom-color: transparent;
+    transition: border-bottom-color 150ms ease-in-out 100ms;
+}
+
+.card a:hover{
+    border-bottom-color: #ff4415;
+}
+
+.headline{
+    font-size: 24px;
+    color: #383838!important;
+    text-decoration: none;
+    display: block;
+    padding-bottom: 8px;
+    border-bottom: none!important;
+}
+
+.date{
+    font-size: 13px;
+}
+
+.articletext{
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.author{
+    font-size: 13px;
+    display: block;
+}
+
+.tag{
+    font-size: 13px;
+}
+
+/*      FAB             */
+
+.fabmenu{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;    
+}
+
+.fab{
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    background-color: #ff4415;
+    box-shadow: 0px 1px 1.5px 1.5px rgba(62, 62, 62, 0.3);
+    cursor: pointer;
+}
+
+.fab-img{
+    width: 28px;
+    padding: 15px;
+}
+
+.subfab{
+    height: 45px;
+    width: 45px;
+    border-radius: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 25px;
+    background-color: #fff;
+    box-shadow: 0px 1px 1.5px 1.5px rgba(62, 62, 62, 0.3);
+    display: none;
+}
+
+.subfab-img{
+    width: 22px;
+    padding: 12px;
+}
+
+/*      FOOTER          */
+
+.footer{
+    font-size: 12px;
+    text-align: center;
+}
+
+
+.footer a{
+    color: #383838;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    border-bottom-color: transparent;
+    transition: border-bottom-color 150ms ease-in-out 100ms;
+}
+
+.footer a:hover{
+    border-bottom-color: #383838;
+}

@@ -1,7 +1,7 @@
 /* 
  * The MIT License
  *
- * Copyright 2015 mmk.
+ * Copyright 2015 mmk2410.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,4 +22,28 @@
  * THE SOFTWARE.
  */
 
+var main = function(){
+    
+    $('.fabmenu').mouseenter(function(){
+       $('.subfab').fadeIn(125);
+       $('.fab-img').fadeOut(60, function callback(){
+          $('.fab-img').attr("src", "http://c2/rangitaki/res/img/close.svg"); 
+       });
+       $('.fab-img').fadeIn(60);
+    });
+    
+    $('.fabmenu').mouseleave(function(){
+       $('.subfab').fadeOut(125); 
+       $('.fab-img').fadeOut(60, function callback(){
+          $('.fab-img').attr("src", "http://c2/rangitaki/res/img/share.svg"); 
+       });
+       $('.fab-img').fadeIn(60);
+    });
+    
+}
 
+$(document).ready(main);
+
+function goBack(){
+    history.go(-1);
+}
