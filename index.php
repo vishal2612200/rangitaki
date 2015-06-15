@@ -51,6 +51,7 @@ THE SOFTWARE.
 
 <body>
     <?php if($nav_drawer == "yes"){ ?>
+    <div class="overlay"></div>
     <div class="nav">
         <div class="divider"></div>
         <?php

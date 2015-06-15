@@ -24,26 +24,62 @@
 
 var main = function(){
     
-    $('.fabmenu').mouseenter(function(){
-       $('.subfab').fadeIn(125);
-       $('.fab-img').fadeOut(60, function callback(){
-          $('.fab-img').attr("src", "http://c2/rangitaki/res/img/close.svg"); 
-       });
-       $('.fab-img').fadeIn(60);
+    var fabActive = false;
+    $('.fabmenu').click(function(){
+        if(!(fabActive)){
+            fabFadeIn();
+            fabActive = true;
+        } else {
+            fabFadeOut();
+            fabActive = false;
+        }
     });
     
-    $('.fabmenu').mouseleave(function(){
-       $('.subfab').fadeOut(125); 
-       $('.fab-img').fadeOut(60, function callback(){
-          $('.fab-img').attr("src", "http://c2/rangitaki/res/img/share.svg"); 
-       });
-       $('.fab-img').fadeIn(60);
+    var navOpen = false;
+    $('.nav-img, .overlay').click(function(){
+       if(!(navOpen)){
+           openNav();
+           navOpen = true;
+       } else {
+           closeNav();
+           navOpen = false;
+       }
     });
+  
     
-}
+};
 
 $(document).ready(main);
 
 function goBack(){
     history.go(-1);
+}
+
+function fabFadeIn(){
+    $('.subfab').fadeIn(125);
+    $('.fab-img').fadeOut(60, function callback(){
+        $('.fab-img').attr("src", "http://c2/rangitaki/res/img/close.svg"); 
+    });
+    $('.fab-img').fadeIn(60);
+}
+
+function fabFadeOut(){
+    $('.subfab').fadeOut(125); 
+    $('.fab-img').fadeOut(60, function callback(){
+       $('.fab-img').attr("src", "http://c2/rangitaki/res/img/share.svg"); 
+    });
+    $('.fab-img').fadeIn(60);
+}
+
+function openNav(){
+    $('.nav').animate({"left":"0px"}, 125);
+    $('.overlay').show();
+    $('.overlay').animate({"opacity":"0.4"}, 125);
+}
+
+function closeNav(){
+    $('.nav').animate({"left":"-300px"}, 125);
+    $('.overlay').animate({"opacity":"0.0"}, 125, function(){
+        $('.overlay').hide();
+    });
 }
