@@ -38,7 +38,6 @@ THE SOFTWARE.
     <meta name="author" content="<?php echo $blogauthor; ?>" />
     <meta name="description" content="<?php echo $blogdescription; ?>" />
     <meta name="theme-color" content="#ac2900"/>
-    <meta http-equiv="CACHE-CONTROL" content="no-cache" />
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <!--CSS no change needed-->
     <link rel="stylesheet" type="text/css" href="res/css/rangitaki.css" />

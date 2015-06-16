@@ -25,20 +25,30 @@ THE SOFTWARE.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Rangitaki Control Center</title>
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        <link rel="stylesheet" href="../res/rcc.css" />
     </head>
     <body>
-        <?php
-        if($_POST['passwd'] == ""){
-        ?>
-        <form action="./" method="post">
-            <p>Password: <input type="password" name="passwd"/></p>
-            <input type="submit" value="Get password"/>
-        </form>
-        <?php 
-        } else {
-            echo password_hash($_POST['passwd'], PASSWORD_DEFAULT);
-        }
-        ?>
+        <div class="header">
+            <a href="../" class="title">Rangitaki Control Center</a>
+        </div>
+        <div class="main">
+            <section class="card">
+                <div class="headline">Password Generator</div>
+                <?php
+                if ($_POST['passwd'] == "") {
+                    ?>
+                    <form action="./" method="post">
+                        <p>New password:<br><br><input type="password" class="itextfield" name="passwd"/></p>
+                        <input type="submit" value="Get password" class="button"/>
+                    </form>
+                    <?php
+                } else {
+                    echo "<p style='word-wrap: break-word;'>" . password_hash($_POST['passwd'], PASSWORD_DEFAULT) . "</p>";
+                }
+                ?>
+            </section>
+        </div>
     </body>
 </html>
