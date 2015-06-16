@@ -158,6 +158,12 @@ body{
     border-bottom: none!important;
 }
 
+
+.card img{
+    max-width: 100%;
+    max-height: 400px;
+}
+
 .date{
     font-size: 13px;
 }
