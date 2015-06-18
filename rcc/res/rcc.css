@@ -115,45 +115,45 @@ body{
 /*      BUTTON          */
 
 .button {
-  text-decoration: none;
-  color: #fff;
-  background-color: #ff4415;
-  line-height: 36px;
-  min-width: 64px;
-  text-align: center;
-  height: 36px;
-  padding: 8px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #ff4415;
-  box-shadow: 0.4px 1px 1.5px 1px #aaa;
-  -moz-box-shadow: 0.4px 1px 1.5px 1px #aaa;
-  -webkit-box-shadow: 0.4px 1px 1.5px 1px #aaa;
-  border-radius: 2px;
-  margin-top: 4px;
-  margin-bottom: 5px;
-  letter-spacing: 0.4px;
-  font-weight: 700;
-  font-size: 14px;
-  transition-property: box-shadow;
-  transition-delay: 50ms;
-  transition-duration: 125ms;
-  transition-timing-function: ease;
-  -moz-transition-property: box-shadow;
-  -moz-transition-delay: 50ms;
-  -moz-transition-duration: 125ms;
-  -moz-transition-timing-function: ease;
-  -webkit-transition-property: box-shadow;
-  -webkit-transition-delay: 50ms;
-  -webkit-transition-duration: 125ms;
-  -webkit-transition-timing-function: ease;
-  cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    background-color: #ff4415;
+    line-height: 36px;
+    min-width: 64px;
+    text-align: center;
+    height: 36px;
+    padding: 8px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ff4415;
+    box-shadow: 0.4px 1px 1.5px 1px #aaa;
+    -moz-box-shadow: 0.4px 1px 1.5px 1px #aaa;
+    -webkit-box-shadow: 0.4px 1px 1.5px 1px #aaa;
+    border-radius: 2px;
+    margin-top: 4px;
+    margin-bottom: 5px;
+    letter-spacing: 0.4px;
+    font-weight: 700;
+    font-size: 14px;
+    transition-property: box-shadow;
+    transition-delay: 50ms;
+    transition-duration: 125ms;
+    transition-timing-function: ease;
+    -moz-transition-property: box-shadow;
+    -moz-transition-delay: 50ms;
+    -moz-transition-duration: 125ms;
+    -moz-transition-timing-function: ease;
+    -webkit-transition-property: box-shadow;
+    -webkit-transition-delay: 50ms;
+    -webkit-transition-duration: 125ms;
+    -webkit-transition-timing-function: ease;
+    cursor: pointer;
 }
 
 .button:hover, .button:hover {
-  box-shadow: 0.5px 1.8px 2.1px 1.4px #aaa;
-  -moz-box-shadow: 0.5px 1.8px 2.1px 1.4px #aaa;
-  -webkit-box-shadow: 0.5px 1.8px 2.1px 1.4px #aaa; }
+    box-shadow: 0.5px 1.8px 2.1px 1.4px #aaa;
+    -moz-box-shadow: 0.5px 1.8px 2.1px 1.4px #aaa;
+    -webkit-box-shadow: 0.5px 1.8px 2.1px 1.4px #aaa; }
 
 input.button{
     padding: 0px 8px;
@@ -191,23 +191,23 @@ input.button{
 form{
     margin-top: 20px;
 }
-    
+
 @media screen and (min-width: 1440px) {
-    
+
     .card{
         width: 1160px;
     }
-    
+
 }
 
 @media screen and (max-width: 720px){
-    
+
     .card{
         width: 82%;
     }
-    
+
     .title{
         left: 25px;
     }
-    
+
 }

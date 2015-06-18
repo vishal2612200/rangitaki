@@ -2,7 +2,7 @@
 <!--
 The MIT License
 
-Copyright 2015 mmk.
+Copyright 2015 mmk2410.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -40,7 +40,7 @@ THE SOFTWARE.
                 if ($_FILES['userfile']['name'] == "") {
                     echo "<p>You have to choose a file!</p>";
                 } else {
-                    $blog = $_POST['blog'];
+                    $blog = filter_input(INPUT_POST, "blog");
                     $uploaddir = "../..//articles/$blog/";
                     $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 

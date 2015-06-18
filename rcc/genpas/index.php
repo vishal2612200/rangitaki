@@ -2,7 +2,7 @@
 <!--
 The MIT License
 
-Copyright 2015 mmk.
+Copyright 2015 mmk2410.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +37,8 @@ THE SOFTWARE.
             <section class="card">
                 <div class="headline">Password Generator</div>
                 <?php
-                if ($_POST['passwd'] == "") {
+                $passwd = filter_input(INPUT_POST, "passwd");
+                if (passwd == "") {
                     ?>
                     <form action="./" method="post">
                         <p>New password:<br><br><input type="password" class="itextfield" name="passwd"/></p>
@@ -45,7 +46,7 @@ THE SOFTWARE.
                     </form>
                     <?php
                 } else {
-                    echo "<p style='word-wrap: break-word;'>" . password_hash($_POST['passwd'], PASSWORD_DEFAULT) . "</p>";
+                    echo "<p style='word-wrap: break-word;'>" . password_hash($passwd, PASSWORD_DEFAULT) . "</p>";
                 }
                 ?>
             </section>

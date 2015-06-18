@@ -1,4 +1,5 @@
 <?php
+
 // This is the configuration file. You can configure here all necessary (and possible) options without editing the index.php file.
 // Every line has an description about what you can change here. Don't delete any strings. You can set your value after the '=' sign and between the apostrophes.
 // Make sure that every line ends with an semicolon (';').
@@ -23,9 +24,11 @@ $blogdisqus = 'rangitaki';
 // Google Analytics - Provide here your Google Analytics Tracking-ID. Leave empty if you don't want to use it.
 $bloganalytics = '';
 // Footer - set here the text for your footer (e.g. a copyright info).  You can replace the whole text after the '=' with your own one.
-$blogfooter = 'Rangitaki ' .  date("Y") . ' <a href="https://github.com/mmk2410/Rangitaki" target="blank">github.com/mmk2410/Rangitaki</a>';
+$blogfooter = 'Rangitaki ' . date("Y") . ' <a href="https://github.com/mmk2410/Rangitaki" target="blank">github.com/mmk2410/Rangitaki</a>';
 // This enables the optional rangitaki control center. Please read the documentation before you enable it.
-$rcc= 'no';
+$rcc = 'no';
 // Here you can disable and enable the navigation menu. Usefull if you have no subblogs and no home directory
 $nav_drawer = 'yes';
+// Set here the name of your theme. Read the documentation for more themes
+$theme = 'material-light';
 ?>

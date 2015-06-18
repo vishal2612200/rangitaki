@@ -22,11 +22,11 @@
  * THE SOFTWARE.
  */
 
-var main = function(){
-    
+var main = function () {
+
     var fabActive = false;
-    $('.fabmenu').click(function(){
-        if(!(fabActive)){
+    $('.fabmenu').click(function () {
+        if (!(fabActive)) {
             fabFadeIn();
             fabActive = true;
         } else {
@@ -34,52 +34,52 @@ var main = function(){
             fabActive = false;
         }
     });
-    
+
     var navOpen = false;
-    $('.nav-img, .overlay').click(function(){
-       if(!(navOpen)){
-           openNav();
-           navOpen = true;
-       } else {
-           closeNav();
-           navOpen = false;
-       }
+    $('.nav-img, .overlay').click(function () {
+        if (!(navOpen)) {
+            openNav();
+            navOpen = true;
+        } else {
+            closeNav();
+            navOpen = false;
+        }
     });
-  
-    
+
+
 };
 
 $(document).ready(main);
 
-function goBack(){
+function goBack() {
     history.go(-1);
 }
 
-function fabFadeIn(){
+function fabFadeIn() {
     $('.subfab').fadeIn(125);
-    $('.fab-img').fadeOut(60, function callback(){
-        $('.fab-img').attr("src", "http://c2/rangitaki/res/img/close.svg"); 
+    $('.fab-img').fadeOut(60, function callback() {
+        $('.fab-img').attr("src", "http://c2/rangitaki/res/img/close.svg");
     });
     $('.fab-img').fadeIn(60);
 }
 
-function fabFadeOut(){
-    $('.subfab').fadeOut(125); 
-    $('.fab-img').fadeOut(60, function callback(){
-       $('.fab-img').attr("src", "http://c2/rangitaki/res/img/share.svg"); 
+function fabFadeOut() {
+    $('.subfab').fadeOut(125);
+    $('.fab-img').fadeOut(60, function callback() {
+        $('.fab-img').attr("src", "http://c2/rangitaki/res/img/share.svg");
     });
     $('.fab-img').fadeIn(60);
 }
 
-function openNav(){
-    $('.nav').animate({"left":"0px"}, 125);
+function openNav() {
+    $('.nav').animate({"left": "0px"}, 125);
     $('.overlay').show();
-    $('.overlay').animate({"opacity":"0.4"}, 125);
+    $('.overlay').animate({"opacity": "0.4"}, 125);
 }
 
-function closeNav(){
-    $('.nav').animate({"left":"-300px"}, 125);
-    $('.overlay').animate({"opacity":"0.0"}, 125, function(){
+function closeNav() {
+    $('.nav').animate({"left": "-300px"}, 125);
+    $('.overlay').animate({"opacity": "0.0"}, 125, function () {
         $('.overlay').hide();
     });
 }

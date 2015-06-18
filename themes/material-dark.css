@@ -1,0 +1,135 @@
+/*
+The MIT License
+
+Copyright 2015 mmk2410.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+/* 
+    Created on : Jun 18, 2015, 6:39:37 PM
+    Author     : mmk2410
+*/
+
+body{
+    font-family: "Roboto", sans-serif;
+    background: #303030;
+    color: #fff;
+}
+
+.header{
+    background-color: #212121;
+    position: fixed;
+    box-shadow: 2px 0px 2px 2px rgba(32, 32, 32, 0.85);
+}
+
+.title{
+    color: #fff;
+    position: absolute;
+}
+
+.nav{
+    background-color: #424242;
+    border-right: 1px solid #1f1f1f;
+}
+
+.nav-item, .nav-item-static{
+    color: #fff;
+}
+
+.nav-item{
+    font-weight: 600;
+}
+
+.nav-item:active{
+    background-color: #383838;
+}
+
+.divider{
+    border-bottom: 1px solid #1f1f1f;
+}
+
+.card{
+    background: #424242;
+    border-radius: 2px;
+    box-shadow: 0px 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
+}
+
+
+.card a{
+    color: #ff4415;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    border-bottom-color: transparent;
+    transition: border-bottom-color 150ms ease-in-out 100ms;
+}
+
+.card a:hover{
+    border-bottom-color: #ff4415;
+}
+
+.headline{
+    font-size: 24px;
+    color: #fff!important;
+    text-decoration: none;
+    border-bottom: none!important;
+}
+
+.date{
+    font-size: 13px;
+}
+
+.articletext{
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.author{
+    font-size: 13px;
+}
+
+.tag{
+    font-size: 13px;
+}
+
+.fab{
+    background-color: #ff4415;
+    box-shadow: 0px 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
+}
+
+.subfab{
+    background-color: #424242;
+    box-shadow: 0px 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
+}
+
+.footer{
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+}
+
+.footer a{
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    border-bottom-color: transparent;
+}
+
+.footer a:hover{
+    border-bottom-color: #fff;
+}

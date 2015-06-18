@@ -30,17 +30,16 @@
  * @author mmk2410 <marcelmichaelkapfer@yahoo.co.nz>
  */
 class ArticleGenerator {
-    
-    function newArticle($directory, $articlefile, $blog)
-    {
-        
+
+    function newArticle ($directory, $articlefile, $blog) {
+
         $article = file_get_contents($directory . $articlefile);
-        
+
         echo "<section class='card'>";
-        
-        if(substr($article, 0, 6) == "%TITLE"){
+
+        if (substr($article, 0, 6) == "%TITLE") {
             $title = substr($article, 8, strpos($article, "\n") - 8);
-            if($blog == ""){
+            if ($blog == "") {
                 $link = "./?article=" . substr($articlefile, 0, -3);
             } else {
                 $link = "./?blog=$blog&article=" . substr($articlefile, 0, -3);
@@ -48,68 +47,68 @@ class ArticleGenerator {
             echo "<a href='$link' class='headline'>$title</a>";
             $article = substr($article, strpos($article, "\n") + 1);
         }
-        
-        if(substr($article, 0, 5) == "%DATE"){
+
+        if (substr($article, 0, 5) == "%DATE") {
             $date = substr($article, 7, strpos($article, "\n") - 7);
             echo "<span class='date'>$date</span>";
             $article = substr($article, strpos($article, "\n") + 1);
         }
-        
-        if(substr($article, 0, 7) == "%AUTHOR"){
+
+        if (substr($article, 0, 7) == "%AUTHOR") {
             $author = substr($article, 9, strpos($article, "\n") - 9);
             $article = substr($article, strpos($article, "\n") + 1);
         }
-        
-        if(substr($article, 0, 5) == "%TAGS"){
+
+        if (substr($article, 0, 5) == "%TAGS") {
             $tags = substr($article, 7, strpos($article, "\n") - 7);
             $tags = explode(", ", $tags);
             $article = substr($article, strpos($article, "\n") + 1);
         }
-        
+
         //TODO Code detection
-        
+
         echo "<div class='articletext'>";
-        
+
         echo Parsedown::instance()
                 ->setBreaksEnabled(true)
                 ->text($article);
-        
+
         echo "</div>";
-        
-        if($author != ""){
+
+        if ($author != "") {
             echo "<span class='author'>$author</span>";
         }
-        
+
         foreach ($tags as $tag) {
-            if($_GET['blog'] == ""){
+            $blogurl = filter_input(INPUT_GET, "blog");
+            if ($blogurl == "") {
                 echo "<a class='tag' href='./?tag=$tag'>$tag</a> ";
             } else {
                 echo "<a class='tag' href='./?blog=$blog&tag=$tag'>$tag</a> ";
             }
         }
-        
+
         echo "</section>" . "\n";
-        
     }
-    
-    function getTags($directory, $articlefile){
+
+    function getTags($directory, $articlefile) {
         $article = file_get_contents($directory . $articlefile);
-        if(substr($article, 0, 6) == "%TITLE"){
+        if (substr($article, 0, 6) == "%TITLE") {
             $article = substr($article, strpos($article, "\n") + 1);
         }
-        
-        if(substr($article, 0, 5) == "%DATE"){
+
+        if (substr($article, 0, 5) == "%DATE") {
             $article = substr($article, strpos($article, "\n") + 1);
         }
-        
-        if(substr($article, 0, 7) == "%AUTHOR"){
+
+        if (substr($article, 0, 7) == "%AUTHOR") {
             $article = substr($article, strpos($article, "\n") + 1);
         }
-        if(substr($article, 0, 5) == "%TAGS"){
+        if (substr($article, 0, 5) == "%TAGS") {
             $tags = substr($article, 7, strpos($article, "\n") - 7);
             $tags = explode(", ", $tags);
         }
         return $tags;
     }
-    
+
 }

@@ -3,7 +3,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 mmk.
+ * Copyright 2015 mmk2410.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,24 +27,22 @@
 /**
  * Description of BlogListGenerator
  *
- * @author mmk
+ * @author mmk2410 <marcelmichaelkapfer@yahoo.co.nz>
  */
 class BlogListGenerator {
-    
-    function listBlog($directory, $blogname, $blogmaintitle)
-    {
+
+    function listBlog($directory, $blogname, $blogmaintitle) {
         $blog = file_get_contents($directory . $blogname);
         $blog = $blog . "\n";
-        if(substr($blog, 0, 6) == "%TITLE"){
+        if (substr($blog, 0, 6) == "%TITLE") {
             $blog = substr($blog, 8, strpos($blog, "\n") - 8);
-            if($blog  == "main"){
+            if ($blog == "main") {
                 echo "<a class='nav-item' href='./'>$blogmaintitle</a>";
             } else {
                 $link = "./?blog=" . substr($blogname, 0, -3);
                 echo "<a class='nav-item' href='$link'>$blog</a>";
             }
         }
-        
     }
-    
+
 }

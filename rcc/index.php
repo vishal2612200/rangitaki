@@ -2,7 +2,7 @@
 <!--
 The MIT License
 
-Copyright 2015 mmk.
+Copyright 2015 mmk2410.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -36,8 +36,9 @@ THE SOFTWARE.
         <div class="main">
             <?php
             include '../config.php';
+            $passwd = filter_input(INPUT_POST, "passwd");
             if ($rcc == "yes") {
-                if ($_POST['passwd'] == "") {
+                if ($passwd == "") {
                     ?>
                     <section class="card">
                         <div class="headline">Log In</div>
@@ -51,7 +52,7 @@ THE SOFTWARE.
                     chmod("passwd.txt", 0644);
                     $hash = file_get_contents("passwd.txt");
                     chmod("passwd.txt", 0000);
-                    if (password_verify($_POST['passwd'], $hash)) {
+                    if (password_verify($passwd, $hash)) {
                         ?>
                         <section class="card">
                             <div class="headline">File Upload</div>
