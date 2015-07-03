@@ -34,4 +34,5 @@ $rcc = 'no';
 $nav_drawer = 'yes';
 // Set here the name of your theme. Read the documentation for more themes
 $theme = 'material-light';
-?>
+// Set here your language. The file must exist in the lang directory
+$language = "en";

@@ -27,6 +27,7 @@ THE SOFTWARE.
 
     <?php
     include 'config.php';
+    include './lang/' . $language . ".php";
     require_once 'res/php/Parsedown.php';
     require_once 'res/php/ArticleGenerator.php';
     require_once './res/php/BlogListGenerator.php';
@@ -67,7 +68,7 @@ THE SOFTWARE.
                 <?php
                 if ($getarticle == "") {
                     echo "<section>";
-                    echo "<div class='nav-item-static'>Blogs of $blogtitle:</div>";
+                    echo "<div class='nav-item-static'>$LANG_Blogs_Of" . " " . "$blogtitle:</div>";
                     $blogs = scandir("./blogs/");
                     foreach ($blogs as $blog) {
                         if (strlen($blog) >= 3 && substr($blog, -3) == ".md") {
@@ -183,12 +184,12 @@ THE SOFTWARE.
             </div>
             <div class="fabmenu">
                 <div class="subfab">
-                    <a href='mailto:?subject=<?php echo $blogtitle; ?>&body=Check out this blog: <?php echo $url; ?>'  target="blank">
+                    <a href='mailto:?subject=<?php echo $blogtitle; ?>&body=<?php echo $LANG_Check_out_this_blog;?>: <?php echo $url; ?>'  target="blank">
                         <img src="./res/img/email.svg" class="subfab-img" />
                     </a>
                 </div>
                 <div class="subfab">    
-                    <a href='https://twitter.com/intent/tweet?text=Check out: <?php echo $url; ?>&original_referer='  target="blank">
+                    <a href='https://twitter.com/intent/tweet?text=<?php echo $LANG_Check_out;?>: <?php echo $url; ?>&original_referer='  target="blank">
                         <img src="./res/img/twitter.svg" class="subfab-img" />
                     </a>
                 </div>
