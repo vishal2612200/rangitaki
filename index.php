@@ -73,11 +73,21 @@ THE SOFTWARE.
                         if (strlen($blog) >= 3 && substr($blog, -3) == ".md") {
                             if ($getblog == "") {
                                 if ($blog != "main.md") {
+                                    if(empty($blogmainname)){
+                                        $blogmaintitle = $blogtitle;
+                                    } else {
+                                        $blogmaintitle = $blogmainname;
+                                    }
                                     BlogListGenerator::listBlog("./blogs/", $blog, $blogtitle);
                                 }
                             } else {
                                 if ($getblog . ".md" != $blog) {
-                                    BlogListGenerator::listBlog("./blogs/", $blog, $blogtitle);
+                                    if(empty($blogmainname)){
+                                        $blogmaintitle = $blogtitle;
+                                    } else {
+                                        $blogmaintitle = $blogmainname;
+                                    }
+                                    BlogListGenerator::listBlog("./blogs/", $blog, $blogmaintitle);
                                 }
                             }
                         }

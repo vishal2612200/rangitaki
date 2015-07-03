@@ -17,6 +17,9 @@ $bloghome = 'yes';
 $bloghomeurl = '../';
 // Home name - Set here an individual name for your main page
 $bloghomename = 'Home';
+// Main Blog name -> Set a specific name for your name blog
+// This value is empty by default
+$blogmainname = '';
 // Intro - set yes if you have a blog intro and no if you don't have one
 $blogintro = 'yes';
 // Disqus - Provide here your Disqus shortname. Leave empty if you don't want to use it.
