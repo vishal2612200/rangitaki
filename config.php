@@ -24,6 +24,8 @@ $blogmainname = '';
 $blogintro = 'yes';
 // Disqus - Provide here your Disqus shortname. Leave empty if you don't want to use it.
 $blogdisqus = 'rangitaki';
+// Share FAB - this enables or disables the share button
+$sharefab = 'yes';
 // Google Analytics - Provide here your Google Analytics Tracking-ID. Leave empty if you don't want to use it.
 $bloganalytics = '';
 // Footer - set here the text for your footer (e.g. a copyright info).  You can replace the whole text after the '=' with your own one.

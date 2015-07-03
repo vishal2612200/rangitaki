@@ -126,7 +126,7 @@ THE SOFTWARE.
                             } else {
                                 ?>
                             </a>
-                        › <a href="<?php echo "./?blog=$getblog"?>">
+                            › <a href="<?php echo "./?blog=$getblog" ?>">
                                 <?php
                                 echo BlogListGenerator::getName("./blogs/$getblog.md");
                             }
@@ -134,6 +134,7 @@ THE SOFTWARE.
                         </a>
                     </span>
                 </nobr>
+                <div class="fadeout"></div>
             </div>
             <?php
             if (file_exists("blogs/$blog.md") && $getarticle == "" && $blogintro == "yes" && $gettag == "") {
@@ -182,31 +183,37 @@ THE SOFTWARE.
             <div class="footer">
                 <?php echo $blogfooter; ?>
             </div>
-            <div class="fabmenu">
-                <div class="subfab">
-                    <a href='mailto:?subject=<?php echo $blogtitle; ?>&body=<?php echo $LANG_Check_out_this_blog;?>: <?php echo $url; ?>'  target="blank">
-                        <img src="./res/img/email.svg" class="subfab-img" />
-                    </a>
+            <?php
+            if ($sharefab == "yes") {
+                ?>
+                <div class="fabmenu">
+                    <div class="subfab">
+                        <a href='mailto:?subject=<?php echo $blogtitle; ?>&body=<?php echo $LANG_Check_out_this_blog; ?>: <?php echo $url; ?>'  target="blank">
+                            <img src="./res/img/email.svg" class="subfab-img" />
+                        </a>
+                    </div>
+                    <div class="subfab">    
+                        <a href='https://twitter.com/intent/tweet?text=<?php echo $LANG_Check_out; ?>: <?php echo $url; ?>&original_referer='  target="blank">
+                            <img src="./res/img/twitter.svg" class="subfab-img" />
+                        </a>
+                    </div>
+                    <div class="subfab">
+                        <a href='https://plus.google.com/share?url=<?php echo $url; ?>&hl=en-US'  target="blank">
+                            <img src="./res/img/gplus.svg" class="subfab-img" />
+                        </a>
+                    </div>
+                    <div class="subfab">
+                        <a href='https://www.facebook.com/sharer/sharer.php?u=<?php echo $url; ?>&t=<?php echo "echo $blogtitle" ?>' target="blank">
+                            <img src="./res/img/facebook.svg" class="subfab-img" />
+                        </a>
+                    </div>
+                    <div class="fab">
+                        <img src="./res/img/share.svg" class="fab-img" alt="Share" />
+                    </div>
                 </div>
-                <div class="subfab">    
-                    <a href='https://twitter.com/intent/tweet?text=<?php echo $LANG_Check_out;?>: <?php echo $url; ?>&original_referer='  target="blank">
-                        <img src="./res/img/twitter.svg" class="subfab-img" />
-                    </a>
-                </div>
-                <div class="subfab">
-                    <a href='https://plus.google.com/share?url=<?php echo $url; ?>&hl=en-US'  target="blank">
-                        <img src="./res/img/gplus.svg" class="subfab-img" />
-                    </a>
-                </div>
-                <div class="subfab">
-                    <a href='https://www.facebook.com/sharer/sharer.php?u=<?php echo $url; ?>&t=<?php echo "echo $blogtitle" ?>' target="blank">
-                        <img src="./res/img/facebook.svg" class="subfab-img" />
-                    </a>
-                </div>
-                <div class="fab">
-                    <img src="./res/img/share.svg" class="fab-img" alt="Share" />
-                </div>
-            </div>
+                <?php
+            }
+            ?>
         </div>
         <script src="./res/js/jquery-2.1.4.min.js"></script>
         <script src="./res/js/app.js"></script>

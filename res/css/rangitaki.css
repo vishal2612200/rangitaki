@@ -72,6 +72,14 @@ body{
     color: #fff;
 }
 
+.fadeout{
+    position: absolute;
+    height: 64px;
+    top: 0px;
+    right: 0px;
+    width: 40px;
+}
+
 .nav-img{
     height: 26px;
     padding: 19px;

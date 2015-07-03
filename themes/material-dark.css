@@ -47,6 +47,14 @@ body{
     color: #fff;
 }
 
+.fadeout{
+    background: -moz-linear-gradient(left, rgba(30,87,153,0) 0%, #212121 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(left, rgba(30,87,153,0) 0%,#212121 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(30,87,153,0) 0%,#212121 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(30,87,153,0) 0%,#212121 100%); /* IE10+ */
+    background: linear-gradient(to right, rgba(30,87,153,0) 0%,#212121 100%); /* W3C */
+}
+
 .nav{
     background-color: #424242;
     border-right: 1px solid #1f1f1f;
