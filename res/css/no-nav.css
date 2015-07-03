@@ -30,6 +30,10 @@ THE SOFTWARE.
     display: none;
 }
 
+.nav-img{
+    display: none;
+}
+
 @media screen and (min-width: 1440px) {
     .header {
         left: 0px;
@@ -38,5 +42,11 @@ THE SOFTWARE.
     .main{
         margin-left: 0px;
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 720px){
+    .title{
+        left: 25px;
     }
 }
