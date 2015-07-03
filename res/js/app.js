@@ -58,7 +58,7 @@ function goBack() {
 function fabFadeIn() {
     $('.subfab').fadeIn(125);
     $('.fab-img').fadeOut(60, function callback() {
-        $('.fab-img').attr("src", "http://c2/rangitaki/res/img/close.svg");
+        $('.fab-img').attr("src", "./res/img/close.svg");
     });
     $('.fab-img').fadeIn(60);
 }
@@ -66,7 +66,7 @@ function fabFadeIn() {
 function fabFadeOut() {
     $('.subfab').fadeOut(125);
     $('.fab-img').fadeOut(60, function callback() {
-        $('.fab-img').attr("src", "http://c2/rangitaki/res/img/share.svg");
+        $('.fab-img').attr("src", "./res/img/share.svg");
     });
     $('.fab-img').fadeIn(60);
 }

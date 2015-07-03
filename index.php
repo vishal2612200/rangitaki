@@ -52,7 +52,7 @@ THE SOFTWARE.
             <?php
         }
         ?>
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,400italic,100,100italic,900' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,500,700,300,400italic,100,100italic,900' rel='stylesheet' type='text/css'>
         <link rel="shortcut icon" href="res/favicon.png">
         <link rel="stylesheet" href="./res/css/github-gist.css">
         <script src="./res/js/highlight.pack.js"></script>
