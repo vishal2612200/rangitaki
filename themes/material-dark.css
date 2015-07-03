@@ -43,6 +43,10 @@ body{
     position: absolute;
 }
 
+.title > a{
+    color: #fff;
+}
+
 .nav{
     background-color: #424242;
     border-right: 1px solid #1f1f1f;

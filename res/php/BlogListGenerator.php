@@ -44,5 +44,14 @@ class BlogListGenerator {
             }
         }
     }
+    
+    function getName($file){
+        $blog = file_get_contents($file);
+        $blog = $blog . "\n";
+        if(substr($blog, 0, 6) == "%TITLE"){
+            $blog = substr($blog, 8, strpos($blog, "\n") - 8);
+            return $blog;
+        }
+    }
 
 }

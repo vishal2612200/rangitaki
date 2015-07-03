@@ -33,7 +33,7 @@ THE SOFTWARE.
     $getblog = filter_input(INPUT_GET, "blog");
     $getarticle = filter_input(INPUT_GET, "article");
     $gettag = filter_input(INPUT_GET, "tag");
-    $url = "http://" .  filter_input(INPUT_SERVER, "HTTP_HOST") . filter_input(INPUT_SERVER, "REQUEST_URI");
+    $url = "http://" . filter_input(INPUT_SERVER, "HTTP_HOST") . filter_input(INPUT_SERVER, "REQUEST_URI");
     ?>
 
     <head>
@@ -73,7 +73,7 @@ THE SOFTWARE.
                         if (strlen($blog) >= 3 && substr($blog, -3) == ".md") {
                             if ($getblog == "") {
                                 if ($blog != "main.md") {
-                                    if(empty($blogmainname)){
+                                    if (empty($blogmainname)) {
                                         $blogmaintitle = $blogtitle;
                                     } else {
                                         $blogmaintitle = $blogmainname;
@@ -82,7 +82,7 @@ THE SOFTWARE.
                                 }
                             } else {
                                 if ($getblog . ".md" != $blog) {
-                                    if(empty($blogmainname)){
+                                    if (empty($blogmainname)) {
                                         $blogmaintitle = $blogtitle;
                                     } else {
                                         $blogmaintitle = $blogmainname;
@@ -114,7 +114,25 @@ THE SOFTWARE.
         <div class="main">
             <div class="header">
                 <img src="./res/img/menu.svg" class="nav-img" />
-                <nobr><a href="./" class="title"><?php echo $blogtitle; ?></a></nobr>
+                <nobr><span class="title"><a href="./"><?php echo $blogtitle; ?>
+                            <?php
+                            if (empty($getblog)) {
+                                if (!empty($blogmainname)) {
+                                    ?>
+                                    › <?php
+                                    echo $blogmainname;
+                                }
+                            } else {
+                                ?>
+                            </a>
+                        › <a href="<?php echo "./?blog=$getblog"?>">
+                                <?php
+                                echo BlogListGenerator::getName("./blogs/$getblog.md");
+                            }
+                            ?>
+                        </a>
+                    </span>
+                </nobr>
             </div>
             <?php
             if (file_exists("blogs/$blog.md") && $getarticle == "" && $blogintro == "yes" && $gettag == "") {
