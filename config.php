@@ -37,4 +37,4 @@ $theme = 'material-light';
 // Set here your language. The file must exist in the lang directory
 $language = "en";
 // Favicon - Set here the path to your favicon
-$favicon = "https://example.com/res/img/favicon.png"
+$favicon = "https://example.com/res/img/favicon.png";
