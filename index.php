@@ -1,30 +1,36 @@
 <!DOCTYPE HTML>
-<!-- pBlog https://github.com/mmk2410/pblog -->
 <!--
-The MIT License
+    Rangitaki
+    GitHub: https://github.com/mmk2410/Rangitaki
+    Web: https://marcel-kapfer.de/rangitaki
+    Twitter: @Rangitaki
+    Google+: +Rangitaki
+-->
+<!--
+COPYRIGHT (c) 2015 mmk2410
 
-Copyright 2015 mmk2410.
+MIT License
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
 <html>
-
     <?php
     include 'config.php';
     include './lang/' . $language . ".php";
@@ -43,9 +49,26 @@ THE SOFTWARE.
         <meta name="author" content="<?php echo $blogauthor; ?>" />
         <meta name="description" content="<?php echo $blogdescription; ?>" />
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        <!-- OpenGraph meta tags -->
+        <meta property="og:title" content="<?php echo $blogtitle; ?>" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="<?php echo $url; ?>" />
+        <meta property="og:image" content="<?php echo $favicon; ?>" />
+        <meta property="og:description" content="<?php echo $blogdescription; ?>" />
+        <meta property="og:locale:alternate" content="<?php echo $lang; ?>" />
+        <!-- Twitter meta tags -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="<?php echo $twitter; ?>" />
+        <meta name="twitter:title" content="<?php echo $blogtitle; ?>" />
+        <meta name="twitter:description" content="<?php echo $blogdescription; ?>" />
+        <meta name="twitter:image" content="<?php echo $favicon; ?>" />
+        <meta name="twitter:url" content="<?php echo $url; ?>" />
+
         <!--CSS no change needed-->
         <link rel="stylesheet" type="text/css" href="res/css/rangitaki.css" />
         <link rel="stylesheet" type="text/css" href="themes/<?php echo $theme; ?>.css" />
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo $favicon; ?>" />
+        <link rel="apple-touch-icon-precomposed" href="<?php echo $favicon; ?>">
         <?php
         if ($nav_drawer == 'no') {
             ?>
@@ -54,7 +77,6 @@ THE SOFTWARE.
         }
         ?>
         <link href='//fonts.googleapis.com/css?family=Roboto:400,500,700,300,400italic,100,100italic,900' rel='stylesheet' type='text/css'>
-        <link rel="shortcut icon" href="res/favicon.png">
         <link rel="stylesheet" href="./res/css/github-gist.css">
         <script src="./res/js/highlight.pack.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
@@ -192,7 +214,7 @@ THE SOFTWARE.
                             <img src="./res/img/email.svg" class="subfab-img" />
                         </a>
                     </div>
-                    <div class="subfab">    
+                    <div class="subfab">
                         <a href='https://twitter.com/intent/tweet?text=<?php echo $LANG_Check_out; ?>: <?php echo $url; ?>&original_referer='  target="blank">
                             <img src="./res/img/twitter.svg" class="subfab-img" />
                         </a>

@@ -5,12 +5,10 @@
 // Make sure that every line ends with an semicolon (';').
 // Blog Title - Set here an individual title of your blog by replacing Rangitaki Blog with it.
 $blogtitle = 'Rangitaki Blog';
-// Blog Author - Set here your name 
+// Blog Author - Set here your name
 $blogauthor = 'Marcel Kapfer';
 // Blog description
 $blogdescription = 'Rangitaki - A PHP blogging engine without any database dependency';
-// Blog favicon - enter here the path to your favicon
-$blogfavicon = '../res/favicon.png';
 // Home - set yes if you want to link to your homepage and no if not
 $bloghome = 'yes';
 // Home URL - Set here the url to your main page. Either relative (e.g. '../') or absolute (e.g. 'http://github.com')
@@ -38,3 +36,5 @@ $nav_drawer = 'yes';
 $theme = 'material-light';
 // Set here your language. The file must exist in the lang directory
 $language = "en";
+// Favicon - Set here the path to your favicon
+$favicon = "https://example.com/res/img/favicon.png"
