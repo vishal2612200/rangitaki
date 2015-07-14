@@ -37,17 +37,20 @@ THE SOFTWARE.
             <section class="card">
                 <div class="headline">File Upload</div>
                 <?php
-                if ($_FILES['userfile']['name'] == "") {
-                    echo "<p>You have to choose a file!</p>";
-                } else {
-                    $blog = filter_input(INPUT_POST, "blog");
-                    $uploaddir = "../..//articles/$blog/";
-                    $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
-
-                    if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
-                        echo "<p>The post was successfully uploaded and is now published.</p>";
+                session_start();
+                if($_SESSION['login']){
+                    if ($_FILES['userfile']['name'] == "") {
+                        echo "<p>You have to choose a file!</p>";
                     } else {
-                        echo "<p>During the uploading process an error occured! <br> Error Code:" . ($_FILES['userfile']['error'] . "</p>");
+                        $blog = filter_input(INPUT_POST, "blog");
+                        $uploaddir = "../..//articles/$blog/";
+                        $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+
+                        if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
+                            echo "<p>The post was successfully uploaded and is now published.</p>";
+                        } else {
+                            echo "<p>During the uploading process an error occured! <br> Error Code:" . ($_FILES['userfile']['error'] . "</p>");
+                        }
                     }
                 }
                 ?>

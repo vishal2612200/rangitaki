@@ -36,8 +36,15 @@ THE SOFTWARE.
         <div class="main">
             <?php
             include '../config.php';
-            $passwd = filter_input(INPUT_POST, "passwd");
             if ($rcc == "yes") {
+                include 'password.php';
+                session_start();
+                if(isset($_POST['passwd'])){
+                    $passwd = $_POST['passwd'];
+                    $_SESSION['passwd'] = $_POST['passwd'];
+                } else if(isset($_SESSION['passwd'])) {
+                    $passwd = $_SESSION['passwd'];
+                }
                 if ($passwd == "") {
                     ?>
                     <section class="card">
@@ -49,10 +56,8 @@ THE SOFTWARE.
                     </section>
                     <?php
                 } else {
-                    chmod("passwd.txt", 0644);
-                    $hash = file_get_contents("passwd.txt");
-                    chmod("passwd.txt", 0000);
-                    if (password_verify($passwd, $hash)) {
+                    if ($passwd == $password) {
+                        $_SESSION['login'] = true;
                         ?>
                         <section class="card">
                             <div class="headline">File Upload</div>
@@ -88,17 +93,6 @@ THE SOFTWARE.
                         <?php
                     }
                 }
-                ?>
-                <section class="card">
-                    <div class="headline">Password</div>
-                    <p>
-                        Generate a new password.
-                    </p>
-                    <a class="button" href="./genpas/">
-                        GENERATOR
-                    </a>
-                </section>
-                <?php
             } else {
                 ?>
                 <section class="card">
