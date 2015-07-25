@@ -1,4 +1,6 @@
-/* 
+/*
+ * Rangitaki Project
+ *
  * The MIT License
  *
  * Copyright 2015 mmk2410.
@@ -22,64 +24,74 @@
  * THE SOFTWARE.
  */
 
-var main = function () {
+var main = function () { // main function; called below
 
-    var fabActive = false;
-    $('.fabmenu').click(function () {
-        if (!(fabActive)) {
-            fabFadeIn();
-            fabActive = true;
-        } else {
-            fabFadeOut();
-            fabActive = false;
+    var fabActive = false; // fab hidden at begin
+    $('.fabmenu').click( // action on fab click
+        function () {
+            if (!(fabActive)) { // if fab is hidden
+                fabFadeIn(); // fade fab in
+                fabActive = true; // fab = active
+            } else { // if fab is shown
+                fabFadeOut(); // fade fab out
+                fabActive = false; // fab = hidden
+            }
         }
-    });
+    );
 
-    var navOpen = false;
-    $('.nav-img, .overlay').click(function () {
-        if (!(navOpen)) {
-            openNav();
-            navOpen = true;
-        } else {
-            closeNav();
-            navOpen = false;
+    var navOpen = false; // nav hidden at begin
+    $('.nav-img, .overlay').click( // action on hamburger click
+        function () {
+            if (!(navOpen)) { // if nav is hidden
+                openNav(); // open the nav drawer
+                navOpen = true; // nav = open
+            } else { // if nav is closed
+                closeNav(); // close the nav drawer
+                navOpen = false; // nav = closed
+            }
         }
-    });
+    );
 
 
 };
 
-$(document).ready(main);
+$(document).ready(main); // run if document is loaded
 
-function goBack() {
+function goBack() { // go back function
     history.go(-1);
 }
 
-function fabFadeIn() {
-    $('.subfab').fadeIn(125);
-    $('.fab-img').fadeOut(60, function callback() {
-        $('.fab-img').attr("src", "./res/img/close.svg");
-    });
-    $('.fab-img').fadeIn(60);
+function fabFadeIn() { // fade fab in
+    $('.subfab').fadeIn(125); // fade subfabs in
+    $('.fab-img').fadeOut( // fade fab share image out
+        60, function callback() {
+        $('.fab-img').attr("src", "./res/img/close.svg"); // change to fab close image
+        }
+    );
+    $('.fab-img').fadeIn(60); // fade fab close image in
 }
 
-function fabFadeOut() {
-    $('.subfab').fadeOut(125);
-    $('.fab-img').fadeOut(60, function callback() {
-        $('.fab-img').attr("src", "./res/img/share.svg");
-    });
-    $('.fab-img').fadeIn(60);
+function fabFadeOut() { // fade fab out
+    $('.subfab').fadeOut(125); // fade subfabs out
+    $('.fab-img').fadeOut( // fade fab close image out
+        60, function callback() {
+        $('.fab-img').attr("src", "./res/img/share.svg"); // change to fab share image
+        }
+    );
+    $('.fab-img').fadeIn(60); // fade fab share image in
 }
 
-function openNav() {
-    $('.nav').animate({"left": "0px"}, 125);
-    $('.overlay').show();
-    $('.overlay').animate({"opacity": "0.4"}, 125);
+function openNav() { // fade navigation drawer in
+    $('.nav').animate({"left": "0px"}, 125); // slide in
+    $('.overlay').show(); // set overlay to show ...
+    $('.overlay').animate({"opacity": "0.4"}, 125); // ... and fade to a darker transparent color
 }
 
-function closeNav() {
-    $('.nav').animate({"left": "-300px"}, 125);
-    $('.overlay').animate({"opacity": "0.0"}, 125, function () {
-        $('.overlay').hide();
-    });
+function closeNav() { // fade navigation drawer out
+    $('.nav').animate({"left": "-300px"}, 125); // slide out
+    $('.overlay').animate(
+        {"opacity": "0.0"}, 125, function () { // fade the overlay to complete transparency
+            $('.overlay').hide(); // hide it then
+        }
+    );
 }

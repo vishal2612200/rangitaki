@@ -1,6 +1,7 @@
 <?php
-
 /*
+ * Rangitaki Project
+ *
  * The MIT License
  *
  * Copyright 2015 mmk2410.
@@ -25,65 +26,78 @@
  */
 
 /**
- * Description of ArticleGenerator
+ * The article generator class is a collection of functions for generating the article of markdown
  *
- * @author mmk2410 <marcelmichaelkapfer@yahoo.co.nz>
+ * Since there is no initialize function, I recommend to use the short access syntay
+ *
+ * @category Articles
+ * @package  RangitakiPHP
+ * @author   mmk2410 <marcelmichaelkapfer@yahoo.co.nz>
+ * @license  MIT License
+ * @link     http://marcel-kapfer.de/rangitaki
  */
-class ArticleGenerator {
+class ArticleGenerator
+{
 
-    function newArticle ($directory, $articlefile, $blog) {
+    /**
+     * A function to create one new article
+     *
+     * @param  string $directory   The directory where the article files are stored
+     * @param  string $articlefile The name of the article file
+     * @param  string $blog        The name of the current blog
+     */
+    function newArticle($directory, $articlefile, $blog)
+    {
 
-        $article = file_get_contents($directory . $articlefile);
+        $article = file_get_contents($directory . $articlefile); // get the file
 
         echo "<section class='card'>";
 
-        if (substr($article, 0, 6) == "%TITLE") {
-            $title = substr($article, 8, strpos($article, "\n") - 8);
-            if ($blog == "") {
-                $link = "./?article=" . substr($articlefile, 0, -3);
-            } else {
-                $link = "./?blog=$blog&article=" . substr($articlefile, 0, -3);
+        if (substr($article, 0, 6) == "%TITLE") { // if a title is in the first line
+            $title = substr($article, 8, strpos($article, "\n") - 8); // get this title
+            if ($blog == "") { // if one main blog
+                $link = "./?article=" . substr($articlefile, 0, -3); // create link to article
+            } else { // if not on main blog
+                $link = "./?blog=$blog&article=" . substr($articlefile, 0, -3); // create link to article at specific blog
             }
-            echo "<a href='$link' class='headline'>$title</a>";
-            $article = substr($article, strpos($article, "\n") + 1);
+            echo "<a href='$link' class='headline'>$title</a>"; // print link (as a headline)
+            $article = substr($article, strpos($article, "\n") + 1); // remove title tag from $article (the variable, not the document)
         }
 
-        if (substr($article, 0, 5) == "%DATE") {
-            $date = substr($article, 7, strpos($article, "\n") - 7);
-            echo "<span class='date'>$date</span>";
-            $article = substr($article, strpos($article, "\n") + 1);
+        if (substr($article, 0, 5) == "%DATE") { // if now a date is in the first line
+            $date = substr($article, 7, strpos($article, "\n") - 7); // get this date
+            echo "<span class='date'>$date</span>"; // print the date
+            $article = substr($article, strpos($article, "\n") + 1); // remove this line
         }
 
-        if (substr($article, 0, 7) == "%AUTHOR") {
-            $author = substr($article, 9, strpos($article, "\n") - 9);
-            $article = substr($article, strpos($article, "\n") + 1);
+        if (substr($article, 0, 7) == "%AUTHOR") { // if a author is now in the first line
+            $author = substr($article, 9, strpos($article, "\n") - 9); // get the author
+            $article = substr($article, strpos($article, "\n") + 1); // remove the line
         }
 
-        if (substr($article, 0, 5) == "%TAGS") {
-            $tags = substr($article, 7, strpos($article, "\n") - 7);
-            $tags = explode(", ", $tags);
-            $article = substr($article, strpos($article, "\n") + 1);
+        if (substr($article, 0, 5) == "%TAGS") { // if tags are now at the beginning
+            $tags = substr($article, 7, strpos($article, "\n") - 7); // get tags
+            $tags = explode(", ", $tags); // split them into an array
+            $article = substr($article, strpos($article, "\n") + 1); // remove this line
         }
-
-        //TODO Code detection
 
         echo "<div class='articletext'>";
 
         echo Parsedown::instance()
                 ->setBreaksEnabled(true)
-                ->text($article);
+                ->text($article); // print now the article text as html
 
         echo "</div>";
 
-        if ($author != "") {
-            echo "<span class='author'>$author</span>";
+        if (isset($author)) {
+            echo "<span class='author'>$author</span>"; // print the author
         }
 
         foreach ($tags as $tag) {
             $blogurl = filter_input(INPUT_GET, "blog");
-            if ($blogurl == "") {
+            if ($blogurl == "") { // on main blog. no ?blog=
                 echo "<a class='tag' href='./?tag=$tag'>$tag</a> ";
-            } else {
+            } else { // not on main blog
                 echo "<a class='tag' href='./?blog=$blog&tag=$tag'>$tag</a> ";
             }
         }
@@ -91,24 +105,32 @@ class ArticleGenerator {
         echo "</section>" . "\n";
     }
 
-    function getTags($directory, $articlefile) {
-        $article = file_get_contents($directory . $articlefile);
-        if (substr($article, 0, 6) == "%TITLE") {
+    /**
+     * A function to get an articles tags as an array
+     *
+     * @param  string $directory   The directory where the article files are stored
+     * @param  string $articlefile The name of the article file
+     * @return array
+     */
+    function getTags($directory, $articlefile)
+    {
+        $article = file_get_contents($directory . $articlefile); // get the article
+        if (substr($article, 0, 6) == "%TITLE") { // detect and remove the title
             $article = substr($article, strpos($article, "\n") + 1);
         }
 
-        if (substr($article, 0, 5) == "%DATE") {
+        if (substr($article, 0, 5) == "%DATE") { // detect and remove the title
             $article = substr($article, strpos($article, "\n") + 1);
         }
 
-        if (substr($article, 0, 7) == "%AUTHOR") {
+        if (substr($article, 0, 7) == "%AUTHOR") { // detect and remove the title
             $article = substr($article, strpos($article, "\n") + 1);
         }
-        if (substr($article, 0, 5) == "%TAGS") {
-            $tags = substr($article, 7, strpos($article, "\n") - 7);
-            $tags = explode(", ", $tags);
+        if (substr($article, 0, 5) == "%TAGS") { // detect the tags
+            $tags = substr($article, 7, strpos($article, "\n") - 7); // get the tags
+            $tags = explode(", ", $tags); // split them into an array
         }
-        return $tags;
+        return $tags; // remove that array
     }
 
 }

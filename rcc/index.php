@@ -35,11 +35,11 @@ THE SOFTWARE.
         </div>
         <div class="main">
             <?php
-            include '../config.php';
+            require '../config.php';
             if ($rcc == "yes") {
                 include 'password.php';
                 session_start();
-                if(isset($_POST['passwd'])){
+                if(isset($_POST['passwd'])) {
                     $passwd = $_POST['passwd'];
                     $_SESSION['passwd'] = $_POST['passwd'];
                 } else if(isset($_SESSION['passwd'])) {

@@ -1,4 +1,6 @@
 /*
+Rangitaki Project
+
 The MIT License
 
 Copyright 2015 mmk2410.
@@ -21,32 +23,35 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
-/* 
+/*
     Created on : Jun 18, 2015, 7:07:45 PM
     Author     : mmk2410
 */
+/*
+    A stylesheet for overriding the default styles if the navigation drawer is disabled
+*/
 
-.nav{
+.nav{ /* hide the navigation drawer */
     display: none;
 }
 
-.nav-img{
+.nav-img{ /* hide the hamburger icon */
     display: none;
 }
 
-@media screen and (min-width: 1440px) {
-    .header {
-        left: 0px;
+@media screen and (min-width: 1440px) { /* large devices */
+    .header { /* full width */
+        left: 0;
     }
 
-    .main{
-        margin-left: 0px;
+    .main{ /* full width */
+        margin-left: 0;
         width: 100%;
     }
 }
 
-@media screen and (max-width: 720px){
-    .title{
+@media screen and (max-width: 720px){ /* small devices */
+    .title{ /* move the title more to the left */
         left: 25px;
     }
 }

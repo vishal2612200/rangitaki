@@ -1,5 +1,5 @@
 <?php
-
+// Rangitaki Project
 // This is the configuration file. You can configure here all necessary (and possible) options without editing the index.php file.
 // Every line has an description about what you can change here. Don't delete any strings. You can set your value after the '=' sign and between the apostrophes.
 // Make sure that every line ends with an semicolon (';').

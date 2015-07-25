@@ -1,7 +1,9 @@
 <?php
-
+// Rangitaki Project
 // LANGUAGE: GERMAN
 
-$LANG_Blogs_Of = "Blogs auf";
-$LANG_Check_out_this_blog = "Schau dir diesen Blog an:";
-$LANG_Check_out = "Schau dir das an:";
+$BLOGLANG = [
+    "Blogs on" => "Blogs auf",
+    "Check out this blog" => "Schau dir diesen Blog an:",
+    "Check out" => "Schau dir das an:"
+];

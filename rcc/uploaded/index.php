@@ -38,7 +38,7 @@ THE SOFTWARE.
                 <div class="headline">File Upload</div>
                 <?php
                 session_start();
-                if($_SESSION['login']){
+                if($_SESSION['login']) {
                     if ($_FILES['userfile']['name'] == "") {
                         echo "<p>You have to choose a file!</p>";
                     } else {

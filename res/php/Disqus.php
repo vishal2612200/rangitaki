@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 
-<?php if ($blogdisqus) { ?>
+<?php if ($blogdisqus) { // check if disqus is enabled ?>
     <section class="card">
         <div id="disqus_thread"></div>
         <script type="text/javascript">
@@ -40,4 +40,5 @@ THE SOFTWARE.
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
     </section>
-<?php } ?>
+<?php
+} ?>

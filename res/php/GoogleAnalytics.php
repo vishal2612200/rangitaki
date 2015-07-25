@@ -1,5 +1,7 @@
 <?php
 /*
+ * Rangitaki Project
+ *
  * The MIT License
  *
  * Copyright 2015 mmk2410.
@@ -24,7 +26,7 @@
  */
 
 
-if ($bloganalytics) {
+if ($bloganalytics)  { // check if google analytics is enabled
     ?>
     <script>
 

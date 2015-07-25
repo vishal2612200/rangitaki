@@ -1,6 +1,7 @@
 <?php
-
 /*
+ * Rangitaki Project
+ *
  * The MIT License
  *
  * Copyright 2015 mmk2410.
@@ -24,33 +25,56 @@
  * THE SOFTWARE.
  */
 
-/**
- * Description of BlogListGenerator
- *
- * @author mmk2410 <marcelmichaelkapfer@yahoo.co.nz>
- */
-class BlogListGenerator {
+ /**
+  * The blog list generator class is a collection of functions for generating blog lists
+  * or getting informations about them
+  *
+  * Since there is no initialize function, I recommend to use the short access syntay
+  *
+  * @category Blogs
+  * @package  RangitakiPHP
+  * @author   mmk2410 <marcelmichaelkapfer@yahoo.co.nz>
+  * @license  MIT License
+  * @link     http://marcel-kapfer.de/rangitaki
+  */
+class BlogListGenerator
+{
 
-    function listBlog($directory, $blogname, $blogmaintitle) {
-        $blog = file_get_contents($directory . $blogname);
-        $blog = $blog . "\n";
-        if (substr($blog, 0, 6) == "%TITLE") {
-            $blog = substr($blog, 8, strpos($blog, "\n") - 8);
-            if ($blog == "main") {
-                echo "<a class='nav-item' href='./'>$blogmaintitle</a>";
+    /**
+     * A function to generate a blog nav item
+     *
+     * @param  string $directory            The directory of the blog file
+     * @param  string $blogname             The name of the blog file
+     * @param  string $blogmaintitle        The name of the main blog
+     */
+    function listBlog($directory, $blogname, $blogmaintitle)
+    {
+        $blog = file_get_contents($directory . $blogname); // get content of the blog file
+        $blog = $blog . "\n"; // add a line break as a security measurement
+        if (substr($blog, 0, 6) == "%TITLE") { // check if the first line includes a title
+            $blog = substr($blog, 8, strpos($blog, "\n") - 8); // grab the title
+            if ($blog == "main") { // if on main blog
+                echo "<a class='nav-item' href='./'>$blogmaintitle</a>"; // create a nav item to the main blog
             } else {
-                $link = "./?blog=" . substr($blogname, 0, -3);
-                echo "<a class='nav-item' href='$link'>$blog</a>";
+                $link = "./?blog=" . substr($blogname, 0, -3); // create a link to the blog
+                echo "<a class='nav-item' href='$link'>$blog</a>"; // create a nav item to the blog
             }
         }
     }
-    
-    function getName($file){
-        $blog = file_get_contents($file);
-        $blog = $blog . "\n";
-        if(substr($blog, 0, 6) == "%TITLE"){
-            $blog = substr($blog, 8, strpos($blog, "\n") - 8);
-            return $blog;
+
+    /**
+     * A function to get the name of a blog
+     *
+     * @param  string $file The path of the blog file
+     * @return  string
+     */
+    function getName($file)
+    {
+        $blog = file_get_contents($file); // get the content of the blog file
+        $blog = $blog . "\n"; // add a line break as a securit measure
+        if(substr($blog, 0, 6) == "%TITLE") { // check if first line includes a title
+            $blog = substr($blog, 8, strpos($blog, "\n") - 8); // grab the title
+            return $blog; // return it
         }
     }
 
