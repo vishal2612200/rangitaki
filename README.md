@@ -82,12 +82,14 @@ Contribute localization files just like code. If you don't have a GitHub account
 
 ### Team
 
-If you want to join the Rangitaki "team" and are willing to invest some time into this project, then contact me over mail ([marcelmichaelkapfer@yahoo.co.nz](mailto:marcelmichaelkapfer@yahoo.co.nz)), Google+ ([+MarcelMichaelKapfer](https://plus.google.com/+MarcelMichaelKapfer) or [+Rangitaki](https://plus.google.com/b/101437210222436501912/101437210222436501912)) or Twitter ([@mmk2410](https://twitter.com/mmk2410) or [@rangitaki](https://twitter.com/rangitaki)) and we can talk about that.
+If you want to join the Rangitaki "team" and are willing to invest some time into this project, then contact me over mail ([marcelmichaelkapfer@yahoo.co.nz](mailto:marcelmichaelkapfer@yahoo.co.nz)), Google+ ([+MarcelMichaelKapfer](https://plus.google.com/+MarcelMichaelKapfer) or Twitter ([@mmk2410](https://twitter.com/mmk2410)) and we can talk about that.
 
 ## Social
 
- - [Twitter @rangitaki](https://twitter.com/rangitaki)
- - [Google+](https://plus.google.com/b/101437210222436501912/101437210222436501912/posts)
+You can follow my personal Twitter and Google+ account to receive news about the Rangitaki blogging engine.
+
+ - [Twitter @mmk2410](https://twitter.com/mmk2410)
+ - [Google+ +MarcelKapfer](https://plus.google.com/+MarcelMichaelKapfer/posts)
 
 ## Trello
 
