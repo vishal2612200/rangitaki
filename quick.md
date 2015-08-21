@@ -11,7 +11,7 @@ For more professional blogging (like online blog post upload) read the RCC docum
 ## Content
  1. Requirements
 
- 2. Download
+ 2. Installation
 
   1. Download
 
@@ -52,7 +52,7 @@ Furthermore you need a good text editor for editing the configuration files a nd
 
 You must know how to upload files and directories to your server and how to use a text editor. That's all.
 
-## 2. Download
+## 2. Installation
 
 ### 1. Download
 
