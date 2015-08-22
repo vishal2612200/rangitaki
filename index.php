@@ -36,6 +36,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     * Rangitaki PHP Blogging engine
     */
     // Getting necessary php files
+    date_default_timezone_set('UTC');
     require 'config.php'; // Config file (this must be the first line)
     require './lang/' . $language . ".php"; // Language file
     require_once 'res/php/Parsedown.php'; // The soul of the beast: Parsedown
@@ -176,9 +177,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                 $file = file_get_contents("blogs/$blog.md"); // get content of the blog file
                 $file = $file . "\n"; // add a line break. necessary if the editor didn't make one while saving
                 $file = substr($file, strpos($file, "\n")); // basically removing the first line, which contains the blog title
-                if ($file != "" && $file != "\n" && $file != " ") { // if the file is now neither empty nor only has a linebreak nor exists of an space
+                if (strlen($file) > 3) { // if there is no content, don't show the intro
                     ?>
-                    <section class="card">
+                    <section class="card" id="intro">
                         <div class="articletext">
                             <?php // generate the html text from the markdown file
                             $intro = Parsedown::instance()
