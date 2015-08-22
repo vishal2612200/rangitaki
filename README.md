@@ -31,13 +31,15 @@ My goal for Rangitaki was (and still is) to create a blogging engine without dat
  - Tags
  - Set author and date
  - Mobile-first
- - Rangitaki Control Center (RCC; optional, requires linux know-how, do not enable this unless you know what your doing)
+ - Rangitaki Control Center (RCC; optional, read the [RCC Documentation](https://marcel-kapfer.de/rangitaki/docs/rcc))
    - Online post upload
    - More will come...
 
 ## Did you say 'themes'?
 
-Yes. Rangitaki has a theme support which makes it easy to customize your blog concerning design. A documentation on how to create a theme will be available with version 1.0.
+Yes. Rangitaki has a theme support which makes it easy to customize your blog concerning design.
+
+[Read the theme guide](https://marcel-kapfer.de/rangitaki/docs/themes)
 
 ## What is that RCC?
 
