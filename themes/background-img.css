@@ -30,7 +30,7 @@ body{
     font-family: "Roboto", sans-serif;
     background: #f6f6f6;
     color: #383838;
-    background-image: url(//marcel-kapfer.de/res/img/druck.png);
+    background-image: url(//marcel-kapfer.de/res/img/intro.svg);
     background-size: cover;
     background-attachment: fixed;
     background-position: top center;
@@ -104,6 +104,10 @@ body{
     color: #383838!important;
     text-decoration: none;
     border-bottom: none!important;
+}
+
+.headline:hover {
+    color: #ff4415!important;
 }
 
 .date{

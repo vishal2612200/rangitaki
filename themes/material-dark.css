@@ -102,6 +102,10 @@ body{
     border-bottom: none!important;
 }
 
+.headline:hover {
+    color: #ff4415!important;
+}
+
 .date{
     font-size: 13px;
 }
