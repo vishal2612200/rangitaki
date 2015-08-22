@@ -3,8 +3,11 @@
 Rangitaki is a simple to use and easy to configure blogging engine, written in PHP and it has absolutely no database dependencies.
 
 [Website](https://marcel-kapfer.de/rangitaki)
+
 [About](https://marcel-kapfer.de/rangitaki/about)
+
 [Documentation](https://marcel-kapfer.de/rangitaki/docs)
+
 [Quick Starting Guide](https://marcel-kapfer.de/rangitaki/docs/quick)
 
 ## What is it?
