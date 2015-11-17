@@ -60,7 +60,7 @@ THE SOFTWARE.
                         $_SESSION['login'] = true;
                         ?>
                         <section class="card">
-                            <div class="headline">File Upload</div>
+                            <div class="headline">Post Upload</div>
                             <form enctype="multipart/form-data" action="uploaded/" method="POST">
                                 <select name="blog">
                                     <?php
@@ -78,6 +78,36 @@ THE SOFTWARE.
                                 <br>
                                 <br>
                                 <input id="button" type="submit" value="Upload" class="button"/>
+                            </form>
+                        </section>
+                        <section class="card">
+                            <div class="headline">New Post</div>
+                            <form action="newpost/" method="POST">
+                                <p>Blog:</p>
+                                <select name="blog">
+                                    <?php
+                                    $blogs = scandir("../blogs/");
+                                    foreach ($blogs as $blog) {
+                                        if (strlen($blog) >= 3 && substr($blog, -3) == ".md") {
+                                            $blog = substr($blog, 0, -3);
+                                            echo "<option value='$blog'>$blog</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
+
+                                <p>Title:<br><br><input type="text" class="itextfield" name="title"/></p>
+
+                                <p>Date:<br><br><input type="text" class="itextfield" name="date"/></p>
+
+                                <p>Author:<br><br><input type="text" class="itextfield" name="author"/></p>
+
+                                <p>Tags:<br><br><input type="text" class="itextfield" name="tags"/></p>
+
+                                <p>Text:</p>
+                                <textarea class="itextarea" name="text"></textarea>
+                                <br><br>
+                                <input id="button" type="submit" value="Post" class="button"/>
                             </form>
                         </section>
                         <?php
@@ -105,5 +135,6 @@ THE SOFTWARE.
             }
             ?>
         </div>
+        <script src="./res/rcc.js"></script>
     </body>
 </html>

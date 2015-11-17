@@ -166,6 +166,8 @@ input.button{
     border-width: 1px;
     font-size: 16px;
     line-height: 22px;
+    width: 400px;
+    max-width: 100%;
     border-bottom-color: #aaa;
     transition-property: border-bottom-color;
     transition-delay: 50ms;
@@ -182,6 +184,38 @@ input.button{
 }
 
 .itextfield:focus{
+    border-bottom-color: #ff4415;
+    border-width: 2px;
+    outline: none;
+}
+
+/*      TEXTAREA        */
+
+.itextarea {
+    border-color: transparent;
+    border-width: 1px;
+    font-size: 16px;
+    line-height: 22px;
+    height: auto;
+    resize: none;
+    min-height: 100px;
+    width: calc(100% - 10px);
+    border-bottom-color: #aaa;
+    transition-property: border-bottom-color;
+    transition-delay: 50ms;
+    transition-duration: 125ms;
+    transition-timing-function: ease;
+    -moz-transition-property: border-bottom-color;
+    -moz-transition-delay: 50ms;
+    -moz-transition-duration: 125ms;
+    -moz-transition-timing-function: ease;
+    -webkit-transition-property: border-bottom-color;
+    -webkit-transition-delay: 50ms;
+    -webkit-transition-duration: 125ms;
+    -webkit-transition-timing-function: ease;
+}
+
+.itextarea:focus {
     border-bottom-color: #ff4415;
     border-width: 2px;
     outline: none;
