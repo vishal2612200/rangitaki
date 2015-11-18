@@ -68,6 +68,10 @@ body{
     font-weight: 600;
 }
 
+.nav-item:hover{
+    background-color: #e2e2e2;
+}
+
 .nav-item:active{
     background-color: #e2e2e2;
 }
