@@ -88,7 +88,7 @@ function openNav() { // fade navigation drawer in
 }
 
 function closeNav() { // fade navigation drawer out
-    $('.nav').animate({"left": "-300px"}, 125); // slide out
+    $('.nav').animate({"left": "-301px"}, 125); // slide out
     $('.overlay').animate(
         {"opacity": "0.0"}, 125, function () { // fade the overlay to complete transparency
             $('.overlay').hide(); // hide it then
