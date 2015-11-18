@@ -52,6 +52,21 @@ var main = function () { // main function; called below
         }
     );
 
+    /**
+     * Keyhandling for the navigation drawer.
+     * opens the drawer on 'm' (key code: 77)
+     * closes the drawer on 'Esc' (key code: 27)
+     */
+    $(document).keyup(function (e) {
+      if (navOpen && (e.which === 27)) {
+        closeNav();
+        navOpen = false;
+      } else if (!(navOpen) && (e.which === 77)) {
+        openNav();
+        navOpen = true;
+      }
+    });
+
 
 };
 
