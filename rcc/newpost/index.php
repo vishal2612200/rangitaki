@@ -61,6 +61,7 @@ EOD;
             } else {
                 echo "Some error happend, while publishing.";
             }
+            ?><a href="../" class="button">GO BACK</a><?php
         }
         ?>
     </section>

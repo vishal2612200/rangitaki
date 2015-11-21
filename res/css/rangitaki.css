@@ -97,7 +97,6 @@ body{
     height: 100%;
     top: 0;
     left: -301px;
-    padding-top: 64px;
     z-index: 40;
 }
 
@@ -111,6 +110,15 @@ body{
     line-height: 48px;
     padding-left: 16px;
     transition: background-color 125ms ease-in-out 0ms;
+}
+
+.nav-close {
+    cursor: pointer;
+}
+
+.nav-close-img{ /* the hamburger icon */
+    height: 35px;
+    padding: 12px;
 }
 
 .nav-item{ /* additional setting for clickable nav items */
@@ -229,6 +237,15 @@ body{
 
     .nav{ /* always show navigation bar */
         left: 0;
+        padding-top: 64px;
+    }
+
+    .nav-close-img {
+        display: none;
+    }
+
+    .nav-close {
+        display: none;
     }
 
     .nav-img{ /* always hide navigation bar icon*/

@@ -133,4 +133,20 @@ class ArticleGenerator
         return $tags; // remove that array
     }
 
+    /**
+     * A function to get an article title as a string
+     *
+     * @param  string $directory   The directory where the article files are stored
+     * @param  string $articlefile The name of the article file
+     * @return string
+     */
+    function getTitle($directory, $articlefile)
+    {
+        $article = file_get_contents($directory . $articlefile); // get the article
+        if (substr($article, 0, 6) == "%TITLE") { // detect and remove the title
+            $title = substr($article, 8, strpos($article, "\n") - 8); // get this title
+            return $title; // remove that array
+        }
+    }
+
 }

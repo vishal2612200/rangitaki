@@ -40,7 +40,7 @@ var main = function () { // main function; called below
     );
 
     var navOpen = false; // nav hidden at begin
-    $('.nav-img, .overlay').click( // action on hamburger click
+    $('.nav-img, .overlay, .nav-close').click( // action on hamburger click
         function () {
             if (!(navOpen)) { // if nav is hidden
                 openNav(); // open the nav drawer

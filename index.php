@@ -33,18 +33,48 @@ $getblog = filter_input(INPUT_GET, "blog"); // getting the blog variable
 $getarticle = filter_input(INPUT_GET, "article"); // getting the article variable
 $gettag = filter_input(INPUT_GET, "tag"); // getting the tag variable
 $url = "http://" . filter_input(INPUT_SERVER, "HTTP_HOST") . filter_input(INPUT_SERVER, "REQUEST_URI"); // getting the url (used for sharing)
+
+// Fetching necessary information about the current article
+// Set blog to "main" if on main blog, else to $getblog. This variable is needed later
+if ($getblog == "") {
+    $blog = "main";
+} else {
+    $blog = $getblog;
+}
+$articlesdir = "./articles/$blog/"; // generate a variable with the articles directory
+// Fetching the articles title
+if (isset($getarticle)) {
+    $articletitle = ArticleGenerator::getTitle($articlesdir, $getarticle . '.md');
+}
+// Make sure that the entry has a title, because main.md hasn't one
+if (empty($blogmainname)) {
+    $blogmaintitle = $blogtitle;
+} else {
+    $blogmaintitle = $blogmainname;
+}
+if (isset($getblog)) {
+    $subblogtitle = BlogListGenerator::getName('./blogs/' . $getblog . '.md');
+} else {
+    $subblogtitle = $blogmaintitle;
+}
+// Generate title for the html head
+if (isset($getarticle)) {
+    $hd_subblog_title =  $articletitle . ' - ' . $subblogtitle;
+} else {
+    $hd_subblog_title = $subblogtitle;
+}
 ?>
 
 <head>
     <meta charset="utf-8">
-    <title><?php echo $blogtitle; // Setting the blog article?></title>
+    <title><?php echo $hd_subblog_title; ?></title>
     <!--Metatags-->
     <meta name="author" content="<?php echo $blogauthor; // Setting the blog author ?>"/>
     <meta name="description" content="<?php echo $blogdescription; // the blog description ?>"/>
     <!-- Meta tag for responsive ui-->
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <!-- OpenGraph meta tags -->
-    <meta property="og:title" content="<?php echo $blogtitle; ?>"/>
+    <meta property="og:title" content="<?php echo $hd_subblog_title; ?>"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="<?php echo $url; ?>"/>
     <meta property="og:image" content="<?php echo $favicon; ?>"/>
@@ -53,7 +83,7 @@ $url = "http://" . filter_input(INPUT_SERVER, "HTTP_HOST") . filter_input(INPUT_
     <!-- Twitter meta tags -->
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:site" content="<?php echo $twitter; ?>"/>
-    <meta name="twitter:title" content="<?php echo $blogtitle; ?>"/>
+    <meta name="twitter:title" content="<?php echo $hd_subblog_title; ?>"/>
     <meta name="twitter:description" content="<?php echo $blogdescription; ?>"/>
     <meta name="twitter:image" content="<?php echo $favicon; ?>"/>
     <meta name="twitter:url" content="<?php echo $url; ?>"/>
@@ -86,27 +116,24 @@ if ($nav_drawer == "yes") {
     ?>
     <div class="overlay"></div> <!-- Darken the background when fading the drawer in. See also the JS file-->
     <div class="nav">
+        <div class="nav-close">
+            <img src="./res/img/close-dark.svg" class="nav-close-img" alt="Close"/>
+        </div>
         <div class="divider"></div>
         <?php
         $blogs = scandir("./blogs/"); // Getting everything from the blog directory
         if (!isset($getarticle) && !isset($gettag) && sizeof($blogs) > 3) { // Checking if not in article or tag view and if there are more the one blog. The 3 is for these three array entries: 'main.md', '.', '..'
             echo "<section>";
             echo "<div class='nav-item-static'>" . $BLOGLANG['Blogs on'] . " $blogtitle:</div>"; // 1. Set localized string 2. Set blogtitle
-            foreach ($blogs as $blog) { // iterating through the blogs/ directory
-                if (strlen($blog) >= 3 && substr($blog, -3) == ".md") { // check if filename is larger than three chars and if the file ends with ".md"
+            foreach ($blogs as $navblog) { // iterating through the blogs/ directory
+                if (strlen($navblog) >= 3 && substr($navblog, -3) == ".md") { // check if filename is larger than three chars and if the file ends with ".md"
                     if ($getblog == "") { // Run when on main blog
-                        if ($blog != "main.md") { // excluding main blog
-                            BlogListGenerator::listBlog("./blogs/", $blog, $blogtitle); // creating navigation item
+                        if ($navblog != "main.md") { // excluding main blog
+                            BlogListGenerator::listBlog("./blogs/", $navblog, $blogtitle); // creating navigation item
                         }
                     } else {
-                        if ($getblog . ".md" != $blog) { // Check if $blog is current blog -> this blog will be excluded
-                            // Make sure that the entry has a title, because main.md hasn't one
-                            if (empty($blogmainname)) {
-                                $blogmaintitle = $blogtitle;
-                            } else {
-                                $blogmaintitle = $blogmainname;
-                            }
-                            BlogListGenerator::listBlog("./blogs/", $blog, $blogmaintitle); // creating navigation item
+                        if ($getblog . ".md" != $navblog) { // Check if $blog is current blog -> this blog will be excluded
+                            BlogListGenerator::listBlog("./blogs/", $navblog, $blogmaintitle); // creating navigation item
                         }
                     }
                 }
@@ -128,12 +155,6 @@ if ($nav_drawer == "yes") {
     <?php
 } // Endif from line 97; Yes, I really should think about alternative syntax...
 
-// Set blog to "main" if on main blog, else to $getblog. This variable is needed later
-if ($getblog == "") {
-    $blog = "main";
-} else {
-    $blog = $getblog;
-}
 ?>
 <div class="main"> <!-- Main page with content -->
     <div class="header">
@@ -181,7 +202,6 @@ if ($getblog == "") {
             <?php
         }
     }
-    $articlesdir = "./articles/$blog/"; // generate a variable with the articles directory
     // TAG VIEW
     if (isset($gettag)) { // if there's a tag -> tag view
         $articles = scandir($articlesdir, 1); // save the content of the directory in the articles variable
@@ -216,8 +236,7 @@ if ($getblog == "") {
         ?>
         <div class="fabmenu">
             <div class="subfab"><!--Email subfab-->
-                <a href='mailto:?subject=
-                        <?php echo $blogtitle; ?>&body=<?php echo $BLOGLANG['Check out this blog']; ?>: <?php echo $url; ?>'
+                <a href='mailto:?subject=<?php echo $blogtitle; ?>&body=<?php echo $BLOGLANG['Check out this blog']; ?>: <?php echo $url; ?>'
                    target="blank">
                     <img src="./res/img/email.svg" class="subfab-img"/>
                 </a>

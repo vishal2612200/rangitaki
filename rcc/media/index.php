@@ -26,7 +26,7 @@ THE SOFTWARE.
     <head>
         <meta charset="UTF-8">
         <title>Rangitaki Control Center</title>
-        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
         <link rel="stylesheet" href="../res/rcc.css" />
     </head>
     <body>
@@ -42,8 +42,7 @@ THE SOFTWARE.
                     if ($_FILES['userfile']['name'] == "") {
                         echo "<p>You have to choose a file!</p>";
                     } else {
-                        $blog = filter_input(INPUT_POST, "blog");
-                        $uploaddir = "../..//articles/$blog/";
+                        $uploaddir = "../../media/";
                         $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 
                         if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {

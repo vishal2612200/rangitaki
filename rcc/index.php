@@ -110,6 +110,16 @@ THE SOFTWARE.
                                 <input id="button" type="submit" value="Post" class="button"/>
                             </form>
                         </section>
+                        <section class="card">
+                            <div class="headline">Media Upload</div>
+                            <form enctype="multipart/form-data" action="media/" method="POST">
+                                <input type="hidden" name="MAX_FILE_SIZE" value="100000000000" />
+                                <input id="" name="userfile" type="file" value="Choose a file" />
+                                <br>
+                                <br>
+                                <input id="button" type="submit" value="Upload" class="button"/>
+                            </form>
+                        </section>
                         <?php
                     } else {
                         ?>
