@@ -5,7 +5,14 @@ echo "WARNING: You're about to install a testing version of Rangitaki."
 read -r -p "Do you want to continue? (y/N) " answer
 if [[ "$answer" == "y" || "$answer" == "Y"  ]]; then
     # Getting the up to date version
-    git clone https://github.com/mmk2410/rangitaki/ ./rbe-new
+    mkdir ./rbe-new
+    cd ./rbe-new || exit
+    wget -c https://github.com/mmk2410/Rangitaki/archive/v1.1.0.zip
+    unzip v1.1.0.zip
+    rm v1.1.0.zip
+    mv ./Rangitaki-1.1.0/* ./
+    rm ./Rangitaki-1.1.0
+    cd ../ || exit
     # Creating temporary directory
     mkdir rbe-tmp
     # Updating rcc
