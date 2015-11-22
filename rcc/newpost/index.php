@@ -39,7 +39,7 @@ THE SOFTWARE.
         <?php
         session_start();
         if ($_SESSION['login']) {
-            $title = $_POST["blog"];
+            $title = $_POST["title"];
             $date = $_POST["date"];
             $author = $_POST["author"];
             $tags = $_POST["tags"];
