@@ -1,3 +1,6 @@
+<?php
+date_default_timezone_set('UTC');
+?>
 <!DOCTYPE html>
 <!--
 The MIT License
@@ -53,7 +56,7 @@ THE SOFTWARE.
 
 $text
 EOD;
-            $filename = date("Y-m-d") . ".md";
+            $filename = date("Y-m-d-H-i-s") . ".md";
             $handle = fopen("../../articles/$blog/$filename", "c");
             fwrite($handle, $md);
             if (fclose($handle)) {
