@@ -89,6 +89,7 @@ if (isset($getarticle)) {
     <meta name="twitter:url" content="<?php echo $url; ?>"/>
     <!--CSS files-->
     <link rel="stylesheet" type="text/css" href="res/css/rangitaki.css"/>
+    <link rel="stylesheet" href="./res/css/github-gist.css"> <!-- stylesheet for code highlighting-->
     <link rel="stylesheet" type="text/css" href="themes/<?php echo $theme; // getting the theme stylesheet?>.css"/>
     <?php
     // Checking if the drawer is enabled
@@ -100,7 +101,6 @@ if (isset($getarticle)) {
     ?>
     <link href='//fonts.googleapis.com/css?family=Roboto:400,500,700,300,400italic,100,100italic,900' rel='stylesheet'
           type='text/css'> <!--Font-->
-    <link rel="stylesheet" href="./res/css/github-gist.css"> <!-- stylesheet for code highlighting-->
     <!--Favicons-->
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo $favicon; ?>"/>
     <link rel="apple-touch-icon-precomposed" href="<?php echo $favicon; ?>">
