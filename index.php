@@ -268,6 +268,15 @@ if ($nav_drawer == "yes") {
 </div>
 <script src="./res/js/jquery-2.1.4.min.js"></script> <!-- include jquery-->
 <script src="./res/js/app.js"></script> <!--include main javascript-->
+<!-- JS extension support -->
+<?php
+$extensions = scandir('./extensions');
+foreach ($extensions as $extension) {
+    if (substr($extension, -3) == ".js") {
+        echo "<script src='./extensions/$extension'></script>";
+    }
+}
+?>
 <?php
 require './res/php/GoogleAnalytics.php'; // include google analytics
 ?>
