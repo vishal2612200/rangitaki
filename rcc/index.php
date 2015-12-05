@@ -32,6 +32,7 @@ THE SOFTWARE.
     <body>
         <div class="header">
             <a href="./" class="title">Rangitaki Control Center</a>
+            <a href="../" class="back">Back to the blog</a>
         </div>
         <div class="main">
             <?php
@@ -144,6 +145,13 @@ THE SOFTWARE.
                 <?php
             }
             ?>
+            <section class="card" id="back-card">
+                <div class="headline">Back</div>
+                <p>
+                    Go back to your blog.
+                </p>
+                <a href="../" class="button">GO BACK</a>
+            </section>
         </div>
         <script src="./res/rcc.js"></script>
     </body>
