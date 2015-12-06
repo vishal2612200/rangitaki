@@ -97,6 +97,15 @@ body{
     border-bottom: none!important;
 }
 
+.subheadline {
+    font-size: 20px;
+    color: #383838 !important;
+    text-decoration: none;
+    display: block;
+    padding-bottom: 6px;
+    border-bottom: none !important;
+}
+
 .card > p{
     font-size: 14px;
     line-height: 24px;

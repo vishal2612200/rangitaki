@@ -112,7 +112,7 @@ class ArticleGenerator
      * @param  string $articlefile The name of the article file
      * @return array
      */
-    function getTags($directory, $articlefile)
+    static function getTags($directory, $articlefile)
     {
         $article = file_get_contents($directory . $articlefile); // get the article
         if (substr($article, 0, 6) == "%TITLE") { // detect and remove the title
@@ -140,13 +140,89 @@ class ArticleGenerator
      * @param  string $articlefile The name of the article file
      * @return string
      */
-    function getTitle($directory, $articlefile)
+    static function getTitle($directory, $articlefile)
     {
         $article = file_get_contents($directory . $articlefile); // get the article
         if (substr($article, 0, 6) == "%TITLE") { // detect and remove the title
             $title = substr($article, 8, strpos($article, "\n") - 8); // get this title
             return $title; // remove that array
         }
+    }
+
+    /**
+     * A function to get the date of an article
+     *
+     * @param $directory    The directory where the article is stored
+     * @param $articlefile  The name of the article file
+     * @return string
+     */
+    static function getDate($directory, $articlefile)
+    {
+        $article = file_get_contents($directory . $articlefile);
+
+        if (substr($article, 0, 6) == "%TITLE") { // detect and remove the title
+            $article = substr($article, strpos($article, "\n") + 1);
+        }
+
+        if (substr($article, 0, 5) == "%DATE") { // detect and remove the title
+            $date = substr($article, 7, strpos($article, "\n") - 7);
+            return $date;
+        }
+    }
+
+    /**
+     * A function to get the author of an article
+     *
+     * @param $directory    The directory where the article is stored
+     * @param $articlefile  The name of the article file
+     * @return string
+     */
+    static function getAuthor($directory, $articlefile)
+    {
+        $article = file_get_contents($directory . $articlefile);
+
+        if (substr($article, 0, 6) == "%TITLE") { // detect and remove the title
+            $article = substr($article, strpos($article, "\n") + 1);
+        }
+
+        if (substr($article, 0, 5) == "%DATE") { // detect and remove the title
+            $article = substr($article, strpos($article, "\n") + 1);
+        }
+
+        if (substr($article, 0, 7) == "%AUTHOR") { // detect and remove the title
+            $author = substr($article, 9, strpos($article, "\n") - 9);
+            return $author;
+        }
+    }
+
+    /**
+     * A function to get the text of an article
+     *
+     * @param $directory    The directory where the article is stored
+     * @param $articlefile  The name of the article file
+     * @return string
+     */
+    static function getText($directory, $articlefile)
+    {
+        $article = file_get_contents($directory . $articlefile);
+
+        if (substr($article, 0, 6) == "%TITLE") { // detect and remove the title
+            $article = substr($article, strpos($article, "\n") + 1);
+        }
+
+        if (substr($article, 0, 5) == "%DATE") { // detect and remove the title
+            $article = substr($article, strpos($article, "\n") + 1);
+        }
+
+        if (substr($article, 0, 7) == "%AUTHOR") { // detect and remove the title
+            $article = substr($article, strpos($article, "\n") + 1);
+        }
+
+        if (substr($article, 0, 5) == "%TAGS") { // detect the tags
+            $article = substr($article, strpos($article, "\n") + 1); // remove the tags
+        }
+
+        return $article;
     }
 
 }
