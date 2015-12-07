@@ -10,8 +10,8 @@ if [[ "$answer" == "y" || "$answer" == "Y"  ]]; then
     wget -c https://github.com/mmk2410/Rangitaki/archive/v1.1.0.zip
     unzip v1.1.0.zip
     rm v1.1.0.zip
-    mv ./Rangitaki-1.1.0/* ./
-    rm ./Rangitaki-1.1.0
+    mv ./rangitaki-1.1.0/* ./
+    rm ./rangitaki-1.1.0
     cd ../ || exit
     # Creating temporary directory
     mkdir rbe-tmp
