@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!--
-    Rangitaki
+    Rangitaki Blogging Engine
     GitHub: https://github.com/mmk2410/Rangitaki
     Web: https://marcel-kapfer.de/rangitaki
     Twitter: @Rangitaki
@@ -14,12 +14,15 @@ MIT License
 <html>
 <?php
 /**
+ * PHP Version 5.6
+ *
  * Rangitaki PHP Blogging engine
+ *
  * @category Blogging
- * @package Rbe
- * @author Marcel Kapfer (mmk2410) <marcelmichaelkapfer@yahoo.co.nz>
- * @license MIT https://opensource.org/licenses/MIT
- * @link https://marcel-kapfer.de/rangitaki
+ * @package  Rbe
+ * @author   Marcel Kapfer (mmk2410) <marcelmichaelkapfer@yahoo.co.nz>
+ * @license  MIT https://opensource.org/licenses/MIT
+ * @link     https://marcel-kapfer.de/rangitaki
  */
 // Getting necessary php files
 date_default_timezone_set('UTC');
@@ -29,22 +32,35 @@ require_once 'res/php/Parsedown.php'; // The soul of the beast: Parsedown
 require_once 'res/php/ArticleGenerator.php'; // The article generator
 require_once './res/php/BlogListGenerator.php'; // and the blog list generator
 // Getting some variables ($_GET and $_SERVER)
-$getblog = filter_input(INPUT_GET, "blog"); // getting the blog variable
-$getarticle = filter_input(INPUT_GET, "article"); // getting the article variable
+$getblog = filter_input(INPUT_GET, "blog"); // get the blog variable
+$getarticle = filter_input(INPUT_GET, "article"); // get the article variable
 $gettag = filter_input(INPUT_GET, "tag"); // getting the tag variable
-$url = "http://" . filter_input(INPUT_SERVER, "HTTP_HOST") . filter_input(INPUT_SERVER, "REQUEST_URI"); // getting the url (used for sharing)
+$url = "http://" . filter_input(INPUT_SERVER, "HTTP_HOST") .
+    filter_input(INPUT_SERVER, "REQUEST_URI"); // get the url (used for sharing)
+$pagenumber = filer_input(INPUT_GET, "page"); // get the pagenumber
+
+// Pagination algorithm
+if ($pagination == 0) {
+    $pagination = false;
+} else {
+    $pagination = $pagination * ( $pagenumber + 1 );
+}
 
 // Fetching necessary information about the current article
-// Set blog to "main" if on main blog, else to $getblog. This variable is needed later
+// Set blog to "main" if on main blog, else to $getblog.
+// This variable is needed later
 if ($getblog == "") {
     $blog = "main";
 } else {
     $blog = $getblog;
 }
-$articlesdir = "./articles/$blog/"; // generate a variable with the articles directory
+
+// generate a variable with the articles directory
+$articlesdir = "./articles/$blog/";
 // Fetching the articles title
 if (isset($getarticle)) {
-    $articletitle = ArticleGenerator::getTitle($articlesdir, $getarticle . '.md');
+    $articletitle
+        = ArticleGenerator::getTitle($articlesdir, $getarticle . '.md');
 }
 // Make sure that the entry has a title, because main.md hasn't one
 if (empty($blogmainname)) {
@@ -69,10 +85,14 @@ if (isset($getarticle)) {
     <meta charset="utf-8">
     <title><?php echo $hd_subblog_title; ?></title>
     <!--Metatags-->
-    <meta name="author" content="<?php echo $blogauthor; // Setting the blog author ?>"/>
-    <meta name="description" content="<?php echo $blogdescription; // the blog description ?>"/>
+    <meta name="author"
+        content="<?php echo $blogauthor; // Set the blog author ?>"/>
+    <meta name="description"
+        content="<?php echo $blogdescription; // the blog description ?>"/>
     <!-- Meta tag for responsive ui-->
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name='viewport'
+        content='width=device-width, initial-scale=1.0,
+            maximum-scale=1.0, user-scalable=0'/>
     <!-- OpenGraph meta tags -->
     <meta property="og:title" content="<?php echo $hd_subblog_title; ?>"/>
     <meta property="og:type" content="website"/>
@@ -89,8 +109,10 @@ if (isset($getarticle)) {
     <meta name="twitter:url" content="<?php echo $url; ?>"/>
     <!--CSS files-->
     <link rel="stylesheet" type="text/css" href="res/css/rangitaki.css"/>
-    <link rel="stylesheet" href="./res/css/github-gist.css"> <!-- stylesheet for code highlighting-->
-    <link rel="stylesheet" type="text/css" href="themes/<?php echo $theme; // getting the theme stylesheet?>.css"/>
+    <!-- stylesheet for code highlighting-->
+    <link rel="stylesheet" href="./res/css/github-gist.css">
+    <link rel="stylesheet" type="text/css"
+        href="themes/<?php echo $theme; // getting the theme stylesheet?>.css"/>
     <?php
     // Checking if the drawer is enabled
     if ($nav_drawer == 'no') {
@@ -99,7 +121,8 @@ if (isset($getarticle)) {
         <?php
     }
     ?>
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,500,700,300,400italic,100,100italic,900' rel='stylesheet'
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,500,700,300,
+        400italic,100,100italic,900' rel='stylesheet'
           type='text/css'> <!--Font-->
     <!--Favicons-->
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo $favicon; ?>"/>
@@ -114,40 +137,65 @@ if (isset($getarticle)) {
 // Checking if the navigation drawer is enabled. If not -> skip it
 if ($nav_drawer == "yes") {
     ?>
-    <div class="overlay"></div> <!-- Darken the background when fading the drawer in. See also the JS file-->
+    <!--
+    Darken the background when fading the drawer in. See also the JS file
+    -->
+    <div class="overlay"></div>
     <div class="nav">
         <div class="nav-close">
-            <img src="./res/img/close-dark.svg" class="nav-close-img" alt="Close"/>
+            <img src="./res/img/close-dark.svg" class="nav-close-img"
+                alt="Close"/>
         </div>
         <div class="divider"></div>
         <?php
-        $blogs = scandir("./blogs/"); // Getting everything from the blog directory
-        if (!isset($getarticle) && !isset($gettag) && sizeof($blogs) > 3) { // Checking if not in article or tag view and if there are more the one blog. The 3 is for these three array entries: 'main.md', '.', '..'
+        // Getting everything from the blog directory
+        $blogs = scandir("./blogs/");
+        // Checking if not in article or tag view and if there are more the one
+        // blog. The 3 is for these three array entries: 'main.md', '.', '..'
+        if (!isset($getarticle) && !isset($gettag) && sizeof($blogs) > 3) {
             echo "<section>";
-            echo "<div class='nav-item-static'>" . $BLOGLANG['Blogs on'] . " $blogtitle:</div>"; // 1. Set localized string 2. Set blogtitle
-            foreach ($blogs as $navblog) { // iterating through the blogs/ directory
-                if (strlen($navblog) >= 3 && substr($navblog, -3) == ".md") { // check if filename is larger than three chars and if the file ends with ".md"
+            // 1. Set localized string 2. Set blogtitle
+            echo "<div class='nav-item-static'>" .
+                $BLOGLANG['Blogs on'] .
+                " $blogtitle:</div>";
+            // iterating through the blogs/ directory
+            foreach ($blogs as $navblog) {
+                // check if filename is larger than three chars and if the
+                // file ends with ".md"
+                if (strlen($navblog) >= 3 && substr($navblog, -3) == ".md") {
                     if ($getblog == "") { // Run when on main blog
                         if ($navblog != "main.md") { // excluding main blog
-                            BlogListGenerator::listBlog("./blogs/", $navblog, $blogtitle); // creating navigation item
+                            // creating navigation item
+                            BlogListGenerator::listBlog(
+                                "./blogs/", $navblog, $blogtitle
+                            );
                         }
                     } else {
-                        if ($getblog . ".md" != $navblog) { // Check if $blog is current blog -> this blog will be excluded
-                            BlogListGenerator::listBlog("./blogs/", $navblog, $blogmaintitle); // creating navigation item
+                        // Check if $blog is current blog
+                        // -> this blog will be excluded
+                        if ($getblog . ".md" != $navblog) {
+                            // creating navigation item
+                            BlogListGenerator::listBlog(
+                                "./blogs/", $navblog, $blogmaintitle
+                            );
                         }
                     }
                 }
             }
             echo "</section>";
-        } elseif (isset($getarticle) || isset($gettag)) { // If viewing a blog or a tag
+        } elseif (isset($getarticle) || isset($gettag)) {
+            // If viewing a blog or a tag
             ?>
-            <a class="nav-item" onclick="goBack()">Go back</a> <!-- Set a back item instead of the blogs. -->
+            <!-- Set a back item instead of the blogs. -->
+            <a class="nav-item" onclick="goBack()">Go back</a>
             <?php
         }
         if ($bloghome == "yes") { // If a blog home is existend
             ?>
             <div class="divider"></div>
-            <a class="nav-item" href="<?php echo $bloghomeurl; ?>"><?php echo $bloghomename; ?></a>
+            <a class="nav-item" href="<?php echo $bloghomeurl; ?>">
+                <?php echo $bloghomename; ?>
+            </a>
             <?php
         }
         ?>
@@ -158,35 +206,56 @@ if ($nav_drawer == "yes") {
 ?>
 <div class="main"> <!-- Main page with content -->
     <div class="header">
-        <!-- Action Bar, but since there isn't much action I call it header. One day a search feature would be nice...-->
-        <img src="./res/img/menu.svg" class="nav-img"/> <!-- Ham,ham,hamburger-->
+        <!--
+        Action Bar, but since there isn't much action I call it header.
+        One day a search feature would be nice...
+        -->
+        <!-- Ham,ham,hamburger-->
+        <img src="./res/img/menu.svg" class="nav-img"/>
         <!-- Blog title with subblog title and links to each one-->
-        <nobr><span class="title"><a href="./"><?php echo $blogtitle; ?><!-- link to main blog-->
+        <!-- link to main blog-->
+        <nobr><span class="title"><a href="./"><?php echo $blogtitle; ?>
                     <?php
                     if (empty($getblog)) { // if not on a subblog
                         if (!empty($blogmainname)) {
-                            echo "›" . $blogmainname; // If you see a › (square) here : This is not a bug, but a missing sign in your font
+                            // If you see a › (square) here : This is not a bug,
+                            // but a missing sign in your font
+                            echo "›" . $blogmainname;
                         }
                     } else { // On subblog: set also a link to the subblog
                     ?>
                 </a>
                             › <a href="<?php echo "./?blog=$getblog" ?>">
                     <?php
-                    echo BlogListGenerator::getName("./blogs/$getblog.md"); // get the blog name
+                        // get the blog name
+                        echo BlogListGenerator::getName("./blogs/$getblog.md");
                     }
                     ?>
                 </a>
                     </span>
         </nobr>
         <div class="fadeout"></div>
-        <!-- if the blog name is to long (especially on mobile devices), a fadeout fades the test out at the end of the header-->
+        <!--
+        if the blog name is to long (especially on mobile devices), a fadeout
+        fades the text out at the end of the header
+        -->
     </div>
     <?php
     // Blog Intro text
-    if (file_exists("blogs/$blog.md") && $getarticle == "" && $blogintro == "yes" && $gettag == "") { // only shown if not in article or tag view and if the blogintro is enabled
-        $file = file_get_contents("blogs/$blog.md"); // get content of the blog file
-        $file = $file . "\n"; // add a line break. necessary if the editor didn't make one while saving
-        $file = substr($file, strpos($file, "\n")); // basically removing the first line, which contains the blog title
+    if (file_exists("blogs/$blog.md")
+        && $getarticle == ""
+        && $blogintro == "yes"
+        && $gettag == ""
+    ) {
+        // only shown if not in article or tag view
+        // and if the blogintro is enabled
+        // get content of the blog file
+        $file = file_get_contents("blogs/$blog.md");
+        // add a line break. necessary if the editor didn't make
+        // one while saving
+        $file = $file . "\n";
+        // basically removing the first line, which contains the blog title
+        $file = substr($file, strpos($file, "\n"));
         if (strlen($file) > 3) { // if there is no content, don't show the intro
             ?>
             <section class="card" id="intro">
@@ -204,24 +273,40 @@ if ($nav_drawer == "yes") {
     }
     // TAG VIEW
     if (isset($gettag)) { // if there's a tag -> tag view
-        $articles = scandir($articlesdir, 1); // save the content of the directory in the articles variable
-        foreach ($articles as $article) { // iterate through all articles
-            $tags = ArticleGenerator::getTags($articlesdir, $article); // get the article tags
-            if (in_array($gettag, $tags)) { // if the article has the requested tag
-                if (strlen($article) >= 3 && substr($article, -3) == ".md") { // check if the file is a article file
-                    ArticleGenerator::newArticle($articlesdir, $article, $getblog); // generate the article
+        // save the content of the directory in the articles variable
+        $articles = scandir($articlesdir, 1);
+        // iterate through all articles
+        foreach ($articles as $article) {
+            // get the article tags
+            $tags = ArticleGenerator::getTags($articlesdir, $article);
+            // if the article has the requested tag
+            if (in_array($gettag, $tags)) {
+                // check if the file is a article file
+                if (strlen($article) >= 3 && substr($article, -3) == ".md") {
+                    // generate the article
+                    ArticleGenerator::newArticle(
+                        $articlesdir, $article, $getblog
+                    );
                 }
             }
         }
-    } elseif ($getarticle == "") { // NORMAL VIEW if there's no article request -> normal view
-        $articles = scandir($articlesdir, 1); // save the content of the directory in the articles variable
-        foreach ($articles as $article) { // iterate through this variable
-            if (strlen($article) >= 3 && substr($article, -3) == ".md") { // check if the file is a article file
-                ArticleGenerator::newArticle($articlesdir, $article, $getblog); // generate the article
+    } elseif ($getarticle == "") {
+        // NORMAL VIEW if there's no article request -> normal view
+        // save the content of the directory in the articles variable
+        $articles = scandir($articlesdir, 1);
+        // iterate through this variable
+        foreach ($articles as $article) {
+            // check if the file is a article file
+            if (strlen($article) >= 3 && substr($article, -3) == ".md") {
+                // generate the article
+                ArticleGenerator::newArticle($articlesdir, $article, $getblog);
             }
         }
     } elseif (isset($getarticle)) { // ARTICLE VIEW
-        ArticleGenerator::newArticle($articlesdir, $getarticle . ".md", $getblog); // generate the requested article
+        // generate the requested article
+        ArticleGenerator::newArticle(
+            $articlesdir, $getarticle . ".md", $getblog
+        );
         include './res/php/Disqus.php'; // include disques
     } else { // SOMETHING STRANGE: THIS SHOULDN'T HAPPEN
         echo "Some error occured, please go back.";
@@ -236,25 +321,38 @@ if ($nav_drawer == "yes") {
         ?>
         <div class="fabmenu">
             <div class="subfab"><!--Email subfab-->
-                <a href='mailto:?subject=<?php echo $blogtitle; ?>&body=<?php echo $BLOGLANG['Check out this blog']; ?>: <?php echo $url; ?>'
-                   target="blank">
+                <a href='mailto:?subject=<?php
+                    echo $blogtitle;
+                ?>&body=<?php
+                    echo $BLOGLANG['Check out this blog'];
+                ?>: <?php
+                    echo $url;
+                ?>' target="blank">
                     <img src="./res/img/email.svg" class="subfab-img"/>
                 </a>
             </div>
             <div class="subfab"><!--twitter subfav-->
-                <a href='https://twitter.com/intent/tweet?text=<?php echo $BLOGLANG['Check out']; ?>: <?php echo $url; ?>&original_referer='
-                   target="blank">
+                <a href='https://twitter.com/intent/tweet?text=<?php
+                    echo $BLOGLANG['Check out'];
+                ?>: <?php
+                    echo $url;
+                ?>&original_referer=' target="blank">
                     <img src="./res/img/twitter.svg" class="subfab-img"/>
                 </a>
             </div>
             <div class="subfab"><!--gplus subfab-->
-                <a href='https://plus.google.com/share?url=<?php echo $url; ?>&hl=en-US' target="blank">
+                <a href='https://plus.google.com/share?url=<?php
+                    echo $url;
+                ?>&hl=en-US' target="blank">
                     <img src="./res/img/gplus.svg" class="subfab-img"/>
                 </a>
             </div>
             <div class="subfab"><!--facebook subfab-->
-                <a href='https://www.facebook.com/sharer/sharer.php?u=<?php echo $url; ?>&t=<?php echo "echo $blogtitle" ?>'
-                   target="blank">
+                <a href='https://www.facebook.com/sharer/sharer.php?u=<?php
+                    echo $url;
+                ?>&t=<?php
+                    echo "echo $blogtitle"
+                ?>' target="blank">
                     <img src="./res/img/facebook.svg" class="subfab-img"/>
                 </a>
             </div>
