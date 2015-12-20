@@ -11,7 +11,7 @@ if [[ "$answer" == "y" || "$answer" == "Y"  ]]; then
     unzip v1.1.1.zip
     rm v1.1.1.zip
     mv ./rangitaki-1.1.1/* ./
-    rm ./rangitaki-1.1.1
+    rm -rf ./rangitaki-1.1.1
     cd ../ || exit
     # Creating temporary directory
     mkdir rbe-tmp
@@ -19,7 +19,6 @@ if [[ "$answer" == "y" || "$answer" == "Y"  ]]; then
     cp ./rcc/password.php ./rbe-tmp/
     rm -rf ./rcc
     mv ./rbe-new/rcc ./
-    rm ./rcc/password.php
     mv ./rbe-tmp/password.php ./rcc/
     # Updating ressources
     rm -rf ./res
