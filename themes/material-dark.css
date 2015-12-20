@@ -133,6 +133,47 @@ body{
     box-shadow: 0px 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
 }
 
+.button{
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: 0px 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
+    -moz-box-shadow: 0px 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
+    -webkit-box-shadow: 0px 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
+    border-radius: 2px;
+    letter-spacing: 0.4px;
+    font-weight: 700;
+    font-size: 14px;
+    transition-property: box-shadow;
+    transition-delay: 50ms;
+    transition-duration: 125ms;
+    transition-timing-function: ease;
+    -moz-transition-property: box-shadow;
+    -moz-transition-delay: 50ms;
+    -moz-transition-duration: 125ms;
+    -moz-transition-timing-function: ease;
+    -webkit-transition-property: box-shadow;
+    -webkit-transition-delay: 50ms;
+    -webkit-transition-duration: 125ms;
+    -webkit-transition-timing-function: ease;
+}
+
+.button:hover, .button:hover {
+    box-shadow: 0.5px 1.8px 2.1px 1.4px rgba(32, 32, 32, 0.85);
+    -moz-box-shadow: 0.5px 1.8px 2.1px 1.4px rgba(32, 32, 32, 0.85);
+    -webkit-box-shadow: 0.5px 1.8px 2.1px 1.4px rgba(32, 32, 32, 0.85);
+}
+
+.pag_next{
+    background-color: #ff4415;
+    border-color: #ff4415;
+}
+
+.pag_prev{
+    background-color: #424242;
+    border-color: #424242;
+    color: #CCCCCC;
+}
+
 .footer{
     font-size: 12px;
     text-align: center;

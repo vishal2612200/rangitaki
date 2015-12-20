@@ -37,13 +37,20 @@ $getarticle = filter_input(INPUT_GET, "article"); // get the article variable
 $gettag = filter_input(INPUT_GET, "tag"); // getting the tag variable
 $url = "http://" . filter_input(INPUT_SERVER, "HTTP_HOST") .
     filter_input(INPUT_SERVER, "REQUEST_URI"); // get the url (used for sharing)
-$pagenumber = filer_input(INPUT_GET, "page"); // get the pagenumber
+$pagenumber = filter_input(INPUT_GET, "page"); // get the pagenumber
 
 // Pagination algorithm
 if ($pagination == 0) {
     $pagination = false;
 } else {
-    $pagination = $pagination * ( $pagenumber + 1 );
+    // pag_max: the newest post to show on a page
+    $pag_max = $pagination * ( $pagenumber + 1 );
+    // pag_min: the oldest post to show on a page
+    $pag_min = $pag_max - $pagination;
+    if ($pagenumber > 0) {
+        // Disable the blog intro if not on first page
+        $blogintro = "no";
+    }
 }
 
 // Fetching necessary information about the current article
@@ -125,7 +132,8 @@ if (isset($getarticle)) {
         400italic,100,100italic,900' rel='stylesheet'
           type='text/css'> <!--Font-->
     <!--Favicons-->
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $favicon; ?>"/>
+    <link rel="shortcut icon" type="image/x-icon"
+        href="<?php echo $favicon; ?>"/>
     <link rel="apple-touch-icon-precomposed" href="<?php echo $favicon; ?>">
     <!-- JavaScript Pt. 1: HightlightJS (get and load): Code highlighting-->
     <script src="./res/js/highlight.pack.js"></script>
@@ -295,12 +303,27 @@ if ($nav_drawer == "yes") {
         // save the content of the directory in the articles variable
         $articles = scandir($articlesdir, 1);
         // iterate through this variable
+        $posts_amount = 0;
         foreach ($articles as $article) {
             // check if the file is a article file
             if (strlen($article) >= 3 && substr($article, -3) == ".md") {
                 // generate the article
-                ArticleGenerator::newArticle($articlesdir, $article, $getblog);
+                if ($pagination) {
+                    if ($posts_amount < $pag_max && $posts_amount >= $pag_min) {
+                        ArticleGenerator::newArticle(
+                            $articlesdir, $article, $getblog
+                        );
+                    }
+                } else {
+                    ArticleGenerator::newArticle(
+                        $articlesdir, $article, $getblog
+                    );
+                }
             }
+            $posts_amount++;
+        }
+        if ($pagination) {
+            include './res/php/Pagination.php';
         }
     } elseif (isset($getarticle)) { // ARTICLE VIEW
         // generate the requested article

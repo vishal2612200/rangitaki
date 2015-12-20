@@ -71,14 +71,14 @@ $rcc = 'yes';
 $nav_drawer = 'yes';
 
 // Set here the name of your theme. Read the documentation for more themes
-$theme = 'material-light';
+$theme = 'background-img';
 
 // Set here your language. The file must exist in the lang directory
 $language = "en";
 
 // pagination: how many articles should be on one page
 // set to 0 to disable it
-$pagination = 0;
+$pagination = 2;
 
 // Favicon - Set here the path to your favicon
 $favicon = "http://example.com/res/img/favicon.png";

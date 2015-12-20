@@ -218,6 +218,34 @@ body{
     padding: 12px;
 }
 
+/* BUTTON */
+
+.pag_buttons {
+    margin-right: auto;
+    margin-left: auto;
+    width: calc(75% + 48px);
+    margin-bottom: 80px;
+    max-width: 1160px;
+    text-align: right;
+}
+
+.button {
+    text-decoration: none;
+    color: #fff;
+    line-height: 36px;
+    min-width: 64px;
+    text-align: center;
+    height: 36px;
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.pag_next{
+    margin-left: 8px;
+}
+
 /*      FOOTER          */
 
 .footer{ /* possibility for styling the footer */
@@ -268,6 +296,10 @@ body{
 
     .card{ /* wider cards */
         width: 82%;
+    }
+
+    .pag_buttons {
+        width: calc(82% + 48px);
     }
 
 }
