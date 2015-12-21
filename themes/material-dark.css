@@ -134,6 +134,7 @@ body{
 }
 
 .button{
+    text-transform: uppercase;
     border-width: 1px;
     border-style: solid;
     box-shadow: 0px 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);

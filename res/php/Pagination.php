@@ -11,6 +11,8 @@
  * @link     http://marcel-kapfer.de/rangitaki
  */
 require_once "BlogListGenerator.php";
+require_once "config.php";
+require_once "lang/" . $language . ".php";
 
 if ($pagination) {
 ?>
@@ -21,13 +23,13 @@ if ($pagination) {
 ?>
     <a href="<?php
             echo "?blog=" . $getblog . "&page=" . ($pagenumber - 1);
-?>" class="pag_prev button">PREVIOUS PAGE</a>
+            ?>" class="pag_prev button"><?php echo $BLOGLANG["Previous Page"]; ?></a>
 <?php
         } else {
 ?>
     <a href="<?php
             echo "?page=" . ($pagenumber - 1);
-?>" class="pag_prev button">PREVIOUS PAGE</a>
+            ?>" class="pag_prev button"><?php echo $BLOGLANG['Previous Page']; ?></a>
 <?php
         }
     }
@@ -41,13 +43,13 @@ if ($pagination) {
 ?>
     <a href="<?php
             echo "?blog=" . $getblog . "&page=" . ($pagenumber + 1);
-?>" class="pag_next button">NEXT PAGE</a>
+            ?>" class="pag_next button"><?php echo $BLOGLANG["Next Page"]; ?></a>
 <?php
         } else {
 ?>
     <a href="<?php
             echo "?page=" . ($pagenumber + 1);
-?>" class="pag_next button">NEXT PAGE</a>
+            ?>" class="pag_next button"><?php echo $BLOGLANG["Next Page"];?></a>
 <?php
         }
     }
