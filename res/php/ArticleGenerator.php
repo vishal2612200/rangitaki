@@ -93,12 +93,14 @@ class ArticleGenerator
             echo "<span class='author'>$author</span>"; // print the author
         }
 
-        foreach ($tags as $tag) {
-            $blogurl = filter_input(INPUT_GET, "blog");
-            if ($blogurl == "") { // on main blog. no ?blog=
-                echo "<a class='tag' href='./?tag=$tag'>$tag</a> ";
-            } else { // not on main blog
-                echo "<a class='tag' href='./?blog=$blog&tag=$tag'>$tag</a> ";
+        if (isset($tags)) {
+            foreach ($tags as $tag) {
+                $blogurl = filter_input(INPUT_GET, "blog");
+                if ($blogurl == "") { // on main blog. no ?blog=
+                    echo "<a class='tag' href='./?tag=$tag'>$tag</a> ";
+                } else { // not on main blog
+                    echo "<a class='tag' href='./?blog=$blog&tag=$tag'>$tag</a> ";
+                }
             }
         }
 
