@@ -29,7 +29,7 @@ if [[ "$answer" == "y" || "$answer" == "Y"  ]]; then
     echo "Update config file..."
     echo "// pagination: how many articles should be on one page" >> ./config.php
     echo "// set to 0 to disable it" >> ./config.php
-    echo "$pagination = 0;" >> ./config.php
+    echo "\$pagination = 0;" >> ./config.php
     echo "Cleaning up..."
     rm -rf ./rbe-new
     echo "Done!"
