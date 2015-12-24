@@ -33,6 +33,8 @@ My goal for Rangitaki was (and still is) to create a blogging engine without dat
  - Tags
  - Set author and date
  - Mobile-first
+ - JavaScript Extension Support
+ - Pagination support
  - Rangitaki Control Center (RCC; optional, read the [RCC Documentation](https://marcel-kapfer.de/rangitaki/docs/rcc))
    - Online post upload
    - More will come...
@@ -47,7 +49,11 @@ Yes. Rangitaki has a theme support which makes it easy to customize your blog co
 
 **This is disabled by default. Do not enable it without carefully reading the RCC documentation.**
 
-The RCC (Rangitaki Control Center) is still in development and features right now only a post upload. If you wanna use it you have to change file permissions manually on your server and also add some values to different text files.
+It has the following features:
+ - Post upload
+ - Post deleting
+ - Post editing
+ - Media upload
 
 [Read the RCC documentation](https://marcel-kapfer.de/rangitaki/docs/rcc)
 
