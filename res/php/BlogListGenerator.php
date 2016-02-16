@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP Version 5.6
+ * PHP Version 7
  *
  * Rangitaki Project
  *

@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP Version 5
+ * PHP Version 7
  *
  * PHP script for creating the next / prev page links
  *
