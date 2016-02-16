@@ -9,7 +9,7 @@ conf="./config.php"
 echo "Downloading version $version from GitHub..."
 mkdir $new
 cd $new || exit
-wget -c https://github.com/mmk2410/Rangitaki/archive/"$version".zip
+wget -c https://github.com/mmk2410/Rangitaki/archive/v"$version".zip
 
 echo "Extracting"
 unzip v"$version".zip
