@@ -29,7 +29,7 @@ My goal for Rangitaki was (and still is) to create a blogging engine without dat
  - Google Analytics (optional)
  - Twitter and OpenGraph meta tags
  - Different themes
- - Easy localization (just 3 (!) strings)
+ - Easy localization (just a few strings)
  - Custom footer
  - Navigation drawer (can be disabled)
  - Tags
@@ -37,9 +37,9 @@ My goal for Rangitaki was (and still is) to create a blogging engine without dat
  - Mobile-first
  - JavaScript Extension Support
  - Pagination support
+ - Atom feed generation
  - Rangitaki Control Center (RCC; optional, read the [RCC Documentation](https://marcel-kapfer.de/rangitaki/docs/rcc))
-   - Online post upload
-   - More will come...
+   - Have a look under 'What is that RCC?' in this readme
 
 ## Did you say 'themes'?
 
@@ -56,6 +56,7 @@ It has the following features:
  - Post deleting
  - Post editing
  - Media upload
+ - Atom feed generation
 
 [Read the RCC documentation](https://marcel-kapfer.de/rangitaki/docs/rcc)
 
@@ -68,9 +69,10 @@ It has the following features:
 
 Would you like to see your Rangitaki blog here? Write me a message at [marcelmichaelkapfer@yahoo.co.nz](mailto:marcelmichaelkapfer@yahoo.co.nz)
 
-## Used Library
+## Used Libraries
 
- - For converting the Markdown blog articles into HTML code I use  [Parsedown](http://parsedown.org)
+ - For converting the Markdown blog articles into HTML code Rangitaki uses  [Parsedown](http://parsedown.org).
+ - For creating the atom feeds Rangitaki uses [picoFeed](https://github.com/fguillot/picoFeed)
 
 ## Contributing
 
@@ -88,7 +90,3 @@ You can follow my personal Twitter and Google+ account to receive news about the
 
  - [Twitter @mmk2410](https://twitter.com/mmk2410)
  - [Google+ +MarcelKapfer](https://plus.google.com/+MarcelMichaelKapfer/posts)
-
-## Trello
-
- - [Trello Board](https://trello.com/b/7qb5I6EQ/rangitaki)
