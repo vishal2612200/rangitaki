@@ -1,5 +1,15 @@
 <?php
-/*
+/**
+ * PHP Version 7
+ *
+ * Since there is no initialize function, I recommend to use the short access syntay
+ *
+ * @category Articles
+ * @package  RangitakiPHP
+ * @author   mmk2410 <marcelmichaelkapfer@yahoo.co.nz>
+ * @license  MIT License
+ * @link     http://marcel-kapfer.de/rangitaki
+ *
  * Rangitaki Project
  *
  * The MIT License
@@ -26,7 +36,8 @@
  */
 
 /**
- * The article generator class is a collection of functions for generating the article of markdown
+ * The article generator class is a collection of functions for generating the
+ * article of markdown
  *
  * Since there is no initialize function, I recommend to use the short access syntay
  *
@@ -42,9 +53,11 @@ class ArticleGenerator
     /**
      * A function to create one new article
      *
-     * @param  string $directory   The directory where the article files are stored
-     * @param  string $articlefile The name of the article file
-     * @param  string $blog        The name of the current blog
+     * @param string $directory   The directory where the article files are stored
+     * @param string $articlefile The name of the article file
+     * @param string $blog        The name of the current blog
+     *
+     * @return Null
      */
     function newArticle($directory, $articlefile, $blog)
     {
@@ -169,6 +182,31 @@ class ArticleGenerator
         if (substr($article, 0, 5) == "%DATE") { // detect and remove the title
             $date = substr($article, 7, strpos($article, "\n") - 7);
             return $date;
+        }
+    }
+
+
+    /**
+     * A function to get a short summary of a text
+     *
+     * @param $directory    The directory where the article is stored
+     * @param $articlefile  The name of the article file
+     *
+     * @return string
+     */
+    static function getSummary($directory, $articlefile)
+    {
+        $text = getText($directory, $articlefile);
+
+        $pos = stripos($text, ".");
+
+        if ($pos) {
+            $offset = $pos + 1;
+            $pos = stripos($text, ".", $offset);
+            $summary = substr($text, 0, $pos) . ".";
+            return $summary;
+        } else {
+            return $text;
         }
     }
 

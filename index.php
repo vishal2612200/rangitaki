@@ -26,11 +26,13 @@ MIT License
  */
 // Getting necessary php files
 date_default_timezone_set('UTC');
+require __DIR__ . '/vendor/autoload.php'; // loading composer libs
+
 require 'config.php'; // Config file (this must be the first line)
 require './lang/' . $language . ".php"; // Language file
-require_once 'res/php/Parsedown.php'; // The soul of the beast: Parsedown
 require_once 'res/php/ArticleGenerator.php'; // The article generator
 require_once './res/php/BlogListGenerator.php'; // and the blog list generator
+
 // Getting some variables ($_GET and $_SERVER)
 $getblog = filter_input(INPUT_GET, "blog"); // get the blog variable
 $getarticle = filter_input(INPUT_GET, "article"); // get the article variable
@@ -86,11 +88,15 @@ if (isset($getarticle)) {
 } else {
     $hd_subblog_title = $subblogtitle;
 }
+
+// url of the feed
+$feedurl = $blogurl . "/feed/" . $blog . ".atom";
+
 ?>
 
 <head>
     <meta charset="utf-8">
-    <title><?php echo $hd_subblog_title; ?></title>
+    <title><?php echo $blogtitle . " » " .$hd_subblog_title; ?></title>
     <!--Metatags-->
     <meta name="author"
         content="<?php echo $blogauthor; // Set the blog author ?>"/>
@@ -114,6 +120,17 @@ if (isset($getarticle)) {
     <meta name="twitter:description" content="<?php echo $blogdescription; ?>"/>
     <meta name="twitter:image" content="<?php echo $favicon; ?>"/>
     <meta name="twitter:url" content="<?php echo $url; ?>"/>
+    <!-- atom feed -->
+    <?php
+    if (file_exists("feed/" . $blog . ".atom")) {
+    ?>
+    <link rel='alternate' type='application/atom+xml' title='Atom 0.3' href=
+    '<?php
+        echo $feedurl;
+    ?>'>
+    <?php
+    }
+    ?>
     <!--CSS files-->
     <link rel="stylesheet" type="text/css" href="res/css/rangitaki.css"/>
     <!-- stylesheet for code highlighting-->
@@ -205,6 +222,13 @@ if ($nav_drawer == "yes") {
                 <?php echo $bloghomename; ?>
             </a>
             <?php
+        }
+        if (file_exists("feed/" . $blog . ".atom")) { ?>
+            <div class="divider"></div>
+            <a class="nav-item" href=
+            '<?php
+                echo $feedurl;
+        ?>'>Feed</a><?php
         }
         ?>
     </div> <!-- End of the navigation drawer-->

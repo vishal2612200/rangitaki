@@ -1,30 +1,14 @@
 <!DOCTYPE html>
-<!--
-The MIT License
-
-Copyright 2015 mmk2410.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
--->
 <html>
 <head>
     <meta charset="UTF-8">
+    <!--
+        Rangitaki Blogging Engine - RCC (Rangitaki Control Center)
+
+        Copyright (c) 2016 by Marcel Kapfer (mmk2410)
+
+        MIT License
+    -->
     <title>Rangitaki Control Center</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <link rel="stylesheet" href="./res/rcc.css"/>
@@ -164,6 +148,23 @@ THE SOFTWARE.
                         <input id="button" type="submit" value="Upload" class="button"/>
                     </form>
                 </section>
+                <section class="card">
+                    <div class="headline">Atom Feed Generator</div>
+                    <p>
+                        <select name="blog" id="generate_atom_blog">
+                            <?php
+                            $blogs = scandir("../blogs/");
+                            foreach ($blogs as $blog) {
+                                if (strlen($blog) >= 3 && substr($blog, -3) == ".md") {
+                                    $blog = substr($blog, 0, -3);
+                                    echo "<option value='$blog'>$blog</option>";
+                                }
+                            }
+                            ?>
+                        </select>
+                    </p>
+                    <a class="button" id="generate_atom">GENERATE</a>
+                </section>
                 <?php
             } else {
                 ?>
@@ -182,8 +183,8 @@ THE SOFTWARE.
         <section class="card">
             <div class="headline">Rangitaki Control Center</div>
             <p>
-                The Rangitaki Control Center is disabled. You can enable it in your config file. But please read first
-                the documentation.
+            The Rangitaki Control Center is disabled. You can enable it in 
+            your config file. But please read first the documentation.
             </p>
         </section>
         <?php
@@ -201,5 +202,6 @@ THE SOFTWARE.
 <script src="../res/js/jquery-2.1.4.min.js"></script>
 <script src="./res/delete.js"></script>
 <script src="./res/edit.js"></script>
+<script src="./res/atom.js"></script>
 </body>
 </html>

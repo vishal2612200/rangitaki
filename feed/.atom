@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <generator uri="https://github.com/fguillot/picoFeed">PicoFeed</generator>
+  <title>Example Blog</title>
+  <id>https://marcel-kapfer.de/rangitaki/blog/</id>
+  <updated>2016-02-16T10:52:47+00:00</updated>
+  <link rel="alternate" type="text/html" href="https://marcel-kapfer.de/rangitaki/blog/"/>
+  <link rel="self" type="application/atom+xml" href="https://marcel-kapfer.de/rangitaki/blog//feed/feed.atom"/>
+  <author>
+    <name>John</name>
+    <email></email>
+    <uri>https://marcel-kapfer.de/rangitaki/blog/</uri>
+  </author>
+</feed>

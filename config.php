@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP Version 5.6
+ * PHP Version 7
  *
  * Rangitaki Project
  * This is the configuration file. You can configure here all necessary
@@ -82,3 +82,6 @@ $pagination = 0;
 
 // Favicon - Set here the path to your favicon
 $favicon = "http://example.com/res/img/favicon.png";
+
+// Blog url - set here the blog url
+$blogurl = "https://example.com/blog/";
