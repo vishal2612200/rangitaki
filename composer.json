@@ -1,0 +1,17 @@
+{
+    "name": "mmk2410/rangitaki",
+    "description": "A simple PHP blogging engine without any database requirements",
+    "type": "project",
+    "require": {
+        "erusev/parsedown": "^1.6",
+        "fguillot/picofeed": "^0.1.18"
+    },
+    "license": "MIT License",
+    "authors": [
+        {
+            "name": "mmk2410",
+            "email": "marcelmichaelkapfer@yahoo.co.nz"
+        }
+    ],
+    "minimum-stability": "stable"
+}
