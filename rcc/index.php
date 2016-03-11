@@ -258,9 +258,16 @@ if ($rcc == "yes") {
         <section class="card">
             <div class="headline">Wrong Password</div>
             <p>
-                Please go back and try again.
+                The entered password was wrong, please try again.
             </p>
-            <a href="./" class="button">GO BACK</a>
+            <form action="./" method="post">
+                <p>Password:
+                    <br><br>
+                    <input type="password" class="itextfield" name="passwd"/>
+                </p>
+
+                <input type="Submit" class="button" value="Log in"/>
+            </form>
         </section>
 
 <?php
