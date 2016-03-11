@@ -3,10 +3,12 @@
  * PHP Version 7
  *
  * @category Atom_Feed
- * @package  Rbe
+ * @package  Rcc
  * @author   Marcel Kapfer (mmk2410) <marcelmichaelkapfer@yahoo.co.nz>
  * @license  MIT License
  * @link     https://github.com/mmk2410/rangitaki
+ *
+ * Feed Generator
  *
  * The MIT License
  *
@@ -88,11 +90,14 @@ if ($_SESSION['login']) {
     $feed = $writer->execute();
 
     $file = fopen($feed_path, "w");
+
     if (fwrite($file, $feed) === false) {
         echo "-1";
         exit;
     }
+
     fclose($file);
+
     echo "0";
 }
 ?>
