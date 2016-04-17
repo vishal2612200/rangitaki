@@ -1,0 +1,3 @@
+rcc: # settings concerning the rangitaki control center
+    rcc: on # enable rangitaki control center (enable: 'on')
+    api: on # enable rangitaki api (enable: 'on')
