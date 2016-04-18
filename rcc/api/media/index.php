@@ -10,6 +10,8 @@ require '../../../vendor/autoload.php';
 require '../../../res/php/Config.php';
 require '../../../res/php/ArticleGenerator.php';
 
+include '../auth/auth.php';
+
 use \mmk2410\rbe\config\Config as Config;
 
 $config = new Config("../../../config.yaml", '../../../vendor/autoload.php');

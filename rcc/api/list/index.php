@@ -9,6 +9,8 @@ use \Psr\Http\Message\ResponseInterface as Response;
 require '../../../vendor/autoload.php';
 require '../../../res/php/Config.php';
 
+include '../auth/auth.php';
+
 use \mmk2410\rbe\config\Config as Config;
 
 $config = new Config("../../../config.yaml", '../../../vendor/autoload.php');
