@@ -30,7 +30,7 @@ if ($settings["rcc"]["api"] == "on" && $settings["rcc"]["rcc"] == "on") {
         $blog = $_GET["blog"];
         $post = $_GET["post"];
 
-        if (!$blog || !$post) {
+        if (!isset($blog) || !isset($post)) {
             $data = array('code' => 400, 'status' => 'Bad Request', 'error' => 'Not enough arguments');
             $response = $response->withHeader('Content-type', 'application/json');
             $response = $response->withJson($data, 400);
@@ -61,7 +61,7 @@ if ($settings["rcc"]["api"] == "on" && $settings["rcc"]["rcc"] == "on") {
         $tags = $_POST["tags"];
         $text = $_POST["text"];
 
-        if (!$blog || !$post || (!$title && !$text)) {
+        if (!isset($blog) || !isset($post) || (!isset($title) && !isset($text))) {
             $data = array('code' => 400, 'status' => 'Bad Request', 'error' => 'Not enough arguments');
             $response = $response->withHeader('Content-type', 'application/json');
             $response = $response->withJson($data, 400);
@@ -105,7 +105,7 @@ EOD;
         $blog = $_GET["blog"];
         $post = $_GET["post"];
 
-        if (!$blog || !$post) {
+        if (!isset($blog) || !isset($post)) {
             $data = array('code' => 400, 'status' => 'Bad Request', 'error' => 'Not enough arguments');
             $response = $response->withHeader('Content-type', 'application/json');
             $response = $response->withJson($data, 400);

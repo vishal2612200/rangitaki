@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'ZendXml\\' => array($vendorDir . '/zendframework/zendxml/library'),
+    'Pimple' => array($vendorDir . '/pimple/pimple/src'),
     'PicoFeed' => array($vendorDir . '/fguillot/picofeed/lib'),
     'Parsedown' => array($vendorDir . '/erusev/parsedown'),
 );
