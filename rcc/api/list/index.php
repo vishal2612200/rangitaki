@@ -18,7 +18,8 @@ if ($settings["rcc"]["api"] == "on" && $settings["rcc"]["rcc"] == "on") {
     $app = new \Slim\App();
 
     /**
-    * api for fetching a blog post
+    * api for get the list of blogs and if $_GET["blog"] is set the list of
+    * blogs posts in that blog
     *
     * @param string $_GET["blog"] optional name of the blog
     *
