@@ -54,4 +54,21 @@ class Config
         $yaml = new \Symfony\Component\Yaml\Parser();
         return $yaml->parse(file_get_contents($this->file));
     }
+
+    /*
+     * Write array into confi*
+     * Write array into config file
+     *
+     * @param array config  new config
+     *
+     * @return FALSE if failed to write
+     */
+    public function writeConfig($config)
+    {
+        $dumper = new \Symfony\Component\Yaml\Dumper();
+
+        $yaml = $dumper->dump($config, 2);
+
+        return file_put_contents($this->file, $yaml);
+    }
 }
