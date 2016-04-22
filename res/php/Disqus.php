@@ -27,7 +27,7 @@ THE SOFTWARE.
         <div id="disqus_thread"></div>
         <script type="text/javascript">
             /* * * CONFIGURATION VARIABLES * * */
-            var disqus_shortname = '<?php echo $blogdisqus; ?>';
+            var disqus_shortname = '<?php echo $config['blog']['disqus']; ?>';
 
             /* * * DON'T EDIT BELOW THIS LINE * * */
             (function () {

@@ -64,17 +64,21 @@
 
     <div class="main">
 <?php
-require '../config.php';
+require '../res/php/Config.php';
+use mmk2410\rbe\config\Config as Config;
 
-if ($rcc == "yes") {
+$configParser = new Config('../config.yaml', '../vendor/autoload.php');
 
+$config = $configParser->getConfig();
+
+if ($config["rcc"]["rcc"] == "on") {
     include 'password.php';
     session_start();
 
     if (isset($_POST['passwd'])) {
         $passwd = $_POST['passwd'];
         $_SESSION['passwd'] = $_POST['passwd'];
-    } else if (isset($_SESSION['passwd'])) {
+    } elseif (isset($_SESSION['passwd'])) {
         $passwd = $_SESSION['passwd'];
     }
 
