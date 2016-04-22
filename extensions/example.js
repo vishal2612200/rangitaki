@@ -5,7 +5,7 @@
  */
 
 function main() {
-    console.log("Welcome Developer! \nYou're seeing the output of a javascript extension for the rangitaki blogging engine.")
+    console.log("Welcome Developer! \nYou're seeing the output of a javascript extension for the rangitaki blogging engine.");
 }
 
 $(document).ready(main());

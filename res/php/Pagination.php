@@ -11,26 +11,33 @@
  * @link     http://marcel-kapfer.de/rangitaki
  */
 require_once "BlogListGenerator.php";
-require_once "config.php";
-require_once "lang/" . $language . ".php";
 
-if ($pagination) {
+require '../res/php/Config.php';
+use mmk2410\rbe\config\Config as Config;
+
+$configParser = new Config('../config.yaml', '../vendor/autoload.php');
+
+$config = $configParser->getConfig();
+
+require_once "lang/" . $config["language"] . ".php";
+
+if ($blog["design"]["pagination"]) {
 ?>
     <div class="pag_buttons">
-<?php
+    <?php
     if ($pag_min > 0) {
         if (isset($getblog)) {
-?>
+    ?>
     <a href="<?php
             echo "?blog=" . $getblog . "&page=" . ($pagenumber - 1);
             ?>" class="pag_prev button"><?php echo $BLOGLANG["Previous Page"]; ?></a>
-<?php
+        <?php
         } else {
-?>
+        ?>
     <a href="<?php
             echo "?page=" . ($pagenumber - 1);
             ?>" class="pag_prev button"><?php echo $BLOGLANG['Previous Page']; ?></a>
-<?php
+    <?php
         }
     }
     if (isset($getblog)) {
@@ -40,20 +47,20 @@ if ($pagination) {
     }
     if ($pag_max < BlogListGenerator::getArticleAmount($pag_blog)) {
         if (isset($getblog)) {
-?>
+    ?>
     <a href="<?php
             echo "?blog=" . $getblog . "&page=" . ($pagenumber + 1);
             ?>" class="pag_next button"><?php echo $BLOGLANG["Next Page"]; ?></a>
-<?php
+    <?php
         } else {
-?>
+    ?>
     <a href="<?php
             echo "?page=" . ($pagenumber + 1);
             ?>" class="pag_next button"><?php echo $BLOGLANG["Next Page"];?></a>
-<?php
+    <?php
         }
     }
-?>
+    ?>
 </div>
 <?php
 }

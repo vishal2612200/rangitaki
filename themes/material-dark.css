@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
-/* 
+/*
     Created on : Jun 18, 2015, 6:39:37 PM
     Author     : mmk2410
 */
@@ -35,7 +35,7 @@ body{
 .header{
     background-color: #212121;
     position: fixed;
-    box-shadow: 2px 0px 2px 2px rgba(32, 32, 32, 0.85);
+    box-shadow: 2px 0 2px 2px rgba(32, 32, 32, 0.85);
 }
 
 .title{
@@ -79,7 +79,7 @@ body{
 .card{
     background: #424242;
     border-radius: 2px;
-    box-shadow: 0px 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
+    box-shadow: 0 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
 }
 
 
@@ -125,21 +125,21 @@ body{
 
 .fab{
     background-color: #ff4415;
-    box-shadow: 0px 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
+    box-shadow: 0 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
 }
 
 .subfab{
     background-color: #424242;
-    box-shadow: 0px 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
+    box-shadow: 0 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
 }
 
 .button{
     text-transform: uppercase;
     border-width: 1px;
     border-style: solid;
-    box-shadow: 0px 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
-    -moz-box-shadow: 0px 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
-    -webkit-box-shadow: 0px 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
+    -webkit-box-shadow: 0 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
+    -moz-box-shadow: 0 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
+    box-shadow: 0 1px 1.5px 1.5px rgba(42, 42, 42, 0.65);
     border-radius: 2px;
     letter-spacing: 0.4px;
     font-weight: 700;
@@ -148,6 +148,10 @@ body{
     transition-delay: 50ms;
     transition-duration: 125ms;
     transition-timing-function: ease;
+    -o-transition-property: box-shadow;
+    -o-transition-delay: 50ms;
+    -o-transition-duration: 125ms;
+    -o-transition-timing-function: ease;
     -moz-transition-property: box-shadow;
     -moz-transition-delay: 50ms;
     -moz-transition-duration: 125ms;
@@ -159,9 +163,9 @@ body{
 }
 
 .button:hover, .button:hover {
-    box-shadow: 0.5px 1.8px 2.1px 1.4px rgba(32, 32, 32, 0.85);
-    -moz-box-shadow: 0.5px 1.8px 2.1px 1.4px rgba(32, 32, 32, 0.85);
     -webkit-box-shadow: 0.5px 1.8px 2.1px 1.4px rgba(32, 32, 32, 0.85);
+    -moz-box-shadow: 0.5px 1.8px 2.1px 1.4px rgba(32, 32, 32, 0.85);
+    box-shadow: 0.5px 1.8px 2.1px 1.4px rgba(32, 32, 32, 0.85);
 }
 
 .pag_next{

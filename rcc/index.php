@@ -100,7 +100,6 @@ if ($config["rcc"]["rcc"] == "on") {
 
     <?php
     } else {
-
         if ($passwd == $password) {
             $_SESSION['login'] = true;
             include_once "./../res/php/BlogListGenerator.php";
