@@ -1,3 +1,23 @@
+blog:
+    title: 'Example Blog'
+    author: John
+    description: 'A short description of your blog'
+    home: 'on'
+    homeurl: ../
+    homename: Home
+    mainname: ''
+    intro: 'on'
+    disqus: rangitaki
+    analytics: ''
+    footer: "Rangitaki 2016 <a href=\"https://github.com/mmk2410/Rangitaki\" target=\"blank\">\n    github.com/mmk2410/Rangitaki</a>"
+    url: 'https://example.com/blog/'
+design:
+    fab: 'on'
+    drawer: 'on'
+    theme: material-light
+    pagination: 0
+    favicon: 'http://example.com/res/img/favicon.png'
 rcc:
-    rcc: 'off'
+    rcc: 'on'
     api: 'on'
+language: en
