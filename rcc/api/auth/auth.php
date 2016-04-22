@@ -25,7 +25,6 @@ if (empty($_SERVER['PHP_AUTH_DIGEST'])) {
 // analyze the PHP_AUTH_DIGEST variable
 if (!($data = DigestAuth::httpDigestParse($_SERVER['PHP_AUTH_DIGEST'])) ||
     !isset($users[$data['username']])) {
-    var_dump($_SERVER["PHP_AUTH_DIGEST"]);
     die('Wrong Credentials!');
 }
 
@@ -36,6 +35,5 @@ $A2 = md5($_SERVER['REQUEST_METHOD'].':'.$data['uri']);
 $valid_response = md5($A1.':'.$data['nonce'].':'.$data['nc'].':'.$data['cnonce'].':'.$data['qop'].':'.$A2);
 
 if ($data['response'] != $valid_response) {
-    var_dump($_SERVER["PHP_AUTH_PW"]);
     die('Wrong Credentials!');
 }
