@@ -16,22 +16,21 @@ if ($username == "") {
 }
 
 echo 'Password: ';
-$password = exec('read -s PW; echo $PW');
+$password = readline("Password: ");
 
 if ($password == "") {
     echo "No password given. Aborting...\n";
     exit();
 }
 
-$hash = password_hash($password, PASSWORD_BCRYPT);
-
 $username = '$username = "' . $username . '";';
-$hash = '$hash = "' . $hash . '";';
+$password = '$password = "' . $password . '";';
 
-$file = '<?php' . "\n" . $username . "\n" . $hash . "\n";
+$file = '<?php' . "\n" . $username . "\n" . $password . "\n";
 
 if (file_put_contents('./rcc/password.php', $file)) {
-    echo "\nPassword hash successfully saved.\n";
+    chmod('./rcc/password.php', 0640);
+    echo "\nPassword successfully saved.\n";
 }
 
 $config = new Config('config.yaml', 'vendor/autoload.php');
