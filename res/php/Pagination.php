@@ -12,12 +12,11 @@
  */
 require_once "BlogListGenerator.php";
 
-require '../res/php/Config.php';
-use mmk2410\rbe\config\Config as Config;
+require_once './res/php/Config.php';
 
-$configParser = new Config('../config.yaml', '../vendor/autoload.php');
+$configParser = new mmk2410\rbe\config\Config('./config.yaml', './vendor/autoload.php');
 
-$config = $configParser->getConfig();
+$conf = $configParser->getConfig();
 
 require_once "lang/" . $config["language"] . ".php";
 
