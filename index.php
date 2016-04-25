@@ -294,11 +294,11 @@ if ($config["design"]["drawer"] == "on") {
             ?>
             <section class="card" id="intro">
                 <div class="articletext">
-                    <?php // generate the html text from the markdown file
-                    $intro = Parsedown::instance()
-                        ->setBreaksEnabled(true)// with linebreaks
-                        ->text($file);
-                    echo $intro; // PRINTS THE SH****
+            <?php // generate the html text from the markdown file
+            $intro = Parsedown::instance()
+                ->setBreaksEnabled(true)// with linebreaks
+                ->text($file);
+            echo $intro; // PRINTS THE SH****
                     ?>
                 </div>
             </section>

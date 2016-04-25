@@ -68,6 +68,8 @@ var main = function () { // main function; called below
     });
 
 
+    $('.articletext a').attr('target', '_blank');
+
 };
 
 $(document).ready(main); // run if document is loaded
