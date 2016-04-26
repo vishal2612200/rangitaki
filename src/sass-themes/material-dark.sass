@@ -1,0 +1,161 @@
+/*
+ * Rangitaki Project
+ *
+ * The MIT License
+ *
+ * Copyright 2015 mmk2410.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ */
+
+body
+  font-family: "Roboto", sans-serif
+  background: #303030
+  color: #fff
+
+.header
+  background-color: #212121
+  position: fixed
+  box-shadow: 2px 0 2px 2px rgba(32, 32, 32, 0.85)
+
+.title
+  color: #fff
+  position: absolute
+  > a
+    color: #fff
+
+.fadeout
+  background: -moz-linear-gradient(left, rgba(30, 87, 153, 0) 0%, #212121 100%)
+  /* FF3.6+
+  background: -webkit-linear-gradient(left, rgba(30, 87, 153, 0) 0%, #212121 100%)
+  /* Chrome10+,Safari5.1+
+  background: -o-linear-gradient(left, rgba(30, 87, 153, 0) 0%, #212121 100%)
+  /* Opera 11.10+
+  background: -ms-linear-gradient(left, rgba(30, 87, 153, 0) 0%, #212121 100%)
+  /* IE10+
+  background: linear-gradient(to right, rgba(30, 87, 153, 0) 0%, #212121 100%)
+  /* W3C
+
+.nav
+  background-color: #424242
+  border-right: 1px solid #1f1f1f
+
+.nav-item, .nav-item-static
+  color: #fff
+
+.nav-item
+  font-weight: 600
+  &:active
+    background-color: #383838
+
+.divider
+  border-bottom: 1px solid #1f1f1f
+
+.card
+  background: #424242
+  border-radius: 2px
+  box-shadow: 0 1px 1.5px 1.5px rgba(42, 42, 42, 0.65)
+  a
+    color: #ff4415
+    text-decoration: none
+    border-bottom: 1px solid transparent
+    border-bottom-color: transparent
+    transition: border-bottom-color 150ms ease-in-out 100ms
+    &:hover
+      border-bottom-color: #ff4415
+
+.headline
+  font-size: 24px
+  color: #fff !important
+  text-decoration: none
+  border-bottom: none !important
+  &:hover
+    color: #ff4415 !important
+
+.date
+  font-size: 13px
+
+.articletext
+  font-size: 14px
+  line-height: 24px
+
+.author, .tag
+  font-size: 13px
+
+.fab
+  background-color: #ff4415
+  box-shadow: 0 1px 1.5px 1.5px rgba(42, 42, 42, 0.65)
+
+.subfab
+  background-color: #424242
+  box-shadow: 0 1px 1.5px 1.5px rgba(42, 42, 42, 0.65)
+
+.button
+  text-transform: uppercase
+  border-width: 1px
+  border-style: solid
+  -webkit-box-shadow: 0 1px 1.5px 1.5px rgba(42, 42, 42, 0.65)
+  -moz-box-shadow: 0 1px 1.5px 1.5px rgba(42, 42, 42, 0.65)
+  box-shadow: 0 1px 1.5px 1.5px rgba(42, 42, 42, 0.65)
+  border-radius: 2px
+  letter-spacing: 0.4px
+  font-weight: 700
+  font-size: 14px
+  transition-property: box-shadow
+  transition-delay: 50ms
+  transition-duration: 125ms
+  transition-timing-function: ease
+  -o-transition-property: box-shadow
+  -o-transition-delay: 50ms
+  -o-transition-duration: 125ms
+  -o-transition-timing-function: ease
+  -moz-transition-property: box-shadow
+  -moz-transition-delay: 50ms
+  -moz-transition-duration: 125ms
+  -moz-transition-timing-function: ease
+  -webkit-transition-property: box-shadow
+  -webkit-transition-delay: 50ms
+  -webkit-transition-duration: 125ms
+  -webkit-transition-timing-function: ease
+  &:hover
+    -webkit-box-shadow: 0.5px 1.8px 2.1px 1.4px rgba(32, 32, 32, 0.85)
+    -moz-box-shadow: 0.5px 1.8px 2.1px 1.4px rgba(32, 32, 32, 0.85)
+    box-shadow: 0.5px 1.8px 2.1px 1.4px rgba(32, 32, 32, 0.85)
+
+.pag_next
+  background-color: #ff4415
+  border-color: #ff4415
+
+.pag_prev
+  background-color: #424242
+  border-color: #424242
+  color: #CCCCCC
+
+.footer
+  font-size: 12px
+  text-align: center
+  color: #fff
+  a
+    color: #fff
+    text-decoration: none
+    border-bottom: 1px solid transparent
+    border-bottom-color: transparent
+    &:hover
+      border-bottom-color: #fff
