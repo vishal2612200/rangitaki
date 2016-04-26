@@ -29,7 +29,10 @@ This is a example JavaScript extension for Rangitaki
 ###
 
 main = () ->
-  console.log "Welcome Developer! \nYou're seeing the output of a JavaScript extension for the Rangitaki blogging engine."
+  console.log """
+  Welcome Developer! \nYou're seeing the output of a
+  JavaScript extension for the Rangitaki blogging engine.
+  """
 
 $(document).ready main()
 
