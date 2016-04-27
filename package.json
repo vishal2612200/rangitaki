@@ -1,6 +1,6 @@
 {
   "name": "rangitaki",
-  "version": "1.3.0",
+  "version": "1.4.0-beta",
   "description": "A simple PHP blogging engine without any database dependencies",
   "main": "index.php",
   "scripts": {
