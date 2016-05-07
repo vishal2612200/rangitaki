@@ -1,12 +1,9 @@
 /**
- * Created by mmk2410 on 2016-02-16.
- *
  * JavaScript for the ajax request to generate a atom feed
  *
  * Copyright (c) 2016 by mmk2410
  * License: MIT License
  */
-
 
 function main() {
   // listener and function for calling the ajax request to create the

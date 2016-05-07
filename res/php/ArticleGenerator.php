@@ -265,4 +265,46 @@ class ArticleGenerator
         return $article;
     }
 
+    /**
+     * A function to get a array of the article
+     *
+     * @param $directory    The directory where the article is stored
+     * @param $articlefile  The name of the article file
+     * @return string
+     */
+    public function getArray($directory, $articlefile)
+    {
+        $article = file_get_contents($directory . $articlefile);
+
+        if (substr($article, 0, 6) == "%TITLE") { // get and remove the title
+            $title = substr($article, 8, strpos($article, "\n") - 8);
+            $article = substr($article, strpos($article, "\n") + 1);
+        }
+
+        if (substr($article, 0, 5) == "%DATE") { // get and remove the title
+            $date = substr($article, 7, strpos($article, "\n") - 7);
+            $article = substr($article, strpos($article, "\n") + 1);
+        }
+
+        if (substr($article, 0, 7) == "%AUTHOR") { // get and remove the title
+            $author = substr($article, 9, strpos($article, "\n") - 9);
+            $article = substr($article, strpos($article, "\n") + 1);
+        }
+
+        if (substr($article, 0, 5) == "%TAGS") { // get and remove the tags
+            $tags = substr($article, 7, strpos($article, "\n") - 7); // get the tags
+            $tags = explode(", ", $tags); // split them into an array
+            $article = substr($article, strpos($article, "\n") + 1);
+        }
+
+        $data = array(
+                        "title" => $title,
+                        "date" => $date,
+                        "author" => $author,
+                        "tags" => $tags,
+                        "text" => $article
+                    );
+
+        return $data;
+    }
 }

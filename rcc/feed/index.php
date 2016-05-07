@@ -3,10 +3,12 @@
  * PHP Version 7
  *
  * @category Atom_Feed
- * @package  Rbe
+ * @package  Rcc
  * @author   Marcel Kapfer (mmk2410) <marcelmichaelkapfer@yahoo.co.nz>
  * @license  MIT License
  * @link     https://github.com/mmk2410/rangitaki
+ *
+ * Feed Generator
  *
  * The MIT License
  *
@@ -49,7 +51,7 @@ if ($_SESSION['login']) {
 
     $writer->title = $blogtitle;
     $writer->site_url = $blogurl;
-    $writer->feed_url = $blogurl . "/feed/feed.atom";
+    $writer->feed_url = $blogurl . "/feed/" . $_GET['blog'] . ".atom";
     $writer->author = array(
         'name' => $blogauthor,
         'url' => $blogurl,
@@ -65,6 +67,10 @@ if ($_SESSION['login']) {
             if ($amount == 10) {
                 break;
             } else {
+                $file = ArticleGenerator::getText($art_dir, $article);
+                $text = Parsedown::instance()
+                    ->setBreaksEnabled(true)// with linebreaks
+                    ->text($file);
                 $writer->items[] = array(
                     'title' => ArticleGenerator::getTitle($art_dir, $article),
                     'updated' => strtotime(
@@ -73,11 +79,9 @@ if ($_SESSION['login']) {
                     'url' => $blogurl . "./?article=" .
                         substr($article, 0, strlen($article) - 3),
                     'summary'=> ArticleGenerator::getSummary(
-                        $art_dir, $articles
+                        $art_dir, $article
                     ),
-                    'content' => "<p>" . ArticleGenerator::getText(
-                        $art_dir, $articles
-                    ) . "</p>"
+                    'content' => $text
                 );
                 $amount += 1;
             }
@@ -88,11 +92,14 @@ if ($_SESSION['login']) {
     $feed = $writer->execute();
 
     $file = fopen($feed_path, "w");
+
     if (fwrite($file, $feed) === false) {
         echo "-1";
         exit;
     }
+
     fclose($file);
+
     echo "0";
 }
 ?>

@@ -1,15 +1,11 @@
 <!DOCTYPE HTML>
 <!--
     Rangitaki Blogging Engine
-    GitHub: https://github.com/mmk2410/Rangitaki
+    Code: https://gitlab.com/mmk2410/rangitaki
+    Issus and Project Management: https://phab.mmk2410.org
     Web: https://marcel-kapfer.de/rangitaki
-    Twitter: @Rangitaki
-    Google+: +Rangitaki
--->
-<!--
-COPYRIGHT (c) 2015 mmk2410
-
-MIT License
+    2015 - 2016 Marcel Kapfer (mmk2410)
+    License: MIT
 -->
 <html>
 <?php
@@ -28,8 +24,14 @@ MIT License
 date_default_timezone_set('UTC');
 require __DIR__ . '/vendor/autoload.php'; // loading composer libs
 
-require 'config.php'; // Config file (this must be the first line)
-require './lang/' . $language . ".php"; // Language file
+require './res/php/Config.php';
+use mmk2410\rbe\config\Config as Config;
+
+$configParser = new Config('config.yaml', 'vendor/autoload.php');
+
+$config = $configParser->getConfig();
+
+require './lang/' . $config["language"] . ".php"; // Language file
 require_once 'res/php/ArticleGenerator.php'; // The article generator
 require_once './res/php/BlogListGenerator.php'; // and the blog list generator
 
@@ -42,16 +44,16 @@ $url = "http://" . filter_input(INPUT_SERVER, "HTTP_HOST") .
 $pagenumber = filter_input(INPUT_GET, "page"); // get the pagenumber
 
 // Pagination algorithm
-if ($pagination == 0) {
-    $pagination = false;
+if ($config["design"]["pagination"] == 0) {
+    $config["design"]["pagination"] = false;
 } else {
     // pag_max: the newest post to show on a page
-    $pag_max = $pagination * ( $pagenumber + 1 );
+    $pag_max = $config["design"]["pagination"] * ( $pagenumber + 1 );
     // pag_min: the oldest post to show on a page
-    $pag_min = $pag_max - $pagination;
+    $pag_min = $pag_max - $config["design"]["pagination"];
     if ($pagenumber > 0) {
         // Disable the blog intro if not on first page
-        $blogintro = "no";
+        $config["blog"]["intro"] = "off";
     }
 }
 
@@ -72,10 +74,10 @@ if (isset($getarticle)) {
         = ArticleGenerator::getTitle($articlesdir, $getarticle . '.md');
 }
 // Make sure that the entry has a title, because main.md hasn't one
-if (empty($blogmainname)) {
-    $blogmaintitle = $blogtitle;
+if (empty($config["blog"]["mainname"])) {
+    $blogmaintitle = $config["blog"]["title"];
 } else {
-    $blogmaintitle = $blogmainname;
+    $blogmaintitle = $config["blog"]["mainname"];
 }
 if (isset($getblog)) {
     $subblogtitle = BlogListGenerator::getName('./blogs/' . $getblog . '.md');
@@ -90,18 +92,18 @@ if (isset($getarticle)) {
 }
 
 // url of the feed
-$feedurl = $blogurl . "/feed/" . $blog . ".atom";
+$feedurl = $config["blog"]["url"] . "/feed/" . $blog . ".atom";
 
 ?>
 
 <head>
     <meta charset="utf-8">
-    <title><?php echo $blogtitle . " » " .$hd_subblog_title; ?></title>
+    <title><?php echo $config["blog"]["title"] . " » " .$hd_subblog_title; ?></title>
     <!--Metatags-->
     <meta name="author"
-        content="<?php echo $blogauthor; // Set the blog author ?>"/>
+        content="<?php echo $config["blog"]["author"]; // Set the blog author ?>"/>
     <meta name="description"
-        content="<?php echo $blogdescription; // the blog description ?>"/>
+        content="<?php echo $config["blog"]["description"]; // the blog description ?>"/>
     <!-- Meta tag for responsive ui-->
     <meta name='viewport'
         content='width=device-width, initial-scale=1.0,
@@ -110,15 +112,15 @@ $feedurl = $blogurl . "/feed/" . $blog . ".atom";
     <meta property="og:title" content="<?php echo $hd_subblog_title; ?>"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="<?php echo $url; ?>"/>
-    <meta property="og:image" content="<?php echo $favicon; ?>"/>
-    <meta property="og:description" content="<?php echo $blogdescription; ?>"/>
+    <meta property="og:image" content="<?php echo $config['design']['favicon']; ?>"/>
+    <meta property="og:description" content="<?php echo $config['blog']['description']; ?>"/>
     <meta property="og:locale:alternate" content="<?php echo $lang; ?>"/>
     <!-- Twitter meta tags -->
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:site" content="<?php echo $twitter; ?>"/>
     <meta name="twitter:title" content="<?php echo $hd_subblog_title; ?>"/>
-    <meta name="twitter:description" content="<?php echo $blogdescription; ?>"/>
-    <meta name="twitter:image" content="<?php echo $favicon; ?>"/>
+    <meta name="twitter:description" content="<?php echo $config['blog']['description']; ?>"/>
+    <meta name="twitter:image" content="<?php echo $config['design']['favicon']; ?>"/>
     <meta name="twitter:url" content="<?php echo $url; ?>"/>
     <!-- atom feed -->
     <?php
@@ -136,10 +138,10 @@ $feedurl = $blogurl . "/feed/" . $blog . ".atom";
     <!-- stylesheet for code highlighting-->
     <link rel="stylesheet" href="./res/css/github-gist.css">
     <link rel="stylesheet" type="text/css"
-        href="themes/<?php echo $theme; // getting the theme stylesheet?>.css"/>
+        href="themes/<?php echo $config['design']['theme']; // getting the theme stylesheet?>.css"/>
     <?php
     // Checking if the drawer is enabled
-    if ($nav_drawer == 'no') {
+    if ($config["design"]["drawer"] != 'on') {
         // Loading additional stylesheet for disabling the drawer?>
         <link rel="stylesheet" type="text/css" href="res/css/no-nav.css"/>
         <?php
@@ -150,8 +152,8 @@ $feedurl = $blogurl . "/feed/" . $blog . ".atom";
           type='text/css'> <!--Font-->
     <!--Favicons-->
     <link rel="shortcut icon" type="image/x-icon"
-        href="<?php echo $favicon; ?>"/>
-    <link rel="apple-touch-icon-precomposed" href="<?php echo $favicon; ?>">
+        href="<?php echo $config['design']['favicon']; ?>"/>
+    <link rel="apple-touch-icon-precomposed" href="<?php echo $config['design']['favicon']; ?>">
     <!-- JavaScript Pt. 1: HightlightJS (get and load): Code highlighting-->
     <script src="./res/js/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -160,7 +162,7 @@ $feedurl = $blogurl . "/feed/" . $blog . ".atom";
 <body>
 <?php
 // Checking if the navigation drawer is enabled. If not -> skip it
-if ($nav_drawer == "yes") {
+if ($config["design"]["drawer"] == "on") {
     ?>
     <!--
     Darken the background when fading the drawer in. See also the JS file
@@ -181,8 +183,8 @@ if ($nav_drawer == "yes") {
             echo "<section>";
             // 1. Set localized string 2. Set blogtitle
             echo "<div class='nav-item-static'>" .
-                $BLOGLANG['Blogs on'] .
-                " $blogtitle:</div>";
+                $BLOGLANG['Blogs on'] . $config["blog"]["title"] .
+                ":</div>";
             // iterating through the blogs/ directory
             foreach ($blogs as $navblog) {
                 // check if filename is larger than three chars and if the
@@ -192,7 +194,7 @@ if ($nav_drawer == "yes") {
                         if ($navblog != "main.md") { // excluding main blog
                             // creating navigation item
                             BlogListGenerator::listBlog(
-                                "./blogs/", $navblog, $blogtitle
+                                "./blogs/", $navblog, $config["blog"]["title"]
                             );
                         }
                     } else {
@@ -215,11 +217,11 @@ if ($nav_drawer == "yes") {
             <a class="nav-item" onclick="goBack()">Go back</a>
             <?php
         }
-        if ($bloghome == "yes") { // If a blog home is existend
+        if ($config["blog"]["home"] == "on") { // If a blog home is existend
             ?>
             <div class="divider"></div>
-            <a class="nav-item" href="<?php echo $bloghomeurl; ?>">
-                <?php echo $bloghomename; ?>
+            <a class="nav-item" href="<?php echo $config['blog']['homeurl']; ?>">
+                <?php echo $config['blog']['homename']; ?>
             </a>
             <?php
         }
@@ -246,13 +248,13 @@ if ($nav_drawer == "yes") {
         <img src="./res/img/menu.svg" class="nav-img"/>
         <!-- Blog title with subblog title and links to each one-->
         <!-- link to main blog-->
-        <nobr><span class="title"><a href="./"><?php echo $blogtitle; ?>
+        <nobr><span class="title"><a href="./"><?php echo $config["blog"]["title"]; ?>
                     <?php
                     if (empty($getblog)) { // if not on a subblog
-                        if (!empty($blogmainname)) {
+                        if (!empty($config['blog']['mainname'])) {
                             // If you see a › (square) here : This is not a bug,
                             // but a missing sign in your font
-                            echo "›" . $blogmainname;
+                            echo "›" . $config['blog']['mainname'];
                         }
                     } else { // On subblog: set also a link to the subblog
                     ?>
@@ -276,7 +278,7 @@ if ($nav_drawer == "yes") {
     // Blog Intro text
     if (file_exists("blogs/$blog.md")
         && $getarticle == ""
-        && $blogintro == "yes"
+        && $config["blog"]["intro"] == "on"
         && $gettag == ""
     ) {
         // only shown if not in article or tag view
@@ -292,11 +294,11 @@ if ($nav_drawer == "yes") {
             ?>
             <section class="card" id="intro">
                 <div class="articletext">
-                    <?php // generate the html text from the markdown file
-                    $intro = Parsedown::instance()
-                        ->setBreaksEnabled(true)// with linebreaks
-                        ->text($file);
-                    echo $intro; // PRINTS THE SH****
+            <?php // generate the html text from the markdown file
+            $intro = Parsedown::instance()
+                ->setBreaksEnabled(true)// with linebreaks
+                ->text($file);
+            echo $intro; // PRINTS THE SH****
                     ?>
                 </div>
             </section>
@@ -332,7 +334,7 @@ if ($nav_drawer == "yes") {
             // check if the file is a article file
             if (strlen($article) >= 3 && substr($article, -3) == ".md") {
                 // generate the article
-                if ($pagination) {
+                if ($config["design"]["pagination"]) {
                     if ($posts_amount < $pag_max && $posts_amount >= $pag_min) {
                         ArticleGenerator::newArticle(
                             $articlesdir, $article, $getblog
@@ -346,7 +348,7 @@ if ($nav_drawer == "yes") {
             }
             $posts_amount++;
         }
-        if ($pagination) {
+        if ($config["design"]["pagination"]) {
             include './res/php/Pagination.php';
         }
     } elseif (isset($getarticle)) { // ARTICLE VIEW
@@ -360,16 +362,16 @@ if ($nav_drawer == "yes") {
     }
     ?>
     <div class="footer">
-        <?php echo $blogfooter; //print the blog footer?>
+        <?php echo $config["blog"]["footer"]; //print the blog footer?>
     </div>
     <?php
     // show the fab if it's enabled
-    if ($sharefab == "yes") {
+    if ($config["design"]["fab"] == "on") {
         ?>
         <div class="fabmenu">
             <div class="subfab"><!--Email subfab-->
                 <a href='mailto:?subject=<?php
-                    echo $blogtitle;
+                    echo $config["blog"]["title"];
                 ?>&body=<?php
                     echo $BLOGLANG['Check out this blog'];
                 ?>: <?php
@@ -398,7 +400,7 @@ if ($nav_drawer == "yes") {
                 <a href='https://www.facebook.com/sharer/sharer.php?u=<?php
                     echo $url;
                 ?>&t=<?php
-                    echo "echo $blogtitle"
+                    echo "echo " . $config["blog"]["title"];
                 ?>' target="blank">
                     <img src="./res/img/facebook.svg" class="subfab-img"/>
                 </a>

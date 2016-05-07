@@ -26,7 +26,7 @@
  */
 
 
-if ($bloganalytics) { // check if google analytics is enabled
+if ($config["blog"]["analytics"]) { // check if google analytics is enabled
     if (!($_SERVER['HTTP_DNT'] == 1)) {
 ?>
         <script>
