@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 
-<?php if ($blogdisqus) { // check if disqus is enabled ?>
+<?php if ($config['blog']['disqus']) { // check if disqus is enabled ?>
     <section class="card">
         <div id="disqus_thread"></div>
         <script type="text/javascript">
