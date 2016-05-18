@@ -23,8 +23,14 @@ if ($password == "") {
     exit();
 }
 
+$options = [
+    'cost' => 12
+];
+
+$password = password_hash($password, PASSWORD_BCRYPT, $options);
+
 $username = '$username = "' . $username . '";';
-$password = '$password = "' . $password . '";';
+$password = '$password = \'' . $password . '\';';
 
 $file = '<?php' . "\n" . $username . "\n" . $password . "\n";
 

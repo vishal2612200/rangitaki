@@ -32,6 +32,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
+require '../vendor/autoload.php';
+require '../res/php/Config.php';
+
+use \mmk2410\rbe\config\Config as Config;
+
+$config = new Config("../config.yaml", '../vendor/autoload.php');
+$settings = $config->getConfig();
+
+include './ssl.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -64,12 +75,7 @@
 
     <div class="main">
 <?php
-require '../res/php/Config.php';
-use mmk2410\rbe\config\Config as Config;
-
-$configParser = new Config('../config.yaml', '../vendor/autoload.php');
-
-$config = $configParser->getConfig();
+$config = $settings;
 
 if ($config["rcc"]["rcc"] == "on") {
     include 'password.php';

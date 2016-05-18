@@ -10,12 +10,12 @@ require '../../../vendor/autoload.php';
 require '../../../res/php/Config.php';
 require '../../../res/php/ArticleGenerator.php';
 
-include '../auth/auth.php';
-
 use \mmk2410\rbe\config\Config as Config;
 
 $config = new Config("../../../config.yaml", '../../../vendor/autoload.php');
 $settings = $config->getConfig();
+
+include '../auth/auth.php';
 
 if ($settings["rcc"]["api"] == "on" && $settings["rcc"]["rcc"] == "on") {
     $app = new \Slim\App();

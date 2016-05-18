@@ -6,6 +6,14 @@
 
  - [S] release are always compared to the previous [S] release.
 
+## Version 1.4.1 (2016-05-18) [S]
+ - Switch to HTTP Basic Auth for the RCC API
+ - Store password as hash
+ - Require SSL for using the RCC and the RCC API
+ - [FIX] Drawer "Go back" does not work
+ - [FIX] Missing nodejs dependencies
+ - [FIX] Disqus not completly migrated to new config
+
 ## Version 1.4.0 (2016-05-07) [S]
 
  - Fix: Feeds contain no text
