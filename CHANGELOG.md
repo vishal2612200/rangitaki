@@ -6,6 +6,9 @@
 
  - [S] release are always compared to the previous [S] release.
 
+## Version 1.4.2 (2016-05-18) [S]
+ - [FIX]: Password verification not implemented in RCC login page
+
 ## Version 1.4.1 (2016-05-18) [S]
  - Switch to HTTP Basic Auth for the RCC API
  - Store password as hash
