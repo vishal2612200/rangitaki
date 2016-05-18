@@ -214,7 +214,7 @@ if ($config["design"]["drawer"] == "on") {
             // If viewing a blog or a tag
             ?>
             <!-- Set a back item instead of the blogs. -->
-            <a class="nav-item" onclick="goBack()">Go back</a>
+            <a class="nav-item" onclick="history.go(-1);">Go back</a>
             <?php
         }
         if ($config["blog"]["home"] == "on") { // If a blog home is existend
