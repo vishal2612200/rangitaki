@@ -6,11 +6,11 @@ version="1.4.3"
 new="./rbe-new"
 
 echo -n "Downloading version $version from GitLab... "
-git clone https://gitlab.com/mmk2410/rangitaki.git "$new"
+git clone -q https://gitlab.com/mmk2410/rangitaki.git "$new"
 
 if [[ $1 == "--debug" ]]; then
     cd $new
-    git checkout master
+    git checkout -q master
     cd ../
 fi
 echo "done"
@@ -24,13 +24,6 @@ echo -n "Updating source files... "
 rm ./src/coffee/app.coffee
 mv $new/src/coffee/app.coffee ./src/coffee/
 mv $new/src/sass-themes/nextDESIGN.sass ./src/sass-themes/
-echo "done"
-
-echo -n "Updating extensions... "
-rm ./themes/material-light.css
-rm ./themes/material-dark.css
-rm ./themes/background-img.css
-mv $new/themes/* ./themes/
 echo "done"
 
 echo -n "Updating RCC... "
@@ -50,9 +43,9 @@ mv $new/bin/ ./
 echo "done"
 
 echo -n "Updating themes... "
-rm ./themes/material-light.css
-rm ./themes/material-dark.css
-rm ./themes/background-img.css
+rm ./themes/material-light.css*
+rm ./themes/material-dark.css*
+rm ./themes/background-img.css*
 mv $new/themes/* ./themes/
 echo "done"
 
