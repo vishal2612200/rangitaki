@@ -7,12 +7,14 @@
 
  - [S] release are always compared to the previous [S] release.
 
+## Version 1.4.4 (2016-06-03) [S]
+ - **[FIX]** Error when trying to create a feed
+
 ## Version 1.4.3 (2016-05-21) [S]
  - **[FIX]** Missing space in drawer between "Blogs on" and blogname
  - **[FIX]** Background layer was not removed if drawer was closed
  - **[FEATURE]** nextDESIGN theme added to delivered themes
  - **[NOTE]** The update script to 1.4.3 works with 1.4.0, 1.4.1 and 1.4.2
-
 
 ## Version 1.4.2 (2016-05-18) [S]
  - [FIX]: Password verification not implemented in RCC login page
