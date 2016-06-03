@@ -183,7 +183,7 @@ if ($config["design"]["drawer"] == "on") {
             echo "<section>";
             // 1. Set localized string 2. Set blogtitle
             echo "<div class='nav-item-static'>" .
-                $BLOGLANG['Blogs on'] . $config["blog"]["title"] .
+                $BLOGLANG['Blogs on'] . " " . $config["blog"]["title"] .
                 ":</div>";
             // iterating through the blogs/ directory
             foreach ($blogs as $navblog) {

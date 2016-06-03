@@ -84,4 +84,4 @@ openNav = () ->
 closeNav = () ->
   $('.nav').animate {"left": "-301px"}, 125
   $('.overlay').animate {"opacity": "0.0"}, 125, ->
-    $('.overlay').hide
+    $('.overlay').css {"display": "none"}

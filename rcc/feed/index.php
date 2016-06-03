@@ -6,13 +6,13 @@
  * @package  Rcc
  * @author   Marcel Kapfer (mmk2410) <marcelmichaelkapfer@yahoo.co.nz>
  * @license  MIT License
- * @link     https://github.com/mmk2410/rangitaki
+ * @link     https://gitlab.com/mmk2410/rangitaki
  *
  * Feed Generator
  *
  * The MIT License
  *
- * Copyright 2015 mmk2410.
+ * Copyright 2015 - 2016 (c) mmk2410.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,27 +36,35 @@
 date_default_timezone_set('UTC');
 
 require "../../vendor/autoload.php";
-require_once "../../config.php";
+require "../../res/php/Config.php";
 require_once "../../res/php/ArticleGenerator.php";
-use PicoFeed\Syndication\Atom;
+use PicoFeed\Syndication\AtomFeedBuilder;
+use PicoFeed\Syndication\AtomItemBuilder;
+use \mmk2410\rbe\config\Config as Config;
+
+$config = new Config('../../config.yaml', '../../vendor/autoload.php');
+$settings = $config->getConfig();
+
+include '../ssl.php';
 
 session_start();
 
 if ($_SESSION['login']) {
-
     $art_dir = "./../../articles/" . $_GET['blog'] . "/";
     $feed_path = "./../../feed/" . $_GET['blog'] . ".atom";
 
-    $writer = new Atom();
+    if ($_GET['blog'] == "main") {
+        $blogtitle = $settings['blog']['title'];
+    } else {
+        $blogtitl = $settings['blog']['title'] . " - " . ucwords($_GET['blog']);
+    }
 
-    $writer->title = $blogtitle;
-    $writer->site_url = $blogurl;
-    $writer->feed_url = $blogurl . "/feed/" . $_GET['blog'] . ".atom";
-    $writer->author = array(
-        'name' => $blogauthor,
-        'url' => $blogurl,
-        'email' => ''
-    );
+    $feedBuilder = AtomFeedBuilder::create()
+        ->withTitle($blogtitle)
+        ->withAuthor($settings['blog']['author'])
+        ->withFeedUrl($settings['blog']['url'] . "/feed/" . $_GET['blog'] . ".atom")
+        ->withSiteUrl($settings['blog']['url'])
+        ->withDate(new DateTime(date(DATE_ATOM)));
 
     $articles = scandir($art_dir, 1);
 
@@ -71,25 +79,45 @@ if ($_SESSION['login']) {
                 $text = Parsedown::instance()
                     ->setBreaksEnabled(true)// with linebreaks
                     ->text($file);
-                $writer->items[] = array(
-                    'title' => ArticleGenerator::getTitle($art_dir, $article),
-                    'updated' => strtotime(
-                        ArticleGenerator::getDate($art_dir . $article)
-                    ),
-                    'url' => $blogurl . "./?article=" .
-                        substr($article, 0, strlen($article) - 3),
-                    'summary'=> ArticleGenerator::getSummary(
-                        $art_dir, $article
-                    ),
-                    'content' => $text
-                );
+                if (new DateTime(date(DATE_ATOM, strtotime($datestring))) != null) {
+                    $date = new DateTime(
+                        date(
+                            DATE_ATOM,
+                            strtotime($datestring)
+                        )
+                    );
+                } else {
+                    $date = new DateTime(date(DATE_ATOM));
+                }
+                $date = new DateTime(date(DATE_ATOM));
+                $feedBuilder
+                    ->withItem(AtomItemBuilder::create($feedBuilder)
+                        ->withTitle(
+                            ArticleGenerator::getTitle($art_dir, $article)
+                        )
+                        ->withUrl(
+                            $settings['blog']['url'] . "./?article=" . substr($article, 0, strlen($article) - 3)
+                        )
+                        ->withAuthor(
+                            ArticleGenerator::getAuthor($art_dir, $article)
+                        )
+                        ->withPublishedDate(
+                            parseDate(ArticleGenerator::getDate($art_dir, $article))
+                        )
+                        ->withUpdatedDate(
+                            parseDate(ArticleGenerator::getDate($art_dir, $article))
+                        )
+                        ->withSummary(
+                            ArticleGenerator::getSummary($art_dir, $article)
+                        )
+                        ->withContent($text));
                 $amount += 1;
             }
         }
     }
 
 
-    $feed = $writer->execute();
+    $feed = $feedBuilder->build();
 
     $file = fopen($feed_path, "w");
 
@@ -102,4 +130,19 @@ if ($_SESSION['login']) {
 
     echo "0";
 }
-?>
+
+function parseDate($datestring)
+{
+    $datetime = new DateTime(date(DATE_ATOM));
+    try {
+        $datetime = new DateTime(
+            date(
+                DATE_ATOM,
+                strtotime($datestring)
+            )
+        );
+    } catch (Exception $e) {
+        $datetime = new DateTime(date(DATE_ATOM));
+    }
+    return $datetime;
+}

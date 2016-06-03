@@ -9,7 +9,7 @@ blog:
     intro: 'on'
     disqus: rangitaki
     analytics: ''
-    footer: "Rangitaki 2016 <a href=\"https://github.com/mmk2410/Rangitaki\" target=\"blank\">\n    github.com/mmk2410/Rangitaki</a>"
+    footer: "Rangitaki 2016 <a href=\"https://gitlab.com/mmk2410/rangitaki\" target=\"blank\">\n    gitlab.com/mmk2410/rangitaki</a>"
     url: 'https://example.com/blog/'
 design:
     fab: 'on'
