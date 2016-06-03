@@ -36,14 +36,20 @@
 date_default_timezone_set('UTC');
 
 require "../../vendor/autoload.php";
-require_once "../../config.php";
+require "../../res/php/Config.php";
 require_once "../../res/php/ArticleGenerator.php";
-use PicoFeed\Syndication\Atom;
+use PicoFeed\Syndication\AtomFeedBuilder;
+use PicoFeed\Syndication\AtomItemBuilder;
+use \mmk2410\rbe\config\Config as Config;
+
+$config = new Config('../../config.yaml', '../../vendor/autoload.php');
+$settings = $config->getConfig();
+
+include '../ssl.php';
 
 session_start();
 
 if ($_SESSION['login']) {
-
     $art_dir = "./../../articles/" . $_GET['blog'] . "/";
     $feed_path = "./../../feed/" . $_GET['blog'] . ".atom";
 
