@@ -6,13 +6,13 @@
  * @package  Rcc
  * @author   Marcel Kapfer (mmk2410) <marcelmichaelkapfer@yahoo.co.nz>
  * @license  MIT License
- * @link     https://github.com/mmk2410/rangitaki
+ * @link     https://gitlab.com/mmk2410/rangitaki
  *
  * Feed Generator
  *
  * The MIT License
  *
- * Copyright 2015 mmk2410.
+ * Copyright 2015 - 2016 (c) mmk2410.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
