@@ -2,7 +2,7 @@ image: php:7.0
 
 before_script:
   - apt-get update
-  - apt-get install wget
+  - apt-get install -y wget
   - wget https://phar.phpunit.de/phpunit.phar
 
 stages:
