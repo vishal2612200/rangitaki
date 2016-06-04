@@ -1,13 +1,11 @@
 image: php:7.0
 
 before_script:
-  - apt-get update
-  - apt-get install -y wget
-  - wget https://phar.phpunit.de/phpunit.phar
+  - bash ci/docker_install.sh > /dev/null
 
 stages:
   - test
 
 test:
     script:
-      - php phpunit.phar tests/
+      - phpunit tests/
