@@ -275,6 +275,10 @@ class ArticleGenerator
     public function getArray($directory, $articlefile)
     {
         $article = file_get_contents($directory . $articlefile);
+        $title = "";
+        $date = "";
+        $author = "";
+        $tags = array();
 
         if (substr($article, 0, 6) == "%TITLE") { // get and remove the title
             $title = substr($article, 8, strpos($article, "\n") - 8);
