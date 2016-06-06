@@ -196,15 +196,15 @@ class ArticleGenerator
      */
     static function getSummary($directory, $articlefile)
     {
-        $text = getText($directory, $articlefile);
+        $text = ArticleGenerator::getText($directory, $articlefile);
 
         $pos = stripos($text, ".");
 
         if ($pos) {
-            $offset = $pos + 1;
+            $offset = $pos;
             $pos = stripos($text, ".", $offset);
             $summary = substr($text, 0, $pos) . ".";
-            return $summary;
+            return trim($summary);
         } else {
             return $text;
         }
