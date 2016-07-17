@@ -49,6 +49,9 @@ $yaml["rcc"]["api"] = "off";
 $langs = getDir('./lang');
 $yaml["language"] = get("Choose a language (" . $langs . ")", $yaml["language"], "en");
 
+// social media
+$yaml["social"]["twitter"] = get("Your Twitter username:", $yaml["social"]["twitter"], "");
+
 $config->writeConfig($yaml);
 
 function get($question, $value, $default)

@@ -21,3 +21,5 @@ rcc:
     rcc: 'on'
     api: 'on'
 language: en
+social:
+    twitter: ''

@@ -114,10 +114,9 @@ $feedurl = $config["blog"]["url"] . "/feed/" . $blog . ".atom";
     <meta property="og:url" content="<?php echo $url; ?>"/>
     <meta property="og:image" content="<?php echo $config['design']['favicon']; ?>"/>
     <meta property="og:description" content="<?php echo $config['blog']['description']; ?>"/>
-    <meta property="og:locale:alternate" content="<?php echo $lang; ?>"/>
     <!-- Twitter meta tags -->
     <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:site" content="<?php echo $twitter; ?>"/>
+    <meta name="twitter:site" content="<?php echo $config['social']['twitter']; ?>"/>
     <meta name="twitter:title" content="<?php echo $hd_subblog_title; ?>"/>
     <meta name="twitter:description" content="<?php echo $config['blog']['description']; ?>"/>
     <meta name="twitter:image" content="<?php echo $config['design']['favicon']; ?>"/>
