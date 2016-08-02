@@ -16,6 +16,7 @@ design:
     drawer: 'on'
     theme: material-light
     pagination: 0
+    excerpt: 'off'
     favicon: 'http://example.com/res/img/favicon.png'
 rcc:
     rcc: 'on'

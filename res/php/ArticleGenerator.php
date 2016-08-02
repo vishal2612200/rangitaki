@@ -59,7 +59,7 @@ class ArticleGenerator
      *
      * @return Null
      */
-    function newArticle($directory, $articlefile, $blog)
+    function newArticle($directory, $articlefile, $blog, $excerpt, $readmore)
     {
 
         $article = file_get_contents($directory . $articlefile); // get the file
@@ -96,12 +96,39 @@ class ArticleGenerator
 
         echo "<div class='articletext'>";
 
+        // print only a excerpt of the post
+        // with at least 200 characters if possible.
+        if ( $excerpt == 'on' ) {
+            $emptyline = strpos($article, "\n\n");
+            if ( $emptyline !== false ) {
+                if ( $emptyline < 200) {
+                    $emptyline2 = strpos($article, "\n\n", $emptyline);
+                    if ( $emptyline2 !== false ) {
+                        $article = substr($article, 0, $emptyline2);
+                    } else {
+                        $article = substr($article, 0, $emptyline);
+                    }
+                } else {
+                    $article = substr($article, 0, $emptyline);
+                }
+            } else {
+                // correct $excerpt for use in line 127.
+                $excerpt = 'off';
+            }
+        }
+        
         echo Parsedown::instance()
                 ->setBreaksEnabled(true)
                 ->text($article); // print now the article text as html
 
         echo "</div>";
 
+        
+        if ( $excerpt == 'on' ) {
+            echo "<div class='readmore'><a href='$link'>$readmore</a></div>";
+        }
+
+        
         if (isset($author)) {
             echo "<span class='author'>$author</span>"; // print the author
         }
@@ -198,9 +225,9 @@ class ArticleGenerator
     {
         $text = ArticleGenerator::getText($directory, $articlefile);
 
-        $pos = stripos($text, ".");
+        $pos = stripos($text, "\n\n");
 
-        if ($pos) {
+        if ($pos !== false) {
             $offset = $pos;
             $pos = stripos($text, ".", $offset);
             $summary = substr($text, 0, $pos) . ".";

@@ -8,4 +8,5 @@ $BLOGLANG = [
     "Check out" => "Schau dir das an:",
     "Next Page" => "Nächste Seite",
     "Previous Page" => "Vorherige Seite",
+    "Read More" => "Weiterlesen",
 ];

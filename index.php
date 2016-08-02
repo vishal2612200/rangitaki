@@ -318,7 +318,7 @@ if ($config["design"]["drawer"] == "on") {
                 if (strlen($article) >= 3 && substr($article, -3) == ".md") {
                     // generate the article
                     ArticleGenerator::newArticle(
-                        $articlesdir, $article, $getblog
+                        $articlesdir, $article, $getblog, $config["design"]["excerpt"], $BLOGLANG["Read More"]
                     );
                 }
             }
@@ -336,12 +336,12 @@ if ($config["design"]["drawer"] == "on") {
                 if ($config["design"]["pagination"]) {
                     if ($posts_amount < $pag_max && $posts_amount >= $pag_min) {
                         ArticleGenerator::newArticle(
-                            $articlesdir, $article, $getblog
+                            $articlesdir, $article, $getblog, $config["design"]["excerpt"], $BLOGLANG["Read More"]
                         );
                     }
                 } else {
                     ArticleGenerator::newArticle(
-                        $articlesdir, $article, $getblog
+                        $articlesdir, $article, $getblog, $config["design"]["excerpt"], $BLOGLANG["Read More"]
                     );
                 }
             }
