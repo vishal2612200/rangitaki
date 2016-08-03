@@ -12,6 +12,7 @@ blog:
     footer: "Rangitaki 2016 <a href=\"https://gitlab.com/mmk2410/rangitaki\" target=\"blank\">\n    gitlab.com/mmk2410/rangitaki</a>"
     url: 'https://example.com/blog/'
 design:
+    excerpt: "off"
     fab: 'on'
     drawer: 'on'
     theme: material-light
