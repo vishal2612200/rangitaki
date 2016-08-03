@@ -353,7 +353,8 @@ if ($config["design"]["drawer"] == "on") {
     } elseif (isset($getarticle)) { // ARTICLE VIEW
         // generate the requested article
         ArticleGenerator::newArticle(
-            $articlesdir, $getarticle . ".md", $getblog
+            $articlesdir, $getarticle . ".md", $getblog,
+            'off', ''
         );
         include './res/php/Disqus.php'; // include disques
     } else { // SOMETHING STRANGE: THIS SHOULDN'T HAPPEN
