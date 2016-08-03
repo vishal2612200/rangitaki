@@ -39,6 +39,8 @@ $themes = getDir('./themes');
 $yaml["design"]["theme"] = get("Which theme would you like to use? (" . $themes . ")", $yaml["design"]["theme"], "material-light");
 $yaml["design"]["pagination"] =
     get("Which posts should be displayed on one page (0 to disable)", $yaml["design"]["pagination"], "0");
+$yaml["design"]["excerpt"] =
+    getBool("Should be overview pages only show a excerpt of the full posts? (on/off)", $yaml["design"]["excerpt"], "off");
 $yaml["design"]["favicon"] = get("URL to your favicon", $yaml["design"]["favicon"], "https://example.com/fav.ico");
 
 // rcc
@@ -48,6 +50,9 @@ $yaml["rcc"]["api"] = "off";
 // languages
 $langs = getDir('./lang');
 $yaml["language"] = get("Choose a language (" . $langs . ")", $yaml["language"], "en");
+
+// social media
+$yaml["social"]["twitter"] = get("Your Twitter username:", $yaml["social"]["twitter"], "");
 
 $config->writeConfig($yaml);
 

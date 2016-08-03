@@ -7,6 +7,15 @@
 
  - [S] release are always compared to the previous [S] release.
 
+## Version 1.5.0 (2016-08-03) [S]
+
+ - **[FEATURE]** Ability to only show post excerpts on overview pages
+ - **[FIX]** Fixed twitter username not specified in connfig.yaml
+ - **[FIX]** Fixed wrong OpenGraph meta tags
+ - **[CODE]** Further improved code style
+ - **[CODE]** Added unit tests for Config.php and ArticleGenerator.php
+ - **[NOTE]** If you have own language file, please update them. See also the upgrade guide
+
 ## Version 1.4.4 (2016-06-03) [S]
  - **[FIX]** Error when trying to create a feed
 

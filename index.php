@@ -114,10 +114,9 @@ $feedurl = $config["blog"]["url"] . "/feed/" . $blog . ".atom";
     <meta property="og:url" content="<?php echo $url; ?>"/>
     <meta property="og:image" content="<?php echo $config['design']['favicon']; ?>"/>
     <meta property="og:description" content="<?php echo $config['blog']['description']; ?>"/>
-    <meta property="og:locale:alternate" content="<?php echo $lang; ?>"/>
     <!-- Twitter meta tags -->
     <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:site" content="<?php echo $twitter; ?>"/>
+    <meta name="twitter:site" content="<?php echo $config['social']['twitter']; ?>"/>
     <meta name="twitter:title" content="<?php echo $hd_subblog_title; ?>"/>
     <meta name="twitter:description" content="<?php echo $config['blog']['description']; ?>"/>
     <meta name="twitter:image" content="<?php echo $config['design']['favicon']; ?>"/>
@@ -194,7 +193,9 @@ if ($config["design"]["drawer"] == "on") {
                         if ($navblog != "main.md") { // excluding main blog
                             // creating navigation item
                             BlogListGenerator::listBlog(
-                                "./blogs/", $navblog, $config["blog"]["title"]
+                                "./blogs/",
+                                $navblog,
+                                $config["blog"]["title"]
                             );
                         }
                     } else {
@@ -203,7 +204,9 @@ if ($config["design"]["drawer"] == "on") {
                         if ($getblog . ".md" != $navblog) {
                             // creating navigation item
                             BlogListGenerator::listBlog(
-                                "./blogs/", $navblog, $blogmaintitle
+                                "./blogs/",
+                                $navblog,
+                                $blogmaintitle
                             );
                         }
                     }
@@ -319,7 +322,11 @@ if ($config["design"]["drawer"] == "on") {
                 if (strlen($article) >= 3 && substr($article, -3) == ".md") {
                     // generate the article
                     ArticleGenerator::newArticle(
-                        $articlesdir, $article, $getblog
+                        $articlesdir,
+                        $article,
+                        $getblog,
+                        $config["design"]["excerpt"],
+                        $BLOGLANG["Read More"]
                     );
                 }
             }
@@ -337,12 +344,20 @@ if ($config["design"]["drawer"] == "on") {
                 if ($config["design"]["pagination"]) {
                     if ($posts_amount < $pag_max && $posts_amount >= $pag_min) {
                         ArticleGenerator::newArticle(
-                            $articlesdir, $article, $getblog
+                            $articlesdir,
+                            $article,
+                            $getblog,
+                            $config["design"]["excerpt"],
+                            $BLOGLANG["Read More"]
                         );
                     }
                 } else {
                     ArticleGenerator::newArticle(
-                        $articlesdir, $article, $getblog
+                        $articlesdir,
+                        $article,
+                        $getblog,
+                        $config["design"]["excerpt"],
+                        $BLOGLANG["Read More"]
                     );
                 }
             }
@@ -354,7 +369,11 @@ if ($config["design"]["drawer"] == "on") {
     } elseif (isset($getarticle)) { // ARTICLE VIEW
         // generate the requested article
         ArticleGenerator::newArticle(
-            $articlesdir, $getarticle . ".md", $getblog
+            $articlesdir,
+            $getarticle . ".md",
+            $getblog,
+            'off',
+            $BLOGLANG["Read More"]
         );
         include './res/php/Disqus.php'; // include disques
     } else { // SOMETHING STRANGE: THIS SHOULDN'T HAPPEN
@@ -417,14 +436,14 @@ if ($config["design"]["drawer"] == "on") {
 <script src="./res/js/app.js"></script> <!--include main javascript-->
 <!-- JS extension support -->
 <?php
-    if(file_exists("./extensions")) {
-        $extensions = scandir('./extensions');
-        foreach ($extensions as $extension) {
-            if (substr($extension, -3) == ".js") {
-                echo "<script src='./extensions/$extension'></script>";
-            }
+if (file_exists("./extensions")) {
+    $extensions = scandir('./extensions');
+    foreach ($extensions as $extension) {
+        if (substr($extension, -3) == ".js") {
+            echo "<script src='./extensions/$extension'></script>";
         }
     }
+}
 ?>
 <?php
 require './res/php/GoogleAnalytics.php'; // include google analytics
