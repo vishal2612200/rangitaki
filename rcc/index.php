@@ -35,8 +35,10 @@
 
 require '../vendor/autoload.php';
 require '../res/php/Config.php';
+require "./../res/php/BlogListGenerator.php";
 
 use \mmk2410\rbe\config\Config as Config;
+use mmk2410\rbe\BlogListGenerator\BlogListGenerator as BlogListGenerator;
 
 $config = new Config("../config.yaml", '../vendor/autoload.php');
 $settings = $config->getConfig();
@@ -108,7 +110,7 @@ if ($config["rcc"]["rcc"] == "on") {
     } else {
         if (password_verify($passwd, $password)) {
             $_SESSION['login'] = true;
-            include_once "./../res/php/BlogListGenerator.php";
+
     ?>
 
         <!-- Post Upload -->

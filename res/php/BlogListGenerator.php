@@ -10,7 +10,7 @@
  * @license  MIT License
  * @link     http://marcel-kapfer.de/rangitaki
  */
-
+namespace mmk2410\rbe\BlogListGenerator;
 
 /**
  * The blog list generator class is a collection of functions for generating
@@ -37,7 +37,7 @@ class BlogListGenerator
      *
      * @return None
      */
-    function listBlog($directory, $blogname, $blogmaintitle)
+    public function listBlog($directory, $blogname, $blogmaintitle)
     {
         // get content of the blog file;
         $blog = file_get_contents($directory . $blogname);
@@ -74,7 +74,7 @@ class BlogListGenerator
      *
      * @return string
      */
-    function getName($file)
+    public function getName($file)
     {
         // get the content of the blog file
         $blog = file_get_contents($file);
@@ -96,7 +96,7 @@ class BlogListGenerator
      *
      * @return int Amount of files
      */
-    static function getArticleAmount($blog)
+    public static function getArticleAmount($blog)
     {
         $directory = "./articles/" . $blog . "/";
         if (!file_exists($directory)) {
@@ -104,7 +104,7 @@ class BlogListGenerator
         } else {
             $i = 0;
             $handle = opendir($directory);
-            while (($file = readdir($handle)) !== false ) {
+            while (($file = readdir($handle)) !== false) {
                 if (!in_array($file, array('.','..'))) {
                     $i++;
                 }
@@ -112,5 +112,4 @@ class BlogListGenerator
             return $i;
         }
     }
-
 }

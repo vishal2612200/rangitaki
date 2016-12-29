@@ -25,7 +25,10 @@ date_default_timezone_set('UTC');
 require __DIR__ . '/vendor/autoload.php'; // loading composer libs
 
 require './res/php/Config.php';
+require_once './res/php/BlogListGenerator.php';
+
 use mmk2410\rbe\config\Config as Config;
+use mmk2410\rbe\BlogListGenerator\BlogListGenerator as BlogListGenerator;
 
 $configParser = new Config('config.yaml', 'vendor/autoload.php');
 
@@ -33,7 +36,7 @@ $config = $configParser->getConfig();
 
 require './lang/' . $config["language"] . ".php"; // Language file
 require_once 'res/php/ArticleGenerator.php'; // The article generator
-require_once './res/php/BlogListGenerator.php'; // and the blog list generator
+
 
 // Getting some variables ($_GET and $_SERVER)
 $getblog = filter_input(INPUT_GET, "blog"); // get the blog variable

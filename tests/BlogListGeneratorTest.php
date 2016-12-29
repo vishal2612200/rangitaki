@@ -1,7 +1,9 @@
 <?php
 
 require_once 'PHPUnit/Autoload.php';
-include 'res/php/BlogListGenerator.php';
+
+require_once 'res/php/BlogListGenerator.php';
+use mmk2410\rbe\BlogListGenerator\BlogListGenerator as BlogListGenerator;
 
 class BlogListGeneratorTest extends \PHPUnit_Framework_TestCase
 {

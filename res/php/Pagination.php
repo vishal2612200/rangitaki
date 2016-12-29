@@ -11,6 +11,7 @@
  * @link     http://marcel-kapfer.de/rangitaki
  */
 require_once "BlogListGenerator.php";
+use mmk2410\rbe\BlogListGenerator\BlogListGenerator as BlogListGenerator;
 
 require_once './res/php/Config.php';
 
