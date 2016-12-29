@@ -64,7 +64,7 @@ class BlogListGenerator
             $itemurl = substr($blog, 6, strpos($blog, "\n") - 6);
             $atag = "<a class='nav-item' href='$itemurl'>$itemname</a>";
         }
-        echo $atag;
+        return $atag;
     }
 
     /**

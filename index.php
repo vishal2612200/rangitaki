@@ -195,7 +195,7 @@ if ($config["design"]["drawer"] == "on") {
                     if ($getblog == "") { // Run when on main blog
                         if ($navblog != "main.md") { // excluding main blog
                             // creating navigation item
-                            BlogListGenerator::listBlog(
+                            echo BlogListGenerator::listBlog(
                                 "./blogs/",
                                 $navblog,
                                 $config["blog"]["title"]
@@ -206,7 +206,7 @@ if ($config["design"]["drawer"] == "on") {
                         // -> this blog will be excluded
                         if ($getblog . ".md" != $navblog) {
                             // creating navigation item
-                            BlogListGenerator::listBlog(
+                            echo BlogListGenerator::listBlog(
                                 "./blogs/",
                                 $navblog,
                                 $blogmaintitle
