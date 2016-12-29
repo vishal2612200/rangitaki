@@ -46,18 +46,25 @@ class BlogListGenerator
         // check if the first line includes a title
         if (substr($blog, 0, 6) == "%TITLE") {
             // grab the title
-            $blog = substr($blog, 8, strpos($blog, "\n") - 8);
+            $itemname = substr($blog, 8, strpos($blog, "\n") - 8);
             // if on main blog
-            if ($blog == "main") {
+            if ($itemname == "main") {
                 // create a nav item to the main blog
-                echo "<a class='nav-item' href='./'>$blogmaintitle</a>";
+                $atag = "<a class='nav-item' href='./'>$blogmaintitle</a>";
             } else {
                 // create a link to the blog
                 $link = "./?blog=" . substr($blogname, 0, -3);
                 // create a nav item to the blog
-                echo "<a class='nav-item' href='$link'>$blog</a>";
+                $atag = "<a class='nav-item' href='$link'>$itemname</a>";
             }
+            $blog = substr($blog, strpos($blog, "\n") + 1);
         }
+        // nav item as link to external page
+        if (substr($blog, 0, 4) == "%URL") {
+            $itemurl = substr($blog, 6, strpos($blog, "\n") - 6);
+            $atag = "<a class='nav-item' href='$itemurl'>$itemname</a>";
+        }
+        echo $atag;
     }
 
     /**
