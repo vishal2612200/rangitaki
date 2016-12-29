@@ -124,8 +124,10 @@ if ($config["rcc"]["rcc"] == "on") {
             $blogs = scandir("../blogs/");
             foreach ($blogs as $blog) {
                 if (strlen($blog) >= 3 && substr($blog, -3) == ".md") {
-                    $blog = substr($blog, 0, -3);
-                    echo "<option value='$blog'>$blog</option>";
+                    if (BlogListGenerator::getExternalLink($blog, '../') == null) {
+                        $blog = substr($blog, 0, -3);
+                        echo "<option value='$blog'>$blog</option>";
+                    }
                 }
             }
             ?>
@@ -149,8 +151,10 @@ if ($config["rcc"]["rcc"] == "on") {
             $blogs = scandir("../blogs/");
             foreach ($blogs as $blog) {
                 if (strlen($blog) >= 3 && substr($blog, -3) == ".md") {
-                    $blog = substr($blog, 0, -3);
-                    echo "<option value='$blog'>$blog</option>";
+                    if (BlogListGenerator::getExternalLink($blog, '../') == null) {
+                        $blog = substr($blog, 0, -3);
+                        echo "<option value='$blog'>$blog</option>";
+                    }
                 }
             }
             ?>
@@ -197,8 +201,10 @@ if ($config["rcc"]["rcc"] == "on") {
             $blogs = scandir("../blogs/");
             foreach ($blogs as $blog) {
                 if (strlen($blog) >= 3 && substr($blog, -3) == ".md") {
-                    $blog = substr($blog, 0, -3);
-                    echo "<option value='$blog'>$blog</option>";
+                    if (BlogListGenerator::getExternalLink($blog, '../') == null) {
+                        $blog = substr($blog, 0, -3);
+                        echo "<option value='$blog'>$blog</option>";
+                    }
                 }
             }
             ?>
@@ -220,8 +226,10 @@ if ($config["rcc"]["rcc"] == "on") {
             $blogs = scandir("../blogs/");
             foreach ($blogs as $blog) {
                 if (strlen($blog) >= 3 && substr($blog, -3) == ".md") {
-                    $blog = substr($blog, 0, -3);
-                    echo "<option value='$blog'>$blog</option>";
+                    if (BlogListGenerator::getExternalLink($blog, '../') == null) {
+                        $blog = substr($blog, 0, -3);
+                        echo "<option value='$blog'>$blog</option>";
+                    }
                 }
             }
             ?>
@@ -251,8 +259,10 @@ if ($config["rcc"]["rcc"] == "on") {
             $blogs = scandir("../blogs/");
             foreach ($blogs as $blog) {
                 if (strlen($blog) >= 3 && substr($blog, -3) == ".md") {
-                    $blog = substr($blog, 0, -3);
-                    echo "<option value='$blog'>$blog</option>";
+                    if (BlogListGenerator::getExternalLink($blog, '../') == null) {
+                        $blog = substr($blog, 0, -3);
+                        echo "<option value='$blog'>$blog</option>";
+                    }
                 }
             }
             ?>

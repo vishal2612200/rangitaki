@@ -112,4 +112,26 @@ class BlogListGenerator
             return $i;
         }
     }
+    
+    /**
+     * A function returning the external linkn of
+     * a blog.
+     *
+     * @param string $blog the blog name
+     * @param string $dir root directory of installation
+     *
+     * @return string link to external page else null
+     */
+    public function getExternalLink($blog, $dir)
+    {
+        $path = $dir . "/blogs/" . $blog;
+        $blog = file_get_contents($path) . "\n";
+        if (substr($blog, 0, 6) == "%TITLE") {
+            $blog = substr($blog, strpos($blog, "\n") + 1);
+        }
+        if (substr($blog, 0, 4) == "%URL") {
+            return substr($blog, 6, strpos($blog, "\n") - 6);
+        }
+        return null;
+    }
 }
