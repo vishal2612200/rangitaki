@@ -1,6 +1,6 @@
 <?php
 /**
- * Slim Framework (http://slimframework.com)
+ * Slim Framework (https://slimframework.com)
  *
  * @link      https://github.com/slimphp/Slim
  * @copyright Copyright (c) 2011-2016 Josh Lockhart
@@ -11,9 +11,8 @@ namespace Slim;
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
 use Pimple\Container as PimpleContainer;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use Slim\Exception\ContainerValueNotFoundException;
+use Slim\Exception\ContainerException as SlimContainerException;
 
 /**
  * Slim's default DI container is Pimple.
@@ -30,7 +29,7 @@ use Slim\Exception\ContainerValueNotFoundException;
  *  - errorHandler: a callable with the signature: function($request, $response, $exception)
  *  - notFoundHandler: a callable with the signature: function($request, $response)
  *  - notAllowedHandler: a callable with the signature: function($request, $response, $allowedHttpMethods)
- *  - callableResolver: an instance of callableResolver
+ *  - callableResolver: an instance of \Slim\Interfaces\CallableResolverInterface
  *
  * @property-read array settings
  * @property-read \Slim\Interfaces\Http\EnvironmentInterface environment
@@ -56,6 +55,8 @@ class Container extends PimpleContainer implements ContainerInterface
         'outputBuffering' => 'append',
         'determineRouteBeforeAppMiddleware' => false,
         'displayErrorDetails' => false,
+        'addContentLengthHeader' => true,
+        'routerCacheFile' => false,
     ];
 
     /**
@@ -94,7 +95,7 @@ class Container extends PimpleContainer implements ContainerInterface
         $this['settings'] = function () use ($userSettings, $defaultSettings) {
             return new Collection(array_merge($defaultSettings, $userSettings));
         };
-        
+
         $defaultProvider = new DefaultServicesProvider();
         $defaultProvider->register($this);
     }
@@ -118,7 +119,34 @@ class Container extends PimpleContainer implements ContainerInterface
         if (!$this->offsetExists($id)) {
             throw new ContainerValueNotFoundException(sprintf('Identifier "%s" is not defined.', $id));
         }
-        return $this->offsetGet($id);
+        try {
+            return $this->offsetGet($id);
+        } catch (\InvalidArgumentException $exception) {
+            if ($this->exceptionThrownByContainer($exception)) {
+                throw new SlimContainerException(
+                    sprintf('Container error while retrieving "%s"', $id),
+                    null,
+                    $exception
+                );
+            } else {
+                throw $exception;
+            }
+        }
+    }
+
+    /**
+     * Tests whether an exception needs to be recast for compliance with Container-Interop.  This will be if the
+     * exception was thrown by Pimple.
+     *
+     * @param \InvalidArgumentException $exception
+     *
+     * @return bool
+     */
+    private function exceptionThrownByContainer(\InvalidArgumentException $exception)
+    {
+        $trace = $exception->getTrace()[0];
+
+        return $trace['class'] === PimpleContainer::class && $trace['function'] === 'offsetGet';
     }
 
     /**

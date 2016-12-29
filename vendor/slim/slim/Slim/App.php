@@ -1,6 +1,6 @@
 <?php
 /**
- * Slim Framework (http://slimframework.com)
+ * Slim Framework (https://slimframework.com)
  *
  * @link      https://github.com/slimphp/Slim
  * @copyright Copyright (c) 2011-2016 Josh Lockhart
@@ -36,11 +36,6 @@ use Slim\Interfaces\RouterInterface;
  * configure, and run a Slim Framework application.
  * The \Slim\App class also accepts Slim Framework middleware.
  *
- * @property-read array $settings App settings
- * @property-read EnvironmentInterface $environment
- * @property-read RequestInterface $request
- * @property-read ResponseInterface $response
- * @property-read RouterInterface $router
  * @property-read callable $errorHandler
  * @property-read callable $phpErrorHandler
  * @property-read callable $notFoundHandler function($request, $response)
@@ -55,7 +50,7 @@ class App
      *
      * @var string
      */
-    const VERSION = '3.0.0';
+    const VERSION = '3.7.0';
 
     /**
      * Container
@@ -111,7 +106,7 @@ class App
 
     /**
      * Calling a non-existant method on App checks to see if there's an item
-     * in the container than is callable and if so, calls it.
+     * in the container that is callable and if so, calls it.
      *
      * @param  string $method
      * @param  array $args
@@ -379,19 +374,21 @@ class App
             }
             $settings       = $this->container->get('settings');
             $chunkSize      = $settings['responseChunkSize'];
+
             $contentLength  = $response->getHeaderLine('Content-Length');
             if (!$contentLength) {
                 $contentLength = $body->getSize();
             }
+
+
             if (isset($contentLength)) {
-                $totalChunks    = ceil($contentLength / $chunkSize);
-                $lastChunkSize  = $contentLength % $chunkSize;
-                $currentChunk   = 0;
-                while (!$body->eof() && $currentChunk < $totalChunks) {
-                    if (++$currentChunk == $totalChunks && $lastChunkSize > 0) {
-                        $chunkSize = $lastChunkSize;
-                    }
-                    echo $body->read($chunkSize);
+                $amountToRead = $contentLength;
+                while ($amountToRead > 0 && !$body->eof()) {
+                    $data = $body->read(min($chunkSize, $amountToRead));
+                    echo $data;
+
+                    $amountToRead -= strlen($data);
+
                     if (connection_status() != CONNECTION_NORMAL) {
                         break;
                     }
@@ -543,9 +540,17 @@ class App
             return $response->withoutHeader('Content-Type')->withoutHeader('Content-Length');
         }
 
-        $size = $response->getBody()->getSize();
-        if ($size !== null && !$response->hasHeader('Content-Length')) {
-            $response = $response->withHeader('Content-Length', (string) $size);
+        // Add Content-Length header if `addContentLengthHeader` setting is set
+        if (isset($this->container->get('settings')['addContentLengthHeader']) &&
+            $this->container->get('settings')['addContentLengthHeader'] == true) {
+            if (ob_get_length() > 0) {
+                throw new \RuntimeException("Unexpected data in output buffer. " .
+                    "Maybe you have characters before an opening <?php tag?");
+            }
+            $size = $response->getBody()->getSize();
+            if ($size !== null && !$response->hasHeader('Content-Length')) {
+                $response = $response->withHeader('Content-Length', (string) $size);
+            }
         }
 
         return $response;
@@ -587,7 +592,7 @@ class App
             $params = [$e->getRequest(), $e->getResponse(), $e->getAllowedMethods()];
         } elseif ($e instanceof NotFoundException) {
             $handler = 'notFoundHandler';
-            $params = [$e->getRequest(), $e->getResponse()];
+            $params = [$e->getRequest(), $e->getResponse(), $e];
         } elseif ($e instanceof SlimException) {
             // This is a Stop exception and contains the response
             return $e->getResponse();
@@ -614,9 +619,8 @@ class App
      * @param  Throwable $e
      * @param  ServerRequestInterface $request
      * @param  ResponseInterface $response
-     *
      * @return ResponseInterface
-     * @throws Exception if a handler is needed and not found
+     * @throws Throwable
      */
     protected function handlePhpError(Throwable $e, ServerRequestInterface $request, ResponseInterface $response)
     {
