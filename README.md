@@ -1,5 +1,7 @@
 # Rangitaki PHP blogging engine
 
+[![Join the chat at https://gitter.im/rangitaki/rangitaki](https://badges.gitter.im/canax/view.svg)](https://gitter.im/rangitaki/view?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Rangitaki is a simple to use and easy to configure blogging engine, written in PHP and it has absolutely no database dependencies.
 
 Tested with PHP version 5.5 until 7.0.
