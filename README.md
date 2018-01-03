@@ -6,15 +6,15 @@ Rangitaki is a simple to use and easy to configure blogging engine, written in P
 
 Tested with PHP version 5.5 until 7.0.
 
-![Rangitaki](https://marcel-kapfer.de/blog/media/with-name.png)
+![Rangitaki](https://gitlab.com/mmk2410/rangitaki/raw/master/feature-graphic.png)
 
-[Website](https://marcel-kapfer.de/rangitaki)
+[Wiki](https://gitlab.com/mmk2410/rangitaki/wikis/home)
 
-[About](https://marcel-kapfer.de/rangitaki/about)
+[About](https://gitlab.com/mmk2410/rangitaki/wikis/about)
 
-[Documentation](https://marcel-kapfer.de/rangitaki/docs)
+[Documentation](https://gitlab.com/mmk2410/rangitaki/wikis/docs)
 
-[Quick Starting Guide](https://marcel-kapfer.de/rangitaki/docs/quick)
+[Quick Starting Guide](https://gitlab.com/mmk2410/rangitaki/wikis/docs/quickstart)
 
 ## What is it?
 
@@ -40,14 +40,14 @@ My goal for Rangitaki was (and still is) to create a blogging engine without dat
  - JavaScript Extension Support
  - Pagination support
  - Atom feed generation
- - Rangitaki Control Center (RCC; optional, read the [RCC Documentation](https://marcel-kapfer.de/rangitaki/docs/rcc))
+ - Rangitaki Control Center (RCC; optional, read the [RCC Documentation](https://gitlab.com/mmk2410/rangitaki/wikis/docs/rcc)
    - Have a look under 'What is that RCC?' in this readme
 
 ## Did you say 'themes'?
 
 Yes. Rangitaki has a theme support which makes it easy to customize your blog concerning design.
 
-[Read the theme guide](https://marcel-kapfer.de/rangitaki/docs/themes)
+[Read the theme guide](https://gitlab.com/mmk2410/rangitaki/wikis/docs/themes)
 
 ## What is that RCC?
 
@@ -60,16 +60,7 @@ It has the following features:
  - Media upload
  - Atom feed generation
 
-[Read the RCC documentation](https://marcel-kapfer.de/rangitaki/docs/rcc)
-
-## Where can I see an example?
-
- - Official Rangitaki blog [marcel-kapfer.de/rangitaki/blog](https://marcel-kapfer.de/rangitaki/blog)
-
- - My personal blog
- [marcel-kapfer.de/blog](https://marcel-kapfer.de/blog)
-
-Would you like to see your Rangitaki blog here? Write me a message at [marcelmichaelkapfer@yahoo.co.nz](mailto:marcelmichaelkapfer@yahoo.co.nz)
+[Read the RCC documentation](https://gitlab.com/mmk2410/rangitaki/wikis/docs/rcc)
 
 ## Used Libraries
 
@@ -80,8 +71,7 @@ Would you like to see your Rangitaki blog here? Write me a message at [marcelmic
 
 ## Issues, Requests, etc.
 
-For bug reports, feature requests and all other stuff use
-[phab.mmk2410.org/maniphest](https://phab.mmk2410.org/maniphest).
+For bug reports, feature requests and all other questions or recommendations feel free to create an issue here at [GitLab](https://gitlab.com/mmk2410/rangitaki/issues).
 
 ## Code
 
@@ -89,13 +79,13 @@ For bug reports, feature requests and all other stuff use
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
-5. Create New Pull Request
+5. Create new merge request
 
-Read also the [contributing documentation](https://marcel-kapfer.de/rangitaki/docs/contrib)
+Read also the [contributing documentation](https://gitlab.com/mmk2410/rangitaki/wikis/docs/contribute)
 
 ## Social
 
-You can follow my personal Twitter and Google+ account to receive news about the Rangitaki blogging engine.
+You can follow me on Twitter or subscribe my blog to receive news about Rangitaki.
 
  - [Twitter @mmk2410](https://twitter.com/mmk2410)
- - [Google+ +MarcelKapfer](https://plus.google.com/+MarcelMichaelKapfer/posts)
+ - [Blog mmk2410.org](https://mmk2410.org/), you can view the current posts about Rangitaki on [this page](https://mmk2410.org/tag/rangitaki/).
